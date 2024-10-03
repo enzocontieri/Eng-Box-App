@@ -18,7 +18,12 @@ const HomeStack = createNativeStackNavigator();
 function HomeScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="HomeScreen" component={Home} />
+      <HomeStack.Screen 
+      name="HomeScreen" 
+      component={Home} 
+      options={{
+        headerShown: false
+      }}/>
     </HomeStack.Navigator>
   );
 }
@@ -28,7 +33,12 @@ const ProfileStack = createNativeStackNavigator();
 function  ProfileScreen() {
   return (
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name="ProfileScreen" component={Profile} />
+      <ProfileStack.Screen 
+      name="ProfileScreen" 
+      component={Profile} 
+      options={{
+        headerShown: false
+      }}/>
     </ProfileStack.Navigator>
   );
 }
@@ -38,7 +48,12 @@ const UploadStack = createNativeStackNavigator();
 function UploadScreen() {
   return (
     <UploadStack.Navigator>
-      <UploadStack.Screen name="UploadScreen" component={Upload} />
+      <UploadStack.Screen 
+      name="UploadScreen" 
+      component={Upload} 
+      options={{
+        headerShown: false
+      }}/>
     </UploadStack.Navigator>
   );
 }
@@ -47,9 +62,24 @@ const ExploreStack = createNativeStackNavigator();
 function ExploreScreen() {
   return (
     <ExploreStack.Navigator>
-      <ExploreStack.Screen name="ExploreScreen" component={Explore} />
-      <ExploreStack.Screen name="User" component={User} />
-      <ExploreStack.Screen name="Settings" component={Settings} />
+      <ExploreStack.Screen 
+      name="ExploreScreen" 
+      component={Explore} 
+      options={{
+        headerShown: false
+      }}/>
+      <ExploreStack.Screen 
+      name="User" 
+      component={User} 
+      options={{
+        headerShown: false
+      }}/>
+      <ExploreStack.Screen 
+      name="Settings" 
+      component={Settings} 
+      options={{
+        headerShown: false
+      }}/>
     </ExploreStack.Navigator>
   );
 }
