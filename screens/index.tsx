@@ -1,58 +1,55 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from "./Tabs/HomeScreen";
-import UploadScreen from "./Tabs/UploadScreen";
-import ProfileScreen from "./Tabs/ProfileScreen";
-import ExploreScreen from "./Tabs/ExploreScreen";
+import Home from "./Tabs/Home";
+import Upload from "./Tabs/Upload";
+import Profile from "./Tabs/Profile";
+import Explore from "./Tabs/Explore";
 import User from "./pages/User";
 import Settings from './pages/Settings';
 
 export {
-    HomeStackScreen,
-    ProfileStackScreen,
-    UploadStackScreen,
-    ExploreStackScreen,
+    HomeScreen,
+    ProfileScreen,
+    UploadScreen,
+    ExploreScreen,
 }
 
 const HomeStack = createNativeStackNavigator();
 
-function HomeStackScreen() {
+function HomeScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="User" component={User} />
+      <HomeStack.Screen name="HomeScreen" component={Home} />
     </HomeStack.Navigator>
   );
 }
 
 const ProfileStack = createNativeStackNavigator();
 
-function  ProfileStackScreen() {
+function  ProfileScreen() {
   return (
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
-      <ProfileStack.Screen name="User" component={User} />
-      <ProfileStack.Screen name="Settings" component={Settings} />
+      <ProfileStack.Screen name="ProfileScreen" component={Profile} />
     </ProfileStack.Navigator>
   );
 }
 
 const UploadStack = createNativeStackNavigator();
 
-function UploadStackScreen() {
+function UploadScreen() {
   return (
     <UploadStack.Navigator>
-      <UploadStack.Screen name="Upload" component={UploadScreen} />
-      <UploadStack.Screen name="User" component={User} />
+      <UploadStack.Screen name="UploadScreen" component={Upload} />
     </UploadStack.Navigator>
   );
 }
 const ExploreStack = createNativeStackNavigator();
 
-function ExploreStackScreen() {
+function ExploreScreen() {
   return (
     <ExploreStack.Navigator>
-      <ExploreStack.Screen name="Explore" component={ExploreScreen} />
+      <ExploreStack.Screen name="ExploreScreen" component={Explore} />
       <ExploreStack.Screen name="User" component={User} />
+      <ExploreStack.Screen name="Settings" component={Settings} />
     </ExploreStack.Navigator>
   );
 }

@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const UploadScreen = () => {
+const Profile = () => {
   return (
     <View>
-      <Text>UploadScreen</Text>
+      <Text>Profile</Text>
     </View>
   )
 }
 
-export default UploadScreen
+export default Profile
