@@ -1,26 +1,23 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from "./Tabs/Home";
-import UploadScreen from "./Tabs/Upload";
-import ProfileScreen from "./Tabs/Profile";
-import ExploreScreen from "./Tabs/Explore";
-
+import Home from "./Tabs/Home";
+import Upload from "./Tabs/Upload";
+import Profile from "./Tabs/Profile";
+import Explore from "./Tabs/Explore";
 import User from "./pages/User";
 import Settings from './pages/Settings';
-import WellcomeScreen from './pages/WellcomeScreen';
+import Wellcome from './pages/Wellcome';
 
 
 export {
-    HomeScreen,
-    ProfileScreen,
-    UploadScreen,
-    ExploreScreen,
-    WellcomeScreen
+    Home,
+    Profile,
+    Upload,
+    Explore,
+    Wellcome,
+    User,
+    Settings,
 }
 
-export {
-  User,
-  Settings,
-}
 
 
 
