@@ -5,12 +5,15 @@ import Profile from "./Tabs/Profile";
 import Explore from "./Tabs/Explore";
 import User from "./pages/User";
 import Settings from './pages/Settings';
+import WellcomeScreen from './pages/WellcomeScreen';
+
 
 export {
     HomeScreen,
     ProfileScreen,
     UploadScreen,
     ExploreScreen,
+    WellcomeScreen
 }
 
 const HomeStack = createNativeStackNavigator();
@@ -82,5 +85,23 @@ function ExploreScreen() {
       }}/>
     </ExploreStack.Navigator>
   );
+
+  const WellcomeStack = createNativeStackNavigator();
+
+  function WellcomeScreen() {
+    return (
+      <WellcomeStack.Navigator>
+        <WellcomeStack.Screen
+          name="Wellcome"
+          component={WellcomeScreen}
+          options={{
+            headerShown: false
+          }
+          }
+        />
+
+      </WellcomeStack.Navigator>
+    )
+  }
 }
 
