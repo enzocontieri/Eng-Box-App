@@ -1,8 +1,10 @@
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, FlatList } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, FlatList, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import 'tailwindcss/tailwind.css';
 import CategoryComponent from '../../Components/category';
+import {data} from "../../data/index"
+import Parallax from "../../Components/animation-parallax-carousel"
 
 const Explore = ({ navigation }) => {;
 
@@ -15,15 +17,19 @@ const Explore = ({ navigation }) => {;
             <TextInput placeholder="Search" className="text-[#9B9B9B] flex-1"/>
           </TouchableOpacity> 
         </View>
-        <View className="mt-8">
-          <CategoryComponent />
+          <View>
+          <Parallax  />
+          </View>
         </View>
-        <View className="mt-8 mx-3">
-        <TouchableOpacity onPress={() => navigation.navigate("User")}><Text>ir para User Page</Text></TouchableOpacity>
-        </View>
-      </View>
     </SafeAreaView>
   )
 }
 
 export default Explore
+
+
+const styles = StyleSheet.create({
+  parallaxCarouselView:{
+    paddingVertical: 50,
+  }
+})

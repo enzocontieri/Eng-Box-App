@@ -29,7 +29,7 @@ function TabNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Wellcome">
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen name="Wellcome" component={Wellcome} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="User" component={User} options={{ headerShown: false }} />
