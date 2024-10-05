@@ -7,7 +7,10 @@ import {
     ProfileScreen,
     UploadScreen,
     ExploreScreen,
-    WellcomeScreen
+    WellcomeScreen,
+
+    User,
+    Settings,
 } from "./screens/index"
 
 const Tab = createBottomTabNavigator();
@@ -30,6 +33,8 @@ export default function App() {
       <Stack.Navigator initialRouteName="Wellcome">
         <Stack.Screen name="Wellcome" component={WellcomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="User" component={User} options={{ headerShown: false }} />
+        <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

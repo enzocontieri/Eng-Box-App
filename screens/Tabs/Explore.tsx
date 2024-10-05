@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import 'tailwindcss/tailwind.css';
 import CategoryComponent from '../../Components/category';
 
-const Explore = () => {;
+const Explore = ({ navigation }) => {;
 
   return (
     <SafeAreaView className="bg-[#F8F8F8] h-full">
@@ -17,6 +17,9 @@ const Explore = () => {;
         </View>
         <View className="mt-8">
           <CategoryComponent />
+        </View>
+        <View className="mt-8 mx-3">
+        <TouchableOpacity onPress={() => navigation.navigate("User")}><Text>ir para User Page</Text></TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
