@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import 'tailwindcss/tailwind.css';
 import CategoryComponent from '../../Components/category';
 import {data} from "../../data/index"
-import Parallax from "../../Components/animation-parallax-carousel"
+import Parallax from "../../Components/Carousel/animation-parallax-carousel"
 
 const Explore = ({ navigation }) => {;
 
@@ -17,8 +17,8 @@ const Explore = ({ navigation }) => {;
             <TextInput placeholder="Search" className="text-[#9B9B9B] flex-1"/>
           </TouchableOpacity> 
         </View>
-          <View>
-          <Parallax  />
+          <View className='mt-8'>
+            <CategoryComponent />
           </View>
         </View>
     </SafeAreaView>
