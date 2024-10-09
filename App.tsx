@@ -10,6 +10,7 @@ import {
     Wellcome,
     User,
     Settings,
+    UserDetail,
 } from "./screens/index"
 
 const Tab = createBottomTabNavigator();
@@ -34,6 +35,7 @@ export default function App() {
         <Stack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="User" component={User} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
+        <Stack.Screen name="UserDetail" component={UserDetail} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

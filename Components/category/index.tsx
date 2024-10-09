@@ -2,14 +2,19 @@ import {View, Text, ScrollView, TouchableOpacity, FlatList, ImageBackground, Ima
 import React, {useState} from 'react'
 import 'tailwindcss/tailwind.css';
 import {data} from '../../data/dataEspecialist'
+import { useNavigation } from '@react-navigation/native';
 
 
 const CategoryComponent = () => {
 
     const [engstate, setEngState] = useState<string>()
+    const navigation = useNavigation();
     
     const Item = ({ username, description, useravatar, icon }) => (
-        <TouchableOpacity className='items-center'>
+        <TouchableOpacity 
+            className='items-center' 
+            onPress={() => navigation.navigate('UserDetail', { username, description, useravatar, icon })}
+        >
             
             <View className='h-[150px] w-[90%] bg-[#78CAD2] rounded-2xl mt-5'>
                 <ImageBackground 

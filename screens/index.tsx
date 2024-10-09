@@ -6,6 +6,7 @@ import Explore from "./Tabs/Explore";
 import User from "./pages/User";
 import Settings from './pages/Settings';
 import Wellcome from './pages/Wellcome';
+import UserDetail from './pages/UserDetail';
 
 
 export {
@@ -16,6 +17,7 @@ export {
     Wellcome,
     User,
     Settings,
+    UserDetail,
 }
 
 
