@@ -10,10 +10,10 @@ const CategoryComponent = () => {
     const [engstate, setEngState] = useState<string>()
     const navigation = useNavigation();
     
-    const Item = ({ username, description, useravatar, icon }) => (
+    const Item = ({ username, description, useravatar, icon, title }) => (
         <TouchableOpacity 
             className='items-center' 
-            onPress={() => navigation.navigate('UserDetail', { username, description, useravatar, icon })}
+            onPress={() => navigation.navigate('UserDetail', { username, description, useravatar, icon, title })}
         >
             
             <View className='h-[150px] w-[90%] bg-[#78CAD2] rounded-2xl mt-5'>
@@ -29,9 +29,10 @@ const CategoryComponent = () => {
                     />
                     
                     
-                    <View className='flex-1 justify-end px-4 py-2'>
-                        <Text className='text-white text-[18px] font-bold'>{username}</Text>
-                        <Text className='text-white text-[12px] font-normal'>{description}</Text>
+                    <View className='flex-1 justify-end items-start px-4 py-3 gap-1'>
+                            <Text className='text-[20px] font-bold text-black bg-white rounded p-1 inline-block'>{title}</Text>
+                        <Text className='text-white text-[16px] font-semibold'>@{username}</Text>
+                        <Text className='text-white text-[10px] font-normal'>{description.length > 100 ? `${description.substring(0, 100)}...` : description}</Text>
                     </View>
                 </ImageBackground>
             </View>
@@ -78,6 +79,7 @@ const CategoryComponent = () => {
                         description={item.description} 
                         useravatar={item.useravatar} 
                         icon={item.icon} 
+                        title={item.title}
                     />
                 )}
                 keyExtractor={(item) => item.username || item.id} 
