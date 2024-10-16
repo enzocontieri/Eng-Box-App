@@ -29,7 +29,7 @@ const UserDatail  = ({ route }) => {
             <Text className='text-[24px] font-bold'>@{username}</Text>
             <Image source={icon} className='h-10 w-10' />
           </View>
-          <View className='mt-5'>
+          <View className='mt-5' >
             <Text className='text-[24px] font-bold'>{title}</Text>
             <Text className='text-[14px] mt-3'>{description}</Text>
           </View>
@@ -40,3 +40,4 @@ const UserDatail  = ({ route }) => {
 }
 
 export default UserDatail
+

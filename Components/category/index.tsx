@@ -42,32 +42,32 @@ const CategoryComponent = () => {
 
   return (
     <View>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  className='mb-5'>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Civil')}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  className='mb-5 p-3'>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Civil')}>
                 <Text>Civil</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Quimica')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Quimica')}>
                 <Text>Quimica</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Arquitetura')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Arquitetura')}>
                 <Text>Arquitetura</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Eletrica')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Eletrica')}>
                 <Text>Eletrica</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Mecanica')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Mecanica')}>
                 <Text>Mecanica</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Software')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Software')}>
                 <Text>Software</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Automacao')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Automacao')}>
                 <Text>Automacao</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Producao')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Producao')}>
                 <Text>Producao</Text>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] w-35 h-35 p-5 mx-2 rounded-xl' onPress={() => setEngState('Computacao')}>
+            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Computacao')}>
                 <Text>Computacao</Text>
             </TouchableOpacity>
         </ScrollView>        
