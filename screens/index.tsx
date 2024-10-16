@@ -7,7 +7,9 @@ import User from "./pages/User";
 import Settings from './pages/Settings';
 import Wellcome from './pages/Wellcome';
 import UserDetail from './pages/UserDetail';
-
+import ForgotPassword from './pages/ForgotPassword';
+import LogIn from './pages/LogIn';
+import Register from './pages/Register';
 
 export {
     Home,
@@ -18,6 +20,9 @@ export {
     User,
     Settings,
     UserDetail,
+    ForgotPassword,
+    LogIn,
+    Register,
 }
 
 
