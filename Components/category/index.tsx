@@ -43,32 +43,68 @@ const CategoryComponent = () => {
   return (
     <View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  className='mb-5 p-3'>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Civil')}>
-                <Text>Civil</Text>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Civil')}>
+                <Text className="text-base">Civil</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/icone-eng.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Quimica')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Quimica')}>
                 <Text>Quimica</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/quimico.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Arquitetura')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Arquitetura')}>
                 <Text>Arquitetura</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/projeto-da-casa.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Eletrica')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Eletrica')}>
                 <Text>Eletrica</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/energia-eletrica.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Mecanica')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Mecanica')}>
                 <Text>Mecanica</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/engenharia-mecanica.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Software')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Software')}>
                 <Text>Software</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/engenharia-de-software.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Automacao')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Automacao')}>
                 <Text>Automacao</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/linha-de-montagem.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Producao')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Producao')}>
                 <Text>Producao</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/recursos-humanos.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#FFFFFF] h-12 p-4 mx-2 rounded-xl shadow' onPress={() => setEngState('Computacao')}>
+            <TouchableOpacity className="bg-white h-12 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between" onPress={() => setEngState('Computacao')}>
                 <Text>Computacao</Text>
+                <Image 
+                    source={require('../../assets/icons/iconsFilter/computacao-em-nuvem.png')}
+                    className="w-6 h-6 ml-2"
+                />
             </TouchableOpacity>
         </ScrollView>        
         <FlatList 

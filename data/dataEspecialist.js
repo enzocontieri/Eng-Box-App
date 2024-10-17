@@ -4,7 +4,7 @@ export const data = [
         username:"joao",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -12,7 +12,7 @@ export const data = [
         username:"Manoel",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -20,7 +20,7 @@ export const data = [
         username:"Roberta",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -28,7 +28,7 @@ export const data = [
         username:"Roberto",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -36,7 +36,7 @@ export const data = [
         username:"Yago",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -44,7 +44,7 @@ export const data = [
         username:"Enzo",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas", 
     },
     {
@@ -52,7 +52,7 @@ export const data = [
         username:"Ulisses",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -60,7 +60,7 @@ export const data = [
         username:"Natalia",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -68,7 +68,7 @@ export const data = [
         username:"Mauricio",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -76,7 +76,7 @@ export const data = [
         username:"Leticia",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -84,14 +84,14 @@ export const data = [
         username:"Advaldo",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
     },
     {
         id:"Civil",
         username:"Gui",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -99,7 +99,7 @@ export const data = [
         username:"Guilherme",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -107,7 +107,7 @@ export const data = [
         username:"Lucas",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -115,7 +115,7 @@ export const data = [
         username:"Alberto",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -123,7 +123,7 @@ export const data = [
         username:"Romeu",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -131,7 +131,7 @@ export const data = [
         username:"Ed",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'),
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'),
         title: "Produto de Vendas",  
     },
     {
@@ -139,7 +139,7 @@ export const data = [
         username:"Gabriel",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -147,7 +147,7 @@ export const data = [
         username:"Pedro",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -155,7 +155,7 @@ export const data = [
         username:"Ana",
         useravatar: require('../assets/images/civil.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
     {
@@ -163,7 +163,7 @@ export const data = [
         username:"Maria",
         useravatar: require('../assets/images/civil.png'),
         description: "Maria",
-        icon: require('../assets/icons/icone-eng.png'), 
+        icon: require('../assets/icons/iconsFilter/icone-eng.png'), 
         title: "Produto de Vendas", 
     },
 ]
