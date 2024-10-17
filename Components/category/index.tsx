@@ -10,34 +10,49 @@ const CategoryComponent = () => {
     const [engstate, setEngState] = useState<string>()
     const navigation = useNavigation();
     
-    const Item = ({ username, description, useravatar, icon, title }) => (
+    const Item = ({ username, description, CategoryIcon, icon, title, useravatar }) => (
         <TouchableOpacity 
-            className='items-center' 
-            onPress={() => navigation.navigate('UserDetail', { username, description, useravatar, icon, title })}
+            className='items-center shadow' 
+            onPress={() => navigation.navigate('UserDetail', { username, description, CategoryIcon, icon, title, useravatar })}
         >
-            
-            <View className='h-[150px] w-[90%] bg-[#78CAD2] rounded-2xl mt-5'>
+            <View className='h-[180px] w-[90%] bg-[#78CAD2] rounded-2xl mt-5'>
                 <ImageBackground 
-                    source={useravatar} 
-                    className='h-full w-full rounded-2xl overflow-hidden'
+                    source={CategoryIcon} 
+                    className='h-full w-full absolute rounded-2xl overflow-hidden'
                     resizeMode="cover"
                 >
-                    
-                    <Image 
-                        source={icon} 
-                        className='h-8 w-8 absolute top-2 right-2'
-                    />
-                    
-                    
-                    <View className='flex-1 justify-end items-start px-4 py-3 gap-1'>
-                            <Text className='text-[20px] font-bold text-black bg-white rounded p-1 inline-block'>{title}</Text>
-                        <Text className='text-white text-[16px] font-semibold'>@{username}</Text>
-                        <Text className='text-white text-[10px] font-normal'>{description.length > 100 ? `${description.substring(0, 100)}...` : description}</Text>
+                    {/* Icon and Title in the same line */}
+                    <View className="flex-row justify-between px-4 pt-3">
+                        <Text className='text-[22px] font-semibold text-black rounded p-1'>{title}</Text>
+                        <Image 
+                            source={icon} 
+                            className='h-8 w-8'
+                        />
+                    </View>
+    
+                    {/* User profile image in white circle and username */}
+                    <View className='flex-row items-center px-4 py-3'>
+                        <View className="bg-white rounded-full h-12 w-12 overflow-hidden mr-3">
+                            <Image 
+                                source={useravatar} 
+                                className='h-full w-full'
+                                resizeMode="cover"
+                            />
+                        </View>
+                        <Text className='text-black text-[20px] font-medium'>@{username}</Text>
+                    </View>
+    
+                    {/* Description text */}
+                    <View className='px-4'>
+                        <Text className='text-[#767676] text-[16px] font-normal'>
+                            {description.length > 100 ? `${description.substring(0, 100)}...` : description}
+                        </Text>
                     </View>
                 </ImageBackground>
             </View>
         </TouchableOpacity>
     );
+    
       const filteredData = data.filter(item => item.id === engstate);
 
   return (
@@ -113,9 +128,10 @@ const CategoryComponent = () => {
                     <Item 
                         username={item.username} 
                         description={item.description} 
-                        useravatar={item.useravatar} 
+                        CategoryIcon={item.CategoryIcon} 
                         icon={item.icon} 
                         title={item.title}
+                        useravatar={item.useravatar}
                     />
                 )}
                 keyExtractor={(item) => item.username || item.id} 
