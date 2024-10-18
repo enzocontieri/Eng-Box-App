@@ -3,15 +3,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
-    Home,
-    Profile,
-    Upload,
-    Explore,
-    Wellcome,
-    User,
-    Settings,
-    UserDetail,
+  Home,
+  Profile,
+  Upload,
+  Explore,
+  Wellcome,
+  User,
+  Settings,
+  UserDetail,
 } from "./screens/index"
+import { useFonts } from 'expo-font';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -28,6 +29,15 @@ function TabNavigator() {
 }
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'poppins-medium': require('./assets/fonts/Poppins-Medium.ttf'),
+  })
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Main">
