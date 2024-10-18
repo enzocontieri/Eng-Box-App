@@ -3,11 +3,9 @@ import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import 'tailwindcss/tailwind.css';
 import CategoryComponent from '../../Components/category';
-import {data} from "../../data/index"
-import Parallax from "../../Components/Carousel/animation-parallax-carousel"
+import { data as specialistsData } from '../../data/dataEspecialist';
 
 const Explore = ({ navigation }) => {;
-
   return (
     <SafeAreaView className="bg-[#F8F8F8] h-full">
       <View>
@@ -17,9 +15,10 @@ const Explore = ({ navigation }) => {;
             <TextInput placeholder="Search" className="text-[#9B9B9B] flex-1"/>
           </TouchableOpacity> 
         </View>
-          <View className='mt-8'>
+          <View>
             <CategoryComponent />
           </View>
+          
         </View>
     </SafeAreaView>
   )
@@ -28,8 +27,3 @@ const Explore = ({ navigation }) => {;
 export default Explore
 
 
-const styles = StyleSheet.create({
-  parallaxCarouselView:{
-    paddingVertical: 50,
-  }
-})
