@@ -32,7 +32,7 @@ const CategoryComponent = () => {
                     resizeMode="cover"
                 >
                     <View className="flex-row justify-between px-4 pt-3">
-                        <Text className='text-[22px] font-semibold text-black rounded p-1'>{title}</Text>
+                        <Text className='text-[22px] font-semibold text-black rounded p-1' style={{ fontFamily: 'poppins-medium' }}>{title}</Text>
                         <Image
                             source={icon}
                             className='h-8 w-8'
@@ -47,12 +47,12 @@ const CategoryComponent = () => {
                                 resizeMode="cover"
                             />
                         </View>
-                        <Text className='text-black text-[20px] font-medium'>@{username}</Text>
+                        <Text className='text-black text-[20px] font-medium' style={{ fontFamily: 'poppins-medium' }}>@{username}</Text>
                     </View>
 
                     <View className='px-4'>
-                        <Text className='text-[#767676] text-[16px] font-normal'>
-                            {description.length > 100 ? `${description.substring(0, 100)}...` : description}
+                        <Text className='text-[#767676] text-[16px] font-normal' style={{ fontFamily: 'poppins-medium' }}>
+                            {description.length > 70? `${description.substring(0, 70)}...` : description}
                         </Text>
                     </View>
                 </ImageBackground>
@@ -76,20 +76,22 @@ const CategoryComponent = () => {
 
     return (
         <View>
+            <View className='mx-7 mt-4 mb-3'>
+                <Text className='text-base text-[#4A4A4A]' style={{ fontFamily: 'poppins-medium', opacity: 0.6 }}>Filtre Por Categoria</Text>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} className='ml-2'>
+                {categories.map((category, index) => (
+                    <TouchableOpacity
+                        key={index}
+                        className={`bg-white h-13 mb-2 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between ${selectedCategories.includes(category.label) ? 'bg-[#78CAD2]' : ''}`}
+                        onPress={() => toggleCategory(category.label)}
+                    >
+                        <Text className={`${selectedCategories.includes(category.label) ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'poppins-medium' }}>{category.label}</Text>
+                        <Image source={category.icon} className="w-6 h-6 ml-2" />
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
             <ScrollView showsVerticalScrollIndicator={false}>
-
-                <ScrollView horizontal showsHorizontalScrollIndicator={false} className='mt-2 ml-2'>
-                    {categories.map((category, index) => (
-                        <TouchableOpacity
-                            key={index}
-                            className={`bg-white h-12 p-4 mx-3 my-2 rounded-xl shadow flex-row items-center justify-between ${selectedCategories.includes(category.label) ? 'bg-[#78CAD2]' : ''}`}
-                            onPress={() => toggleCategory(category.label)}
-                        >
-                            <Text className={`${selectedCategories.includes(category.label) ? 'text-white' : 'text-black'}`}>{category.label}</Text>
-                            <Image source={category.icon} className="w-6 h-6 ml-2" />
-                        </TouchableOpacity>
-                    ))}
-                </ScrollView>
                 <FlatList
                     data={filteredData}
                     renderItem={({ item }) => (
@@ -104,7 +106,7 @@ const CategoryComponent = () => {
                     )}
                     keyExtractor={(item) => item.username || item.id}
                     scrollEnabled={false}
-                    contentContainerStyle={{ paddingBottom: 200 }}
+                    contentContainerStyle={{ paddingBottom: 450 }}
                 />
             </ScrollView>
         </View>
