@@ -2,17 +2,21 @@ import { View, Text, Image } from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
+
 
 const User = () => {
+
+  const navigation = useNavigation();
+
   return (
 
     <View>
 
       {/* Botão para o Menu de Opções */}
       <View className='flex-row justify-end m-2 ' >
-        <TouchableOpacity /* onPress={menu de opções}*/ >
+        <TouchableOpacity onPress={() => navigation.navigate('MoreOptions')} >
           <Ionicons name="menu-outline" size={30} color="#303030" />
         </TouchableOpacity>
       </View>

@@ -32,7 +32,7 @@ const UserDetail  = ({ route }) => {
             </View>
           </View>
         
-         
+
           <View className='flex-1 mt-[-50px] bg-white rounded-t-3xl p-6'>
             
             <ScrollView showsVerticalScrollIndicator={false}>

@@ -10,6 +10,7 @@ import UserDetail from './pages/UserDetail';
 import ForgotPassword from './pages/ForgotPassword';
 import LogIn from './pages/LogIn';
 import Register from './pages/Register';
+import MoreOptions from './pages/MoreOptions';
 
 export {
     Home,
@@ -23,6 +24,7 @@ export {
     ForgotPassword,
     LogIn,
     Register,
+    MoreOptions,
 }
 
 

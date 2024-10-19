@@ -11,6 +11,7 @@ import {
   User,
   Settings,
   UserDetail,
+  MoreOptions,
 } from "./screens/index"
 import { useFonts } from 'expo-font';
 
@@ -46,6 +47,7 @@ export default function App() {
         <Stack.Screen name="User" component={User} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
         <Stack.Screen name="UserDetail" component={UserDetail} options={{ headerShown: false }} />
+        <Stack.Screen name="MoreOptions" component={MoreOptions} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
