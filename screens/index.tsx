@@ -11,6 +11,12 @@ import ForgotPassword from './pages/ForgotPassword';
 import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import MoreOptions from './pages/MoreOptions';
+import Help from './options-menu/Help';
+import Info from './options-menu/Info';
+import LogOut from './options-menu/LogOut';
+import Notifications from './options-menu/Notifications';
+import PersonalData from './options-menu/PersonalData';
+
 
 export {
     Home,
@@ -25,6 +31,11 @@ export {
     LogIn,
     Register,
     MoreOptions,
+    Help,
+    Info,
+    LogOut,
+    Notifications,
+    PersonalData,
 }
 
 
