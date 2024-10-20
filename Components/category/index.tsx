@@ -106,7 +106,7 @@ const CategoryComponent = () => {
                     )}
                     keyExtractor={(item) => item.username || item.id}
                     scrollEnabled={false}
-                    contentContainerStyle={{ paddingBottom: 700 }}
+                    contentContainerStyle={{ paddingBottom: 800 }}
                 />
             </ScrollView>
         </View>

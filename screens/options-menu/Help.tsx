@@ -28,7 +28,7 @@ const Help = () => {
 
 
     return (
-        <ScrollView>
+        <ScrollView contentContainerStyle={{ paddingBottom: 800, paddingTop: 20,  }}>
 
       <View className='items-center justify-center mt-16 '>
         <Text className='text-[22px] font-semibold text-[#767676] rounded p-1' style={{ fontFamily: 'poppins-medium' }}>Guia de Árvores</Text>
@@ -61,7 +61,7 @@ const Help = () => {
                         />
                         
                         
-                        <View className="absolute top-3 left-28 bg-black rounded-md p-1"> 
+                        <View className="absolute top-3 left-28 bg-black rounded-md px-2"> 
                             <Text className='text-[#fcff31] text-[13px] font-semibold' style={{ fontFamily: 'poppins-medium' }}> 
                                 Consumidor Imprudente
                             </Text>
@@ -70,13 +70,13 @@ const Help = () => {
                         
                         <View className='flex-1 ml-2'>
                             
-                            <Text className='text-[12px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-regular' }}>
+                            <Text className='text-[10px] mt-4 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-medium' }}>
                             Seus hábitos de consumo acabam que por prejudicar a natureza em graus bem negativos.  
                             </Text>
                         </View>
 
                         
-                        <TouchableOpacity className='absolute top-3 right-3'>
+                        <TouchableOpacity className='absolute top-3 right-2'>
                             <Image source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}/>
                         </TouchableOpacity>
                     </View>
@@ -99,13 +99,13 @@ const Help = () => {
                         
                         <View className='flex-1 ml-2'>
                             
-                            <Text className='text-[12px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-regular' }}>
+                            <Text className='text-[10px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-medium' }}>
                             Você ainda não têm muita noção de gasto e consumo, ainda está desenvolvendo seus hábitos!  
                             </Text>
                         </View>
 
                         
-                        <TouchableOpacity className='absolute top-3 right-3'>
+                        <TouchableOpacity className='absolute top-3 right-2'>
                             <Image source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}/>
                         </TouchableOpacity>
                     </View>
@@ -128,13 +128,13 @@ const Help = () => {
                         
                         <View className='flex-1 ml-2'>
                             
-                            <Text className='text-[12px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-regular' }}>
+                            <Text className='text-[10px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-medium' }}>
                             Você é alguém com noções de impacto ambiental, que toma decisões de consumo cautelosas
                             </Text>
                         </View>
 
                         
-                        <TouchableOpacity className='absolute top-3 right-3'>
+                        <TouchableOpacity className='absolute top-3 right-2'>
                             <Image source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}/>
                         </TouchableOpacity>
                     </View>
@@ -151,19 +151,19 @@ const Help = () => {
                         
                         
                         <Text className=' absolute top-3 left-28 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
-                                Consumidor Responsável
+                                Consumidor Responsá...
                             </Text>
 
                         
                         <View className='flex-1 ml-2'>
                             
-                            <Text className='text-[12px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-regular' }}>
+                            <Text className='text-[10px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-medium' }}>
                             Muitas de suas escolhas levam em consideração o reaproveitamento de materiais e descarte adequado!  
                             </Text>
                         </View>
 
                         
-                        <TouchableOpacity className='absolute top-3 right-3'>
+                        <TouchableOpacity className='absolute top-3 right-2'>
                             <Image source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}/>
                         </TouchableOpacity>
                     </View>
@@ -186,13 +186,13 @@ const Help = () => {
                         
                         <View className='flex-1 ml-2'>
                             
-                            <Text className='text-[12px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-regular' }}>
+                            <Text className='text-[10px] mt-3 text-[#767676] break-words w-[160px]' style={{ fontFamily: 'poppins-medium' }}>
                             Você é um exemplo de consciência ambiental, nunca falhando com a sustentabilidade ecológica em sua vida.  
                             </Text>
                         </View>
 
                         
-                        <TouchableOpacity className='absolute top-3 right-3'>
+                        <TouchableOpacity className='absolute top-3 right-2'>
                             <Image source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}/>
                         </TouchableOpacity>
                     </View>
@@ -203,7 +203,7 @@ const Help = () => {
         )}
   
         <Text className='text-[18px] font-semibold text-[#767676] rounded p-1 mt-16' style={{ fontFamily: 'poppins-medium' }}>Perguntas Frequentes</Text>
-            <View>
+            <View className='items-center'>
                 <TouchableOpacity
                 onPress={toggleExpansionQuest1}
                 className='bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4'
@@ -227,7 +227,7 @@ const Help = () => {
                 </View>
                 )}
             </View>
-            <View>
+            <View className='items-center'>
                 <TouchableOpacity
                 onPress={toggleExpansionQuest2}
                 className='bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4'
@@ -248,7 +248,7 @@ const Help = () => {
                 </View>
                 )}
             </View>
-            <View>
+            <View className='items-center'>
                 <TouchableOpacity
                 onPress={toggleExpansionQuest3}
                 className='bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4'
@@ -269,7 +269,7 @@ const Help = () => {
                 </View>
                 )}
             </View>
-            <View>
+            <View className='items-center'>
                 <TouchableOpacity
                 onPress={toggleExpansionQuest4}
                 className='bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4'
@@ -292,7 +292,7 @@ const Help = () => {
             </View>
       </View>
 
-    </ScrollView>
+    </ScrollView >
     );
   };
 
