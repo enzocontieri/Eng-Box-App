@@ -13,8 +13,8 @@ function TabNavigator() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={Screens.Home} />
-      <Tab.Screen name="Upload" component={Screens.Upload} />
       <Tab.Screen name="Explore" component={Screens.Explore} />
+      <Tab.Screen name="Upload" component={Screens.Upload} />
       <Tab.Screen name="Profile" component={Screens.Profile} />
     </Tab.Navigator>
   );
