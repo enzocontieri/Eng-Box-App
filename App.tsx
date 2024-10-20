@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 function TabNavigator() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator screenOptions={{ headerShown: false, tabBarStyle: { position: 'absolute' } }}>
       <Tab.Screen name="Home" component={Screens.Home} />
       <Tab.Screen name="Explore" component={Screens.Explore} />
       <Tab.Screen name="Upload" component={Screens.Upload} />
