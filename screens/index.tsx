@@ -16,6 +16,7 @@ import Info from './options-menu/Info';
 import LogOut from './options-menu/LogOut';
 import Notifications from './options-menu/Notifications';
 import PersonalData from './options-menu/PersonalData';
+import PostDetails from './pages/PostDetails';
 
 
 export {
@@ -36,6 +37,7 @@ export {
     LogOut,
     Notifications,
     PersonalData,
+    PostDetails,
 }
 
 

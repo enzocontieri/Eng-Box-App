@@ -24,6 +24,7 @@ export default function App() {
 
   const [fontsLoaded] = useFonts({
     'poppins-medium': require('./assets/fonts/Poppins-Medium.ttf'),
+    'poppins-regular': require('./assets/fonts/Poppins-Regular.ttf')
   })
 
   if (!fontsLoaded) {
@@ -44,6 +45,7 @@ export default function App() {
         <Stack.Screen name="LogOut" component={Screens.LogOut} options={{ headerShown: false }} />
         <Stack.Screen name="Notifications" component={Screens.Notifications} options={{ headerShown: false }} />
         <Stack.Screen name="PersonalData" component={Screens.PersonalData} options={{ headerShown: false }} />
+        <Stack.Screen name="PostDetails" component={Screens.PostDetails} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
