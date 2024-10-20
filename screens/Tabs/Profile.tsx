@@ -6,7 +6,7 @@ import MoreOptions from '../pages/MoreOptions'
 
 const Profile = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView className='flex-1'>
       <User />
     </SafeAreaView>
   )

@@ -32,8 +32,8 @@ const User = () => {
   );
 
   return (
-    <View>
-      <ScrollView showsVerticalScrollIndicator={false} >
+    <View className='flex-1' >
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 45 }}>
         {/* Botão para o Menu de Opções */}
         <View className='flex-row justify-end m-2' >
           <TouchableOpacity onPress={() => navigation.navigate('MoreOptions')} >
@@ -46,7 +46,7 @@ const User = () => {
         <View className='relative w-full h-[200px]' >
           <Image
             source={require('../../assets/icons/user-pages-icons/background-images/ex-background-img-2.webp')}
-            className='z-[-1] w-full h-full'
+            className='w-full h-full'
             resizeMode='cover'
           />
         </View>

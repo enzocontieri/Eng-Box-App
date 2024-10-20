@@ -14,7 +14,7 @@ const PostDetails = () => {
 
     return (
         <SafeAreaView className='flex-1'>
-            <ScrollView contentContainerStyle={{ paddingBottom: 20 }} showsVerticalScrollIndicator={false}>
+            <ScrollView contentContainerStyle={{ paddingBottom: 45 }} showsVerticalScrollIndicator={false}>
 
                 {/* Botão Voltar */}
                 <View className='absolute top-10 left-5 z-10' >
