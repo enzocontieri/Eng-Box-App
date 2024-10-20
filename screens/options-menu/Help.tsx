@@ -61,7 +61,7 @@ const Help = () => {
                         />
                         
                         
-                        <View className="absolute top-3 left-28 bg-black rounded-md px-2"> 
+                        <View className="absolute top-3 left-32 bg-black rounded-md px-2"> 
                             <Text className='text-[#fcff31] text-[13px] font-semibold' style={{ fontFamily: 'poppins-medium' }}> 
                                 Consumidor Imprudente
                             </Text>
@@ -75,10 +75,6 @@ const Help = () => {
                             </Text>
                         </View>
 
-                        
-                        <TouchableOpacity className='absolute top-3 right-2'>
-                            <Image source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}/>
-                        </TouchableOpacity>
                     </View>
                 </View>
                 <View className='flex items-center justify-center'>
@@ -92,7 +88,7 @@ const Help = () => {
                         />
                         
                         
-                        <Text className=' absolute top-3 left-28 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
+                        <Text className=' absolute top-3 left-32 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
                                 Consumidor Iniciante
                             </Text>
 
@@ -121,7 +117,7 @@ const Help = () => {
                         />
                         
                         
-                        <Text className=' absolute top-3 left-28 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
+                        <Text className=' absolute top-3 left-32 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
                                 Consumidor Verde
                             </Text>
 
@@ -150,7 +146,7 @@ const Help = () => {
                         />
                         
                         
-                        <Text className=' absolute top-3 left-28 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
+                        <Text className=' absolute top-3 left-32 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
                                 Consumidor Responsá...
                             </Text>
 
@@ -174,12 +170,12 @@ const Help = () => {
                         
                         <Image 
                             source={require('../../assets/icons/IconsLevel/arvore3.png')}  
-                            className='h-[90px] w-[110px] mt-10 ml-2 '
+                            className='h-[120px] w-[120px] '
                                 
                         />
                         
                         
-                        <Text className=' absolute top-3 left-28 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
+                        <Text className=' absolute top-3 left-32 text-[#50B454] text-[14px] font-semibold' style={{ fontFamily: 'poppins-medium' }}>
                                 Consumidor Expert
                             </Text>
 
