@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main">
+      <Stack.Navigator initialRouteName="LogIn">
         <Stack.Screen name="Wellcome" component={Screens.Wellcome} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="User" component={Screens.User} options={{ headerShown: false }} />
@@ -46,6 +46,7 @@ export default function App() {
         <Stack.Screen name="Notifications" component={Screens.Notifications} options={{ headerShown: false }} />
         <Stack.Screen name="PersonalData" component={Screens.PersonalData} options={{ headerShown: false }} />
         <Stack.Screen name="PostDetails" component={Screens.PostDetails} options={{ headerShown: false }} />
+        <Stack.Screen name="LogIn" component={Screens.LogIn} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
