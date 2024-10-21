@@ -15,11 +15,11 @@ export default function LogIn() {
   const navigation = useNavigation()
   const [rememberMe, setRememberMe] = useState(false);
   return (
-    <View className='flex-1 bg-[#F9F9F9]' >
-      <View className='relative flex justify-center items-center  w-full h-64'>
+    <View className='flex-1 bg-[#F9F9F9] ' >
+      <View className='relative flex justify-center items-center  w-full h-64 mb-8'>
         <Image
           source={require('../../assets/icons/iconsLogin/ImagemDeFundo.png')}
-          className="absolute shadown top-0 left-0 w-full h-full bg-white object-cover"
+          className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
         />
         <View className='justify-center items-center'>
           <Image
@@ -28,10 +28,10 @@ export default function LogIn() {
         </View>
       </View>
 
-      <View className='flex justify-center items-center bg-white'>
+      <View className='flex justify-center items-center bg-[#F9F9F9]'>
 
         {/*Wellcome*/}
-        <Text className='text-[#00796B] mb-5 font-bold text-3xl ml-2'>Bem-vindo de Volta!</Text>
+        <Text style={{fontFamily:'poppins-semi-bold'}} className='text-[#00796B] mb-5 font-bold text-3xl ml-2'>Bem-vindo de Volta!</Text>
         <Text className='text-base text-[#455A64] mb-8'>Faça login na sua conta</Text>
 
         {/*Input User*/}
@@ -43,11 +43,11 @@ export default function LogIn() {
               className='mr-1'
               source={require('../../assets/icons/iconsLogin/IconeUser.png')}
             />
-            <Text className='ml-1 text-gray-700'>Usuário</Text>
+            <Text className='ml-1 text-[#455A64]'>Usuário</Text>
           </View>
           <TextInput
             scrollEnabled={true}
-            className='bg-[#D9D9D9] shadow px-4 py-4 rounded w-335 h-70'
+            className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl w-335 h-70'
             placeholder='Nome de Usuário ou Email'
           />
         </View>
@@ -60,10 +60,10 @@ export default function LogIn() {
               className='mr-1'
               source={require('../../assets/icons/iconsLogin/IconeDeCadeado.png')}
             />
-            <Text className='ml-1 text-gray-700 '>Senha</Text>
+            <Text className='ml-1 text-[#455A64] '>Senha</Text>
           </View>
           <TextInput
-            className='bg-[#D9D9D9] shadow rounded px-4 py-4 w-335 h-70'
+            className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4 w-335 h-70'
             placeholder='Digite sua senha'
             secureTextEntry={true}
             scrollEnabled={true}
@@ -87,7 +87,7 @@ export default function LogIn() {
 
             <Text
               className='text-gray-700 ml-2'>Lembrar de Mim</Text>
-            <TouchableOpacity onPress={()=> navigation.navigate('ForgotPassword')}>
+            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
               <Text
                 className='shadow text-sm text-[#00796B] ml-6 '>Esqueceu sua Senha?</Text>
             </TouchableOpacity>
@@ -95,7 +95,7 @@ export default function LogIn() {
         </View>
 
         {/*Button Enter */}
-        <TouchableOpacity onPress={() => navigation.navigate('Main')} className='w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded'>
+        <TouchableOpacity onPress={() => navigation.navigate('Main')} className='w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl'>
           <Text className='text-center text-white text-lg'>Entrar</Text>
         </TouchableOpacity>
 
@@ -106,7 +106,7 @@ export default function LogIn() {
             <Text
               className='text-gray-700 ml-10'>Não tem uma Conta?</Text>
           </View>
-          <TouchableOpacity onPress={()=> navigation.navigate('Register')}className='shadow text-[#767676]'>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')} className='shadow text-[#767676]'>
             <Text
               className='text-sm text-[#00796B] ml-1'>Registre-se</Text>
           </TouchableOpacity>
