@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function Register() {
   return (
-    <View>
-      <Text>Register</Text>
+    <View className='flex-1 bg-[#F9F9F9]'>
+      
     </View>
   )
 }

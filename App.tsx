@@ -47,6 +47,8 @@ export default function App() {
         <Stack.Screen name="PersonalData" component={Screens.PersonalData} options={{ headerShown: false }} />
         <Stack.Screen name="PostDetails" component={Screens.PostDetails} options={{ headerShown: false }} />
         <Stack.Screen name="LogIn" component={Screens.LogIn} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgotPassword" component={Screens.ForgotPassword} options={{ headerShown: false }} />
+        <Stack.Screen name="Register" component={Screens.Register} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

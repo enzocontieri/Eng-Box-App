@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function ForgotPassword() {
   return (
-    <View>
-      <Text>ForgotPassword</Text>
+    <View className='flex-1 bg-[#FFFFFF]'>
+      
     </View>
   )
 }
