@@ -31,8 +31,8 @@ export default function LogIn() {
       <View className='flex justify-center items-center bg-[#F9F9F9]'>
 
         {/*Wellcome*/}
-        <Text style={{fontFamily:'poppins-semi-bold'}} className='text-[#00796B] mb-5 font-bold text-3xl ml-2'>Bem-vindo de Volta!</Text>
-        <Text className='text-base text-[#455A64] mb-8'>Faça login na sua conta</Text>
+        <Text style={{fontFamily:'poppins-semi-bold'}} className='text-[#00796B] mb-3 font-bold text-3xl ml-2'>Bem-vindo de Volta!</Text>
+        <Text className='text-base text-[#455A64] mb-2'>Faça login na sua conta</Text>
 
         {/*Input User*/}
         <View className='w-4/5 mb-4'>
@@ -47,7 +47,7 @@ export default function LogIn() {
           </View>
           <TextInput
             scrollEnabled={true}
-            className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl w-335 h-70'
+            className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl '
             placeholder='Nome de Usuário ou Email'
           />
         </View>
@@ -63,7 +63,7 @@ export default function LogIn() {
             <Text className='ml-1 text-[#455A64] '>Senha</Text>
           </View>
           <TextInput
-            className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4 w-335 h-70'
+            className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4 '
             placeholder='Digite sua senha'
             secureTextEntry={true}
             scrollEnabled={true}
