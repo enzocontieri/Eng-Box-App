@@ -22,11 +22,15 @@ export default function ForgotPassword() {
         </View>
       </View>
 
+      {/*ForgotPassword */}
       <View className='flex justify-center items-center'>
-        <Text style={{fontFamily:'poppins-semi-bold'}}className='text-[#1F3B4D] mb-4 font-bold text-3xl ml-1'>Esqueceu sua senha?</Text>
-        <Text className='text-[#455A64] ml-1 mb-8 text-justify w-[322px] font-bold  '>Digite o endereço de e-mail para o qual deseja que suas informações de redefinição de senha sejam enviadas.</Text>
+        <Text style={{ fontFamily: 'poppins-semi-bold' }} className='text-[#1F3B4D] mb-4 font-bold text-3xl ml-1'>Esqueceu sua senha?</Text>
+        <Text className='text-[#455A64] ml-1 mb-8 text-justify w-[322px] font-bold  '>
+          Digite o endereço de e-mail para o qual deseja que suas informações de redefinição de senha sejam enviadas.</Text>
       </View>
 
+
+      {/*Email*/}
       <View className='w-4/5 mb-10'>
         <View className='flex-row items-center mb-4 mr-5 '
         >
@@ -43,6 +47,7 @@ export default function ForgotPassword() {
         />
       </View>
 
+      {/*Button Send*/}
       <TouchableOpacity className='w-4/5 bg-[#1F3B4D] shadow-lg py-4 mb-5 rounded-2xl'>
         <Text className='text-center text-white text-lg'>Enviar</Text>
       </TouchableOpacity>
