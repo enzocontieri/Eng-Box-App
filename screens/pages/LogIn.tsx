@@ -22,9 +22,8 @@ export default function LogIn() {
           className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
         />
         <View className='justify-center items-center'>
-          <Image
-            source={require('../../assets/icons/iconsLogin/NomeDoApp.png')}
-          />
+          <Text className='mb-4 text-4xl font-bold text-[#F9F9F9]'>ENG BOX</Text>
+          <Text className='text-[#F9F9F9] text-sm'>PENSE FORA DA CAIXA</Text>
         </View>
       </View>
 
@@ -46,7 +45,6 @@ export default function LogIn() {
             <Text className='ml-1 text-[#455A64]'>Usuário</Text>
           </View>
           <TextInput
-            scrollEnabled={true}
             className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl '
             placeholder='Nome de Usuário ou Email'
           />
@@ -66,7 +64,6 @@ export default function LogIn() {
             className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4 '
             placeholder='Digite sua senha'
             secureTextEntry={true}
-            scrollEnabled={true}
           />
         </View>
 
