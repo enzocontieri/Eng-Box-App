@@ -1,14 +1,8 @@
-import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
-import {
-	SafeAreaView,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 import 'tailwindcss/tailwind.css';
 import CategoryComponent from '../../Components/category';
+import Search from '../../Components/search';
 
 const Explore = ({ navigation }) => {
 	return (
@@ -23,10 +17,7 @@ const Explore = ({ navigation }) => {
 							Pesquise
 						</Text>
 					</View>
-					<TouchableOpacity className="w-30 h-35 bg-[#FFFFFF] p-5 mr-6 ml-6 rounded-xl flex-row space-x-2 shadow">
-						<AntDesign name="search1" size={16} color="#9B9B9B" />
-						<TextInput placeholder="Search" className="text-[#9B9B9B] flex-1" />
-					</TouchableOpacity>
+					<Search />
 				</View>
 				<View>
 					<CategoryComponent />
