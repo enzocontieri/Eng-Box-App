@@ -6,8 +6,14 @@ import {
   TextInput
 } from 'react-native'
 import React from 'react'
+import { useForm, Controller } from 'react-hook-form';
+
+type FormData = {
+  email: string
+}
 
 export default function ForgotPassword() {
+  const { control, handleSubmit } = useForm<FormData>();
   return (
     <View className='flex-1 bg-[#F9F9F9]  items-center' >
       <View className='relative flex justify-center items-center  w-full h-64 mb-8'>
@@ -40,15 +46,44 @@ export default function ForgotPassword() {
           />
           <Text className='ml-1 text-[#455A64] '>Email</Text>
         </View>
-        <TextInput
-          className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4 w-335 h-70 '
-          placeholder='Digite seu Email'
-          scrollEnabled={true}
+
+        <Controller
+          control={control}
+          name='email'
+          rules={{
+            required: "O Email é obrigatorio",
+            pattern: {
+              value: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,
+              message: 'Email inválido'
+            }
+          }}
+          render={({ field: { value, onChange }, fieldState: { error } }) => (
+            <>
+              <TextInput
+                className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4  '
+                placeholder='Digite seu Email'
+                onChangeText={onChange}
+                value={value}
+                keyboardType='email-address'
+                autoCapitalize='none'
+                
+              />
+              {error && <Text
+                style={{ fontFamily: 'poppins-semi-bold' }}
+                className='text-[#455A64] text-xs ml-2'>{error.message}</Text>}
+            </>
+          )}
+
         />
+
       </View>
 
       {/*Button Send*/}
-      <TouchableOpacity className='w-4/5 bg-[#1F3B4D] shadow-lg py-4 mb-5 rounded-2xl'>
+      <TouchableOpacity
+        className='w-4/5 bg-[#1F3B4D] shadow-lg py-4 mb-5 rounded-2xl'
+        onPress={handleSubmit((data) => {
+          console.log(data);
+        })}>
         <Text className='text-center text-white text-lg'>Enviar</Text>
       </TouchableOpacity>
     </View>

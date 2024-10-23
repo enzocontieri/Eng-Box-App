@@ -9,7 +9,7 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import 'tailwindcss/tailwind.css';
 import { useForm, Controller } from 'react-hook-form';
-import { ScrollView } from 'react-native-gesture-handler';
+
 
 type FormData = {
   email: string,
@@ -24,7 +24,7 @@ export default function LogIn() {
   const { control, handleSubmit } = useForm<FormData>();
 
 
-  const onSubmit = (data: FormData) => console.log(data)
+
   return (
 
     <View className='flex-1 bg-[#F9F9F9] ' >
