@@ -8,13 +8,25 @@ import {
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import 'tailwindcss/tailwind.css';
+import { useForm, Controller } from 'react-hook-form';
+import { ScrollView } from 'react-native-gesture-handler';
 
+type FormData = {
+  email: string,
+  password: string
+}
 
 
 export default function LogIn() {
-  const navigation = useNavigation()
+
+  const navigation = useNavigation();
   const [rememberMe, setRememberMe] = useState(false);
+  const { control, handleSubmit } = useForm<FormData>();
+
+
+  const onSubmit = (data: FormData) => console.log(data)
   return (
+
     <View className='flex-1 bg-[#F9F9F9] ' >
       <View className='relative flex justify-center items-center  w-full h-64 mb-8'>
         <Image
@@ -30,10 +42,11 @@ export default function LogIn() {
       <View className='flex justify-center items-center bg-[#F9F9F9]'>
 
         {/*Wellcome*/}
-        <Text style={{fontFamily:'poppins-semi-bold'}} className='text-[#00796B] mb-3 font-bold text-3xl ml-2'>Bem-vindo de Volta!</Text>
+        <Text style={{ fontFamily: 'poppins-semi-bold' }} className='text-[#00796B] mb-3 font-bold text-3xl ml-2'>Bem-vindo de Volta!</Text>
         <Text className='text-base text-[#455A64] mb-2'>Faça login na sua conta</Text>
 
         {/*Input User*/}
+
         <View className='w-4/5 mb-4'>
           <View
             className='flex-row items-center mb-2 mr-5 '
@@ -44,10 +57,36 @@ export default function LogIn() {
             />
             <Text className='ml-1 text-[#455A64]'>Usuário</Text>
           </View>
-          <TextInput
-            className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl '
-            placeholder='Nome de Usuário ou Email'
+
+          <Controller
+            control={control}
+            name='email'
+            rules={{
+              required: "O Email ou Nome de Usuario é obrigatorio",
+              minLength: {
+                value: 3,
+                message: "Este campo deve ter no minimo 3 caracteres"
+              }
+            }}
+            render={({ field: { value, onChange }, fieldState: { error } }) => (
+              <>
+                <TextInput
+                  className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl '
+                  placeholder='Nome de Usuário ou Email'
+                  value={value}
+                  onChangeText={onChange}
+                  keyboardType='email-address'
+                  maxLength={51}
+                  autoCapitalize='none'
+                />
+                {error && <Text 
+                style={{ fontFamily: 'poppins-semi-bold' }}
+                className='text-[#455A64] text-xs ml-2'>{error.message}</Text>}
+              </>
+            )}
+
           />
+
         </View>
 
         {/*Input Password*/}
@@ -60,12 +99,37 @@ export default function LogIn() {
             />
             <Text className='ml-1 text-[#455A64] '>Senha</Text>
           </View>
-          <TextInput
-            className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4 '
-            placeholder='Digite sua senha'
-            secureTextEntry={true}
+
+          <Controller
+            control={control}
+            name='password'
+            rules={{
+              required: "A senha é obrigatoria",
+              minLength: {
+                value: 3,
+                message: "A senha deve ter pelo menos 3 caracteres"
+              }
+            }}
+            render={({ field: { value, onChange }, fieldState: { error } }) => (
+              <>
+                <TextInput
+                  className='bg-[#EDEDED] border border-[#B0BEC5]  shadow rounded-2xl px-4 py-4 '
+                  placeholder='Digite sua senha'
+                  value={value}
+                  onChangeText={onChange}
+                  secureTextEntry={true}
+                  maxLength={51}
+                  autoCapitalize='none'
+                />
+                 {error && <Text 
+                 style={{ fontFamily: 'poppins-semi-bold' }}
+                 className='text-[#455A64] text-xs ml-2'>{error.message}</Text>}
+              </>
+            )}
           />
+
         </View>
+
 
         {/*Remember me and ForgotPassword */}
         <View className='w-4/5 flex-row justify between mb-6'>
@@ -84,7 +148,8 @@ export default function LogIn() {
 
             <Text
               className='text-gray-700 ml-2'>Lembrar de Mim</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ForgotPassword')}>
               <Text
                 className='shadow text-sm text-[#00796B] ml-6 '>Esqueceu sua Senha?</Text>
             </TouchableOpacity>
@@ -92,7 +157,12 @@ export default function LogIn() {
         </View>
 
         {/*Button Enter */}
-        <TouchableOpacity onPress={() => navigation.navigate('Main')} className='w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl'>
+        <TouchableOpacity
+          className='w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl'
+          onPress={handleSubmit((data) => {
+            console.log(data);  
+            navigation.navigate('Main');
+          })}>
           <Text className='text-center text-white text-lg'>Entrar</Text>
         </TouchableOpacity>
 
@@ -103,7 +173,9 @@ export default function LogIn() {
             <Text
               className='text-gray-700 ml-10'>Não tem uma Conta?</Text>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Register')} className='shadow text-[#767676]'>
+          <TouchableOpacity
+            className='shadow text-[#767676]'
+            onPress={() => navigation.navigate('Register')} >
             <Text
               className='text-sm text-[#00796B] ml-1'>Registre-se</Text>
           </TouchableOpacity>
@@ -111,6 +183,7 @@ export default function LogIn() {
         </View>
       </View>
     </View>
+
   )
 }
 
