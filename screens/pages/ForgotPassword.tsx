@@ -52,6 +52,10 @@ export default function ForgotPassword() {
           name='email'
           rules={{
             required: "O Email é obrigatorio",
+            maxLength: {
+              value: 51,
+              message: "Limite excedido de caracteres"
+            },
             pattern: {
               value: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,
               message: 'Email inválido'
@@ -66,11 +70,11 @@ export default function ForgotPassword() {
                 value={value}
                 keyboardType='email-address'
                 autoCapitalize='none'
-                
+
               />
               {error && <Text
                 style={{ fontFamily: 'poppins-semi-bold' }}
-                className='text-[#455A64] text-xs ml-2'>{error.message}</Text>}
+                className='text-[#ff375b] text-xs ml-2'>{error.message}</Text>}
             </>
           )}
 

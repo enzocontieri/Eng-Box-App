@@ -66,6 +66,10 @@ export default function LogIn() {
               minLength: {
                 value: 3,
                 message: "Este campo deve ter no minimo 3 caracteres"
+              },
+              maxLength: {
+                value: 51,
+                message: "Limite excedido de caracteres"
               }
             }}
             render={({ field: { value, onChange }, fieldState: { error } }) => (
@@ -76,12 +80,11 @@ export default function LogIn() {
                   value={value}
                   onChangeText={onChange}
                   keyboardType='email-address'
-                  maxLength={51}
                   autoCapitalize='none'
                 />
-                {error && <Text 
-                style={{ fontFamily: 'poppins-semi-bold' }}
-                className='text-[#455A64] text-xs ml-2'>{error.message}</Text>}
+                {error && <Text
+                  style={{ fontFamily: 'poppins-semi-bold' }}
+                  className='text-[#ff375b] text-xs ml-2'>{error.message}</Text>}
               </>
             )}
 
@@ -108,6 +111,10 @@ export default function LogIn() {
               minLength: {
                 value: 3,
                 message: "A senha deve ter pelo menos 3 caracteres"
+              },
+              maxLength: {
+                value: 51,
+                message: "Limite excedido de caracteres"
               }
             }}
             render={({ field: { value, onChange }, fieldState: { error } }) => (
@@ -118,12 +125,11 @@ export default function LogIn() {
                   value={value}
                   onChangeText={onChange}
                   secureTextEntry={true}
-                  maxLength={51}
                   autoCapitalize='none'
                 />
-                 {error && <Text 
-                 style={{ fontFamily: 'poppins-semi-bold' }}
-                 className='text-[#455A64] text-xs ml-2'>{error.message}</Text>}
+                {error && <Text
+                  style={{ fontFamily: 'poppins-semi-bold' }}
+                  className='text-[#ff375b] text-xs ml-2'>{error.message}</Text>}
               </>
             )}
           />
@@ -160,7 +166,7 @@ export default function LogIn() {
         <TouchableOpacity
           className='w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl'
           onPress={handleSubmit((data) => {
-            console.log(data);  
+            console.log(data);
             navigation.navigate('Main');
           })}>
           <Text className='text-center text-white text-lg'>Entrar</Text>
