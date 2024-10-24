@@ -13,10 +13,11 @@ type FormData = {
 }
 
 export default function ForgotPassword() {
+  /* Este código retorna exceção na pagina Esqueceu sua Senha */
   const { control, handleSubmit } = useForm<FormData>();
   return (
     <View className='flex-1 bg-[#F9F9F9]  items-center' >
-      <View className='relative flex justify-center items-center  w-full h-64 mb-8'>
+      <View className='relative flex justify-center items-center  w-full h-64 mb-6'>
         <Image
           source={require('../../assets/icons/iconsLogin/ImagemDeFundo.png')}
           className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
