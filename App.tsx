@@ -37,7 +37,6 @@ export default function App() {
       <Stack.Navigator initialRouteName="LogIn">
         <Stack.Screen name="Wellcome" component={Screens.Wellcome} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={TabNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="User" component={Screens.User} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={Screens.Settings} options={{ headerShown: false }} />
         <Stack.Screen name="UserDetail" component={Screens.UserDetail} options={{ headerShown: false }} />
         <Stack.Screen name="MoreOptions" component={Screens.MoreOptions} options={{ headerShown: false }} />
