@@ -1,9 +1,12 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+	NavigationContainer,
+	ParamListBase,
+	RouteProp,
+} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as Screens from './screens/index';
 
 import { useFonts } from 'expo-font';
@@ -13,44 +16,11 @@ import { TabRoutes } from './utils/enums/tab-routes';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-// Função para buscar o nome do icone e partir da propriedade focused(saber se o user está na página atual)
-// e a partir do nome da rota
-const getIconName = (routeName: string, focused?: boolean) => {
-	let iconName: 'home' | 'user' | 'search1' | 'pluscircleo' = 'home';
-
-	if (routeName === TabRoutes.HOME) {
-		iconName = 'home';
-	} else if (routeName === TabRoutes.EXPLORE) {
-		iconName = 'search1';
-	} else if (routeName === TabRoutes.PROFILE) {
-		iconName = 'user';
-	} else if (routeName === TabRoutes.UPLOAD) {
-		iconName = 'pluscircleo';
-	}
-
-	return iconName;
-};
-
 function TabNavigator() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
-				tabBarIcon: ({ focused, color, size }) => {
-					const iconName = getIconName(route.name);
-
-					return (
-						<View
-							className="transition-colors duration-500"
-							style={{
-								borderColor: focused ? '#00796B' : 'transparent',
-								borderBottomWidth: focused ? 1 : 0,
-								padding: 3,
-							}}
-						>
-							<AntDesign name={iconName} size={size} color={color} />
-						</View>
-					);
-				},
+				tabBarIcon: (props) => renderTabIcon({ ...props, route }),
 				tabBarStyle: {
 					position: 'absolute',
 					height: 55,
@@ -70,6 +40,50 @@ function TabNavigator() {
 		</Tab.Navigator>
 	);
 }
+
+// Função para buscar o nome do icone e partir da propriedade focused(saber se o user está na página atual)
+// e a partir do nome da rota
+const getIconName = (routeName: string, focused?: boolean) => {
+	let iconName: 'home' | 'user' | 'search1' | 'pluscircleo' = 'home';
+
+	if (routeName === TabRoutes.HOME) {
+		iconName = 'home';
+	} else if (routeName === TabRoutes.EXPLORE) {
+		iconName = 'search1';
+	} else if (routeName === TabRoutes.PROFILE) {
+		iconName = 'user';
+	} else if (routeName === TabRoutes.UPLOAD) {
+		iconName = 'pluscircleo';
+	}
+
+	return iconName;
+};
+
+const renderTabIcon = ({
+	focused,
+	color,
+	size,
+	route,
+}: {
+	focused: boolean;
+	color: string;
+	size: number;
+	route: RouteProp<ParamListBase, string>;
+}) => {
+	const iconName = getIconName(route.name);
+
+	return (
+		<View
+			style={{
+				borderColor: focused ? '#00796B' : 'transparent',
+				borderBottomWidth: focused ? 1 : 0,
+				padding: 3,
+			}}
+		>
+			<AntDesign name={iconName} size={size} color={color} />
+		</View>
+	);
+};
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
