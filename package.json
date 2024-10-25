@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "npm i && expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "dev": "clear && expo start"
+    "dev": "npm i && clear && expo start"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.6.1",
