@@ -10,19 +10,19 @@ import { useNavigation } from '@react-navigation/native'
 import 'tailwindcss/tailwind.css';
 import { useForm, Controller } from 'react-hook-form';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 type FormData = {
   UserName: string,
   email: string,
   password: string
 }
 export default function Register() {
-   /* Este código retorna exceção na pagina Register */
+  /* Este código retorna exceção na pagina Register */
   const navigation = useNavigation();
   const { control, handleSubmit } = useForm<FormData>();
   return (
-    
-    <ScrollView>
+
+    <ScrollView className='bg-[#F9F9F9]'>
 
       <View className='flex-1 bg-[#F9F9F9]  ' >
         <View className='relative flex justify-center items-center  w-full h-64 mb-6'>
@@ -36,7 +36,7 @@ export default function Register() {
           </View>
         </View>
 
-        <View className='flex-1 justify-center items-center bg-[#F9F9F9]'>
+        <View className=' justify-center items-center bg-[#F9F9F9]'>
 
           <Text style={{ fontFamily: 'poppins-semi-bold' }} className='text-[#00796B] mb-3 font-bold text-3xl ml-2'>Seja Bem-vindo</Text>
           <Text className='text-base text-[#455A64] mb-2 '>Crie sua conta</Text>
@@ -45,10 +45,7 @@ export default function Register() {
             <View
               className='flex-row items-center mb-2 mr-5 '
             >
-              <Image
-                className='mr-1'
-                source={require('../../assets/icons/iconsLogin/IconeUser.png')}
-              />
+              <Ionicons name='person-sharp' size={20} />
               <Text className='ml-1 text-[#455A64]'>Usuário</Text>
             </View>
 
@@ -89,10 +86,7 @@ export default function Register() {
             <View
               className='flex-row items-center mb-2 mr-5 '
             >
-              <Image
-                className='mr-1'
-                source={require('../../assets/icons/iconsLogin/IconeEmail.png')}
-              />
+              <Ionicons name='mail' size={20} />
               <Text className='ml-1 text-[#455A64]'>Email</Text>
             </View>
 
@@ -135,10 +129,7 @@ export default function Register() {
           <View className='w-4/5 mb-4'>
             <View className='flex-row items-center mb-2 mr-5 '
             >
-              <Image
-                className='mr-1'
-                source={require('../../assets/icons/iconsLogin/IconeDeCadeado.png')}
-              />
+              <Ionicons name='lock-closed' size={20} />
               <Text className='ml-1 text-[#455A64] '>Senha</Text>
             </View>
 
@@ -177,10 +168,7 @@ export default function Register() {
           <View className='w-4/5 mb-4'>
             <View className='flex-row items-center mb-2 mr-5 '
             >
-              <Image
-                className='mr-1'
-                source={require('../../assets/icons/iconsLogin/IconeDeCadeado.png')}
-              />
+              <Ionicons name='lock-closed' size={20} />
               <Text className='ml-1 text-[#455A64] '>Confirmar senha</Text>
             </View>
 

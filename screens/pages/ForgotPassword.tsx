@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 import React from 'react'
 import { useForm, Controller } from 'react-hook-form';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type FormData = {
   email: string
@@ -41,10 +42,7 @@ export default function ForgotPassword() {
       <View className='w-4/5 mb-10'>
         <View className='flex-row items-center mb-4 mr-5 '
         >
-          <Image
-            className='mr-1'
-            source={require('../../assets/icons/iconsLogin/IconeEmail.png')}
-          />
+          <Ionicons name='mail' size={20} />
           <Text className='ml-1 text-[#455A64] '>Email</Text>
         </View>
 
