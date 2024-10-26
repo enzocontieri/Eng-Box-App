@@ -105,15 +105,12 @@ export default function ForgotPassword() {
         </View>
         <View className='flex-row justify-center items-center mb-4'>
 
-          <View className='flex-row justify-center items-center'>
-            <Text
-              className='text-gray-700 '>Aperte para Voltar?</Text>
-          </View>
+          
           <TouchableOpacity
             className='shadow text-[#767676]'
             onPress={() => navigation.navigate('LogIn')} >
             <Text
-              className='text-sm text-[#00796B] ml-1'>Entrar</Text>
+              className='text-sm text-[#00796B] ml-1'>Aperte Para Voltar</Text>
           </TouchableOpacity>
 
         </View>
