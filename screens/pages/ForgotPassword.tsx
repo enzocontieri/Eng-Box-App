@@ -13,6 +13,7 @@ import React from 'react'
 import { useForm, Controller } from 'react-hook-form';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 type FormData = {
   email: string
 }
@@ -20,6 +21,7 @@ type FormData = {
 export default function ForgotPassword() {
   /* Este código retorna exceção na pagina Esqueceu sua Senha */
   const { control, handleSubmit } = useForm<FormData>();
+  const navigation = useNavigation();
   return (
     <KeyboardAvoidingView
       className='flex-1 bg-[#F9F9F9]'
@@ -100,6 +102,20 @@ export default function ForgotPassword() {
             })}>
             <Text className='text-center text-white text-lg'>Enviar</Text>
           </TouchableOpacity>
+        </View>
+        <View className='flex-row justify-center items-center mb-4'>
+
+          <View className='flex-row justify-center items-center'>
+            <Text
+              className='text-gray-700 '>Aperte para Voltar?</Text>
+          </View>
+          <TouchableOpacity
+            className='shadow text-[#767676]'
+            onPress={() => navigation.navigate('LogIn')} >
+            <Text
+              className='text-sm text-[#00796B] ml-1'>Entrar</Text>
+          </TouchableOpacity>
+
         </View>
       </ScrollView>
     </KeyboardAvoidingView >
