@@ -12,6 +12,7 @@ import * as Screens from './screens/index';
 import { useFonts } from 'expo-font';
 import { View } from 'react-native';
 import { TabRoutes } from './utils/enums/tab-routes';
+import { Platform } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -23,7 +24,7 @@ function TabNavigator() {
 				tabBarIcon: (props) => renderTabIcon({ ...props, route }),
 				tabBarStyle: {
 					position: 'absolute',
-					height: 55,
+					height:  Platform.OS === 'ios' ? 70 : 55,
 					borderTopWidth: 1,
 					borderTopColor: '#D9D9D9',
 					backgroundColor: 'white',
