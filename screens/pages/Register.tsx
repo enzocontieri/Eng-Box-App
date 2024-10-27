@@ -15,14 +15,11 @@ import {ScrollView} from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../../utils/types/navigation";
+import {FormData} from "../../utils/types/formData";
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
-type FormData = {
-    UserName: string,
-    email: string,
-    password: string
-}
+
 export default function Register() {
     /* Este código retorna exceção na pagina Register */
     const navigation = useNavigation<NavigationProp>();

@@ -14,12 +14,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../../utils/types/navigation";
+import {FormData} from "../../utils/types/formData";
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
-type FormData = {
-    email: string
-}
+
 
 export default function ForgotPassword() {
     /* Este código retorna exceção na pagina Esqueceu sua Senha */
