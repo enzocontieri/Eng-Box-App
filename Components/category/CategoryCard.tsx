@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
 import { data } from '../../data/dataEspecialist';
 import { useNavigation } from '@react-navigation/native';
+import Search from './searchBar';
+import { SearchBar } from '@rneui/themed';
 
 const categories = [
     { label: 'Civil', icon: require('../../assets/icons/iconsFilter/icone-eng.png') },
@@ -18,7 +20,13 @@ const categories = [
 
 const CategoryComponent = () => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [search, setSearch] = useState("");
     const navigation = useNavigation();
+
+    const updateSearch = (search) => {
+        setSearch(search);
+      };
+      
 
     const Item = ({ username, description, CategoryIcon, icon, title, useravatar }) => (
         <TouchableOpacity
@@ -62,6 +70,7 @@ const CategoryComponent = () => {
 
     // Filtrar pelas categorias selecionadas
     const filteredData = data.filter(item => selectedCategories.includes(item.id));
+    
 
     // Função para alternar entre categorias
     const toggleCategory = (category) => {
@@ -76,7 +85,44 @@ const CategoryComponent = () => {
 
     return (
         <View>
-            <View className='mx-7 mt-4 mb-3'>
+            <View className="mt-8 mb-2">
+					<View className="mx-7">
+						<Text
+							className="text-[25px] text-[#4A4A4A]"
+							style={{ fontFamily: 'poppins-medium', opacity: 0.6 }}
+						>
+							Pesquise
+						</Text>
+					    <SearchBar 
+                        platform='ios'
+                        placeholder="Digite Aqui"
+                        cancelButtonTitle=""
+                        placeholderTextColor="#000"
+                        onChangeText={updateSearch}
+                        value={search}
+                        containerStyle={{
+                            backgroundColor: "#F8F8F8",
+                        }} 
+                        inputContainerStyle={{
+                            backgroundColor: "#FFFFFF",
+                        }}
+                        clearIcon={{
+                            name: 'trash',
+                            type: 'ionicon',
+                            color: 'red',
+                            size: 20,
+                        }}
+                        searchIcon={{
+                            name: 'search',
+                            type: 'ionicon',
+                            color: '#4A4A4A',
+                            size: 20,
+                        }}
+                        />
+                        
+					</View>
+				</View>
+            <View className='mx-7 mb-3'>
                 <Text className='text-base text-[#4A4A4A]' style={{ fontFamily: 'poppins-medium', opacity: 0.6 }}>Filtre Por Categoria</Text>
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} className='ml-2'>

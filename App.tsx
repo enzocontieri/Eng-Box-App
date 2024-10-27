@@ -99,7 +99,7 @@ export default function App() {
 
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName="LogIn">
+			<Stack.Navigator initialRouteName="Explore">
 				<Stack.Screen
 					name="Wellcome"
 					component={Screens.Wellcome}

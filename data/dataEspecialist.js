@@ -6,7 +6,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
         icon: require('../assets/icons/iconsFilter/icone-eng.png'),
-        title: "Produto de Vendas",  
+        title: "Produto de Civil",  
     },
     {
         id:"Quimica",
@@ -15,7 +15,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         icon: require('../assets/icons/iconsFilter/quimico.png'), 
-        title: "Produto de Vendas", 
+        title: "Produto de Quimica", 
     },
     {
         id:"Arquitetura",
@@ -24,7 +24,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         icon: require('../assets/icons/iconsFilter/projeto-da-casa.png'),
-        title: "Produto de Vendas",  
+        title: "Produto de Arquitetura",  
     },
     {
         id:"Eletrica",
@@ -33,7 +33,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         icon: require('../assets/icons/iconsFilter/energia-eletrica.png'),
-        title: "Produto de Vendas",  
+        title: "Produto de Eletrica",  
     },
     {
         id:"Mecanica",
@@ -42,7 +42,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         icon: require('../assets/icons/iconsFilter/engenharia-mecanica.png'),
-        title: "Produto de Vendas",  
+        title: "Produto de Mecanica",  
     },
     {
         id:"Software",
@@ -51,7 +51,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         icon: require('../assets/icons/iconsFilter/engenharia-de-software.png'), 
-        title: "Produto de Vendas", 
+        title: "Produto de Software", 
     },
     {
         id:"Automacao",
@@ -60,7 +60,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         icon: require('../assets/icons/iconsFilter/linha-de-montagem.png'), 
-        title: "Produto de Vendas", 
+        title: "Produto de Automacao", 
     },
     {
         id:"Producao",
@@ -69,7 +69,7 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         icon: require('../assets/icons/iconsFilter/recursos-humanos.png'), 
-        title: "Produto de Vendas", 
+        title: "Produto de Producao", 
     },
     {
         id:"Computacao",
@@ -78,6 +78,6 @@ export const data = [
         CategoryIcon: require('../assets/images/ftbranco.png'),
         description: "Maria",
         icon: require('../assets/icons/iconsFilter/computacao-em-nuvem.png'), 
-        title: "Produto de Vendas", 
+        title: "Produto de Computacao", 
     },
 ]
