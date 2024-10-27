@@ -13,6 +13,7 @@ import { useFonts } from 'expo-font';
 import { View } from 'react-native';
 import { TabRoutes } from './utils/enums/tab-routes';
 import { Platform } from 'react-native';
+import { UserProvider } from './Components/profile/UserContext';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -24,7 +25,7 @@ function TabNavigator() {
 				tabBarIcon: (props) => renderTabIcon({ ...props, route }),
 				tabBarStyle: {
 					position: 'absolute',
-					height:  Platform.OS === 'ios' ? 70 : 55,
+					height: Platform.OS === 'ios' ? 70 : 55,
 					borderTopWidth: 1,
 					borderTopColor: '#D9D9D9',
 					backgroundColor: 'white',
@@ -98,79 +99,81 @@ export default function App() {
 	}
 
 	return (
-		<NavigationContainer>
-			<Stack.Navigator initialRouteName="Explore">
-				<Stack.Screen
-					name="Wellcome"
-					component={Screens.Wellcome}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="Main"
-					component={TabNavigator}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="Settings"
-					component={Screens.Settings}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="UserDetail"
-					component={Screens.UserDetail}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="MoreOptions"
-					component={Screens.MoreOptions}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="Help"
-					component={Screens.Help}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="Info"
-					component={Screens.Info}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="LogOut"
-					component={Screens.LogOut}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="Notifications"
-					component={Screens.Notifications}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="PersonalData"
-					component={Screens.PersonalData}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="PostDetails"
-					component={Screens.PostDetails}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="LogIn"
-					component={Screens.LogIn}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="ForgotPassword"
-					component={Screens.ForgotPassword}
-					options={{ headerShown: false }}
-				/>
-				<Stack.Screen
-					name="Register"
-					component={Screens.Register}
-					options={{ headerShown: false }}
-				/>
-			</Stack.Navigator>
-		</NavigationContainer>
+		<UserProvider>
+			<NavigationContainer>
+				<Stack.Navigator initialRouteName="LogIn">
+					<Stack.Screen
+						name="Wellcome"
+						component={Screens.Wellcome}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Main"
+						component={TabNavigator}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Settings"
+						component={Screens.Settings}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="UserDetail"
+						component={Screens.UserDetail}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="MoreOptions"
+						component={Screens.MoreOptions}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Help"
+						component={Screens.Help}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Info"
+						component={Screens.Info}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="LogOut"
+						component={Screens.LogOut}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Notifications"
+						component={Screens.Notifications}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="PersonalData"
+						component={Screens.PersonalData}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="PostDetails"
+						component={Screens.PostDetails}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="LogIn"
+						component={Screens.LogIn}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="ForgotPassword"
+						component={Screens.ForgotPassword}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Register"
+						component={Screens.Register}
+						options={{ headerShown: false }}
+					/>
+				</Stack.Navigator>
+			</NavigationContainer>
+		</UserProvider>
 	);
 }
