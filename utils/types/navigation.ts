@@ -1,4 +1,4 @@
-import { StackNavigationProp } from "@react-navigation/stack";
+import {StackNavigationProp} from "@react-navigation/stack";
 
 export type RootStackParamList = {
     MoreOptions: undefined;
@@ -7,10 +7,10 @@ export type RootStackParamList = {
         title: string;
         description: string;
     }
-    Main:undefined;
-    LogIn:undefined;
-    ForgotPassword:undefined;
-    Register:undefined;
+    Main: undefined;
+    LogIn: undefined;
+    ForgotPassword: undefined;
+    Register: undefined;
 }
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
