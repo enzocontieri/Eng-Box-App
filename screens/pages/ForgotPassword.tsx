@@ -5,15 +5,17 @@ import {
   Image,
   TextInput,
   KeyboardAvoidingView,
-  Keyboard,
   Platform,
   ScrollView
 } from 'react-native'
 import React from 'react'
 import { useForm, Controller } from 'react-hook-form';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../../utils/types/navigation";
+type NavigationProp = StackNavigationProp<RootStackParamList>;
+
 type FormData = {
   email: string
 }
@@ -21,7 +23,8 @@ type FormData = {
 export default function ForgotPassword() {
   /* Este código retorna exceção na pagina Esqueceu sua Senha */
   const { control, handleSubmit } = useForm<FormData>();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
+
   return (
     <KeyboardAvoidingView
       className='flex-1 bg-[#F9F9F9]'

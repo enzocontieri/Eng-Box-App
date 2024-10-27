@@ -7,6 +7,10 @@ export type RootStackParamList = {
         title: string;
         description: string;
     }
+    Main:undefined;
+    LogIn:undefined;
+    ForgotPassword:undefined;
+    Register:undefined;
 }
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;

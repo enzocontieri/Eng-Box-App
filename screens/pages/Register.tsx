@@ -5,15 +5,18 @@ import {
   TouchableOpacity,
   Text,
   KeyboardAvoidingView,
-  Keyboard,
   Platform,
 } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/native'
 import 'tailwindcss/tailwind.css';
 import { useForm, Controller } from 'react-hook-form';
 import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../../utils/types/navigation";
+
+type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 type FormData = {
   UserName: string,
@@ -22,7 +25,7 @@ type FormData = {
 }
 export default function Register() {
   /* Este código retorna exceção na pagina Register */
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
   const { control, handleSubmit } = useForm<FormData>();
   return (
 

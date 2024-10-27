@@ -15,7 +15,10 @@ import 'tailwindcss/tailwind.css';
 import { useForm, Controller } from 'react-hook-form';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../../utils/types/navigation";
 
+type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 type FormData = {
   email: string,
@@ -25,7 +28,7 @@ type FormData = {
 
 export default function LogIn() {
   /* Este código retorna exceção na pagina Entrar */
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
   const [rememberMe, setRememberMe] = useState(false);
   const { control, handleSubmit } = useForm<FormData>();
 
