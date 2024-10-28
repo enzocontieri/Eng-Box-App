@@ -101,10 +101,15 @@ export default function App() {
 	return (
 		<UserProvider>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="Wellcome">
+				<Stack.Navigator initialRouteName="Quiz">
 					<Stack.Screen
 						name="Wellcome"
 						component={Screens.Wellcome}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name='Quiz'
+						component={Screens.QuizzResult}
 						options={{ headerShown: false }}
 					/>
 					<Stack.Screen
@@ -172,7 +177,6 @@ export default function App() {
 						component={Screens.Register}
 						options={{ headerShown: false }}
 					/>
-
 				</Stack.Navigator>
 			</NavigationContainer>
 		</UserProvider>
