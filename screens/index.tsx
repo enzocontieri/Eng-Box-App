@@ -16,7 +16,7 @@ import LogOut from './options-menu/LogOut';
 import Notifications from './options-menu/Notifications';
 import PersonalData from './options-menu/PersonalData';
 import PostDetails from './pages/PostDetails';
-
+import QuizzResult from './pages/QuizzResult';
 
 export {
     Home,
@@ -36,6 +36,7 @@ export {
     Notifications,
     PersonalData,
     PostDetails,
+    QuizzResult,
 }
 
 
