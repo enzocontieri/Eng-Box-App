@@ -1,17 +1,20 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Alert, Image, TextInput, ScrollView } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity, Alert, TextInput, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import { useUser } from '../../Components/profile/UserContext';
 import * as ImagePicker from 'expo-image-picker';
-import AntDesign from '@expo/vector-icons/AntDesign';
+import Header from '../../Components/PersonalData/Header';
+import { BannerPicker, ProfilePhotoPicker } from '../../Components/PersonalData/ImagesPicker';
+import UserInfoInput from '../../Components/PersonalData/UserInfoInput';
 
-const PersonalData = () => {
+type ImageKey = 'bannerUrl' | 'profilePhotoUrl';
+
+const PersonalData: React.FC = () => {
   const { userProfile, setUserProfile } = useUser();
-  const navigation = useNavigation();
-  const [isEditing, setIsEditing] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const pickImage = async (key: 'bannerUrl' | 'profilePhotoUrl') => {
+  const pickImage = async (key: ImageKey): Promise<void> => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== 'granted') {
       Alert.alert('Permissão necessária', 'Precisamos da sua permissão para acessar a galeria.');
@@ -30,11 +33,9 @@ const PersonalData = () => {
     }
   };
 
-  const toggleEditMode = () => {
-    setIsEditing(!isEditing);
-  }
+  const toggleEditMode = (): void => setIsEditing(!isEditing);
 
-  const handleSave = () => {
+  const handleSave = (): void => {
     setIsEditing(false);
     Alert.alert('Sucesso', 'As informações foram salvas com sucesso!');
   }
@@ -42,133 +43,83 @@ const PersonalData = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        {/* Título + Botão Voltar */}
-        <View className='flex-row items-center justify-center mt-8 '>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            className='absolute left-4 bg-white p-2 rounded-full shadow-lg'
-          >
-            <Ionicons name='chevron-back' color='black' size={24} />
-          </TouchableOpacity>
 
-          <Text className=' ml-8 text-3xl text-[#1F3B4D]' style={{ fontFamily: 'poppins-semi-bold' }}>Dados Pessoais</Text>
-        </View>
+        <Header />
 
         {/* Banner + Foto do Perfil */}
         <View className='mt-8 fixed'>
-          {/* Banner */}
-          <View className='relative'>
-            <Image
-              source={{ uri: userProfile.bannerUrl }}
-              className='w-full h-48 border-b-2 border-[#B0BEC5] shadow-lg'
-            />
 
-            {isEditing && (
-              <TouchableOpacity
-                onPress={() => pickImage('bannerUrl')}
-                className='absolute top-2 right-3'
-              >
-                <AntDesign name='pluscircle' size={40} color={'#455A64'} />
-              </TouchableOpacity>
-            )}
-          </View>
+          <BannerPicker bannerUrl={userProfile.bannerUrl} isEditing={isEditing} onPickImage={pickImage} />
 
-          {/* Foto de Perfil */}
-          <View className='flex justify-center items-center mt-[-100px]'>
-            <View className='relative'>
-              <Image
-                source={{ uri: userProfile.profilePhotoUrl }}
-                className='w-[150px] h-[150px] rounded-full border-2 border-[#B0BEC5] shadow-lg'
-              />
-
-              {isEditing && (
-                <TouchableOpacity
-                  onPress={() => pickImage('profilePhotoUrl')}
-                  className='absolute bottom-[-5px] right-[-5px]'
-                >
-                  <AntDesign name='pluscircle' size={40} color={'#455A64'} />
-                </TouchableOpacity>
-              )}
-            </View>
-          </View>
+          <ProfilePhotoPicker profilePhotoUrl={userProfile.profilePhotoUrl} isEditing={isEditing} onPickImage={pickImage} />
 
           {/* Inputs das Informações do Usuário */}
           <View className='mt-8 justify-center items-center' >
-            {/* Nome */}
-            <View className='mb-4'>
-              <Text className='text-xl text-[#B0BEC5]' style={{ fontFamily: 'poppins-regular' }} >Nome</Text>
-              <TextInput
-                editable={isEditing}
-                value={userProfile.name}
-                placeholder={userProfile.name}
-                onChangeText={(text) => setUserProfile({ ...userProfile, name: text })}
-                className='border-2 rounded-xl pl-2 border-[#B0BEC5] w-80 h-12 text-[#B0BEC5] text-base'
-                style={{ fontFamily: 'poppins-medium' }}
-              />
-            </View>
+            <UserInfoInput
+              label='Nome'
+              value={userProfile.name}
+              editable={isEditing}
+              placeholder={userProfile.name}
+              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
+            />
 
-            {/* Email */}
-            <View className='mb-4'>
-              <Text className='text-xl text-[#B0B3C5]' style={{ fontFamily: 'poppins-regular' }}>Email</Text>
-              <TextInput
-                editable={isEditing}
-                placeholder={userProfile.email}
-                value={userProfile.email}
-                onChangeText={(text) => setUserProfile({ ...userProfile, email: text })}
-                className='border-2 rounded-xl pl-2 border-[#B0BEC5] w-80 h-12 text-[#B0B3C5] text-base'
-                style={{ fontFamily: 'poppins-medium' }}
-              />
-            </View>
+            <UserInfoInput
+              label='Email'
+              value={userProfile.email}
+              editable={isEditing}
+              placeholder={userProfile.email}
+              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
+            />
 
-            {/* Senha */}
-            <View className='mb-4'>
-              <Text className='text-xl text-[#B0B3C5]' style={{ fontFamily: 'poppins-regular' }}>Senha</Text>
+            {/* Input de Senha */}
+            <View className='mb-4 relative' >
+              <Text className='text-xl text-[#B0B3C5]' style={{ fontFamily: 'poppins-regular' }} >Senha</Text>
               <TextInput
                 editable={isEditing}
-                placeholder="Digite sua senha"
-                secureTextEntry
+                placeholder='Digite sua senha'
+                secureTextEntry={!showPassword}
                 value={userProfile.password}
-                onChangeText={(text) => setUserProfile({ ...userProfile, password: text })}
-                className='border-2 rounded-xl pl-2 border-[#B0BEC5] w-80 h-12 text-[#B0B3C5] text-base'
+                onChangeText={(text: string) => setUserProfile({ ...userProfile, password: text })}
+                className='border-2 rounded-xl pl-2 pr-10 border-[#B0BEC5] w-80 h-12 text-[#B0B3C5] text-base'
                 style={{ fontFamily: 'poppins-medium' }}
               />
+              {isEditing && (
+                <TouchableOpacity
+                  onPress={() => setShowPassword(!showPassword)}
+                  className='absolute right-4 top-[50%] transform -translate-y-1/2'
+                >
+                  <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={24} color={'#B0BEC5'} />
+                </TouchableOpacity>
+              )}
             </View>
 
-            {/* Localização */}
-            <View className='mb-4'>
-              <Text className='text-xl text-[#B0B3C5]' style={{ fontFamily: 'poppins-regular' }}>Localização</Text>
-              <TextInput
-                editable={isEditing}
-                placeholder={userProfile.location}
-                value={userProfile.location}
-                onChangeText={(text) => setUserProfile({ ...userProfile, location: text })}
-                className='border-2 rounded-xl pl-2 border-[#B0BEC5] w-80 h-12 text-[#B0B3C5] text-base'
-                style={{ fontFamily: 'poppins-medium' }}
-              />
-            </View>
+            <UserInfoInput
+              label='Localização'
+              value={userProfile.location}
+              editable={isEditing}
+              placeholder={userProfile.location}
+              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
+            />
 
-            {/* Gênero */}
-            <View className='mb-4'>
-              <Text className='text-xl text-[#B0B3C5]' style={{ fontFamily: 'poppins-regular' }}>Gênero</Text>
-              <TextInput
-                editable={isEditing}
-                placeholder={userProfile.gender}
-                value={userProfile.gender}
-                onChangeText={(text) => setUserProfile({ ...userProfile, gender: text })}
-                className='border-2 rounded-xl pl-2 border-[#B0BEC5] w-80 h-12 text-[#B0B3C5] text-base'
-                style={{ fontFamily: 'poppins-medium' }}
-              />
-            </View>
+            <UserInfoInput
+              label='Gênero'
+              value={userProfile.gender}
+              editable={isEditing}
+              placeholder={userProfile.gender}
+              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
+            />
+
             <TouchableOpacity
-              className='mt-4 mb-8 bg-[#1F3B4D] w-80 h-16 items-center justify-center rounded-xl shadow-xl'
               onPress={isEditing ? handleSave : toggleEditMode}
+              className='mt-4 mb-8 bg-[#1F3B4D] w-80 h-16 items-center justify-center rounded-xl shadow-xl'
             >
-              <Text className='text-xl text-white' style={{ fontFamily: 'poppins-medium' }} >{isEditing ? 'Salvar' : 'Editar'}</Text>
+              <Text
+                className='text-white text-lg'
+                style={{ fontFamily: 'poppins-medium' }}
+              >
+                {isEditing ? 'Salvar' : 'Editar'}
+              </Text>
             </TouchableOpacity>
-          </View>
-
-          <View>
-
           </View>
         </View>
       </ScrollView>
