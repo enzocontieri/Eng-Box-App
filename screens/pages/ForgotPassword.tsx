@@ -14,7 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../../utils/types/navigation";
-import {FormData} from "../../utils/types/formData";
+import {FormData} from "../../utils/types/form/formData";
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -36,7 +36,7 @@ export default function ForgotPassword() {
 
                     <View className='relative flex justify-center items-center  w-full h-64 mb-6'>
                         <Image
-                            source={require('../../assets/icons/iconsLogin/ImagemDeFundo.png')}
+                            source={require('../../assets/images/login/ImagemDeFundo.png')}
                             className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
                         />
                         <View className='justify-center items-center'>
