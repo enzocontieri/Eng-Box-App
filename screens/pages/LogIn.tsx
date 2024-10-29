@@ -163,12 +163,12 @@ export default function LogIn() {
 
                             <View className='flex-row items-center'>
                                 <TouchableOpacity
-                                    className={`shadow w-6 h-6 rounded-sm border-2 ${rememberMe ? 'bg-[#455A64]' : 'bg-white border-[#D9D9D9]'}`}
+                                    className={`shadow w-6 h-6 rounded-sm border-2 ${rememberMe ? 'bg-[#D9D9D9]' : 'bg-white border-[#D9D9D9]'}`}
                                     onPress={() => setRememberMe(!rememberMe)}
                                 >
                                     {rememberMe && (
                                         <View className="w-full h-full bg-[#00796B]">
-
+                                        <Ionicons name='checkbox-outline' size={20} color='white'/>
                                         </View>
                                     )}
                                 </TouchableOpacity>
