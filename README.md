@@ -2,11 +2,12 @@
 
 ## Projeto da Unifacs - Consumo Sustentavel 🌱
 - Responsáveis pelo Mobile: 
-  - Enzo Contieri ([GitHub](https://github.com/enzocontieri))
-  - Hanspeter Dietiker ([GitHub](https://github.com/hanspeterdietiker))
-  - Edioelson Junior ([GitHub](https://github.com/DeveloperEdd))
-  - Gabriel Silva Magalhães ([GitHub](https://github.com/Gabrielsilvamagalhaes))
-
+  - Enzo Contieri ([GitHub](https://github.com/enzocontieri)) ([Linkedin](https://www.linkedin.com/in/enzo-contieri-b1578326b/))
+  - Hanspeter Dietiker ([GitHub](https://github.com/hanspeterdietiker)) ([Linkedin](https://www.linkedin.com/in/hanspeterdietiker/))
+  - Edioelson Junior ([GitHub](https://github.com/DeveloperEdd)) ([Linkedin](www.linkedin.com/in/edioelson))
+  - Gabriel Silva Magalhães ([GitHub](https://github.com/Gabrielsilvamagalhaes)) ([Linkedin](https://www.linkedin.com/in/gabriel-smagalhaes32/))
+  - Lucas ([Github](https://github.com/luketao17))
+  - Yago ([Github](https://github.com/yagooc1))
 
 ## 📂 Instruções do Projeto :
 1.Ambiente de Desenvolvimento:
