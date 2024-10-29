@@ -22,7 +22,6 @@ import {FormData} from "../../utils/types/form/formData";
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 
-
 export default function LogIn() {
     /* Este código retorna exceção na pagina Entrar */
     const navigation = useNavigation<NavigationProp>();
@@ -39,7 +38,7 @@ export default function LogIn() {
 
 
             <ScrollView className='bg-[#F9F9F9]'>
-                <View className='bg-[#F9F9F9]  '>
+                <View className='bg-[#F9F9F9]'>
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <View className='relative flex justify-center items-center  w-full h-64 mb-6'>
                             <Image
@@ -168,7 +167,7 @@ export default function LogIn() {
                                 >
                                     {rememberMe && (
                                         <View className="w-full h-full bg-[#00796B]">
-                                        <Ionicons name='checkbox-outline' size={20} color='white'/>
+                                            <Ionicons name='checkbox-outline' size={20} color='white'/>
                                         </View>
                                     )}
                                 </TouchableOpacity>

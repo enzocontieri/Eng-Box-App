@@ -23,7 +23,7 @@ type NavigationProp = StackNavigationProp<RootStackParamList>;
 export default function Register() {
     /* Este código retorna exceção na pagina Register */
     const navigation = useNavigation<NavigationProp>();
-    const {control, handleSubmit} = useForm<FormData>();
+    const {control, handleSubmit, getValues} = useForm<FormData>();
     return (
 
         <KeyboardAvoidingView
@@ -184,9 +184,10 @@ export default function Register() {
 
                             <Controller
                                 control={control}
-                                name='password'
+                                name='confirmPassword'
                                 rules={{
-                                    required: "A senha é obrigatoria",
+                                    required: "Por favor, repita a senha",
+                                    validate: value => value === getValues("password") || 'As senhas não correspondem',
                                     minLength: {
                                         value: 3,
                                         message: "A senha deve ter pelo menos 3 caracteres"
