@@ -103,12 +103,17 @@ export default function App() {
 			<NavigationContainer>
 				<Stack.Navigator initialRouteName="Wellcome">
 					<Stack.Screen
+						name="Quiz"
+						component={Screens.Quiz}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
 						name="Wellcome"
 						component={Screens.Wellcome}
 						options={{ headerShown: false }}
 					/>
 					<Stack.Screen
-						name='Quiz'
+						name='Quizz'
 						component={Screens.QuizzResult}
 						options={{ headerShown: false }}
 					/>
