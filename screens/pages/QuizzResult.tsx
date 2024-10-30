@@ -14,9 +14,9 @@ const QuizzResult = () => {
             </View>
 
             <View className='mr-2 mt-6 items-center '>
-                <Text className='text-[#767676] font-bold ml-3 mr-[48%] text-xl'>Você é um</Text>
-                <Text className='mt-[-7.1%] ml-[29%] text-[#7CC77F] font-bold text-xl'>Consumidor Verde</Text>
-                <Text className='mt-[-28] ml-[77%] text-[#767676] font-bold text-xl'>!</Text>
+                <Text className='text-[#767676] font-bold text-xl'>
+                    Você é um <Text className='text-[#7CC77F] font-bold text-xl'>Consumidor Verde</Text>!
+                </Text>
             </View>
 
             <View>
@@ -26,10 +26,10 @@ const QuizzResult = () => {
             </View>
 
             <View className='items-center'>
-                <Text className='mt-[16%] ml-[3%] text-[#767676] font-bold text-xl w-4/5'>É importante cuidar do paciente, ser acompanhado pelo cliente, mas eu dou um incidente desses ao mesmo tempo que dá muito trabalho e dor. Para chegar aos mínimos detalhes.</Text>
+                <Text className='text-justify mt-[63] ml-[9] text-[#767676] font-bold text-xl w-4/5'>É importante cuidar do paciente, ser acompanhado pelo cliente, mas eu dou um incidente desses ao mesmo tempo que dá muito trabalho e dor. Para chegar aos mínimos detalhes.</Text>
             </View>
             <TouchableOpacity
-                className='self-center rounded-3xl bg-[#00796B] w-4/5 py-5 border-solid shadow-lg mt-[6%]'
+                className='self-center rounded-3xl bg-[#00796B] w-4/5 py-5 border-solid shadow-lg mt-[16]'
                 onPress={() => navigation.navigate('Main')}
             >
                 <Text className='text-center text-white font-bold text-xl'>Continuar</Text>
