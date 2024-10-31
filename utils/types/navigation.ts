@@ -12,6 +12,7 @@ export type RootStackParamList = {
     ForgotPassword: undefined;
     Register: undefined;
     Quiz: undefined;
+    QuizzResult: { score: number; total: number};
 }
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;

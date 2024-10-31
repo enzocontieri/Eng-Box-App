@@ -113,7 +113,7 @@ export default function App() {
 						options={{ headerShown: false }}
 					/>
 					<Stack.Screen
-						name='Quizz'
+						name='QuizzResult'
 						component={Screens.QuizzResult}
 						options={{ headerShown: false }}
 					/>
