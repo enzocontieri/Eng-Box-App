@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity, FlatList, ImageBackground, Image } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, FlatList, ImageBackground, Image, ActivityIndicator } from 'react-native';
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
 import { data } from '../../data/dataEspecialist';
@@ -21,6 +21,7 @@ const categories = [
 const CategoryComponent = () => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true)
     const navigation = useNavigation();
 
     const updateSearch = (search) => {
@@ -138,7 +139,14 @@ const CategoryComponent = () => {
                 ))}
             </ScrollView>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <FlatList
+                {loading ? (
+                    <ActivityIndicator 
+                    className='my-48 '
+                    size="large"
+                    color="#4A4A4A"
+                    />    )
+                : (
+                    <FlatList
                     data={filteredData}
                     renderItem={({ item }) => (
                         <Item
@@ -154,6 +162,7 @@ const CategoryComponent = () => {
                     scrollEnabled={false}
                     contentContainerStyle={{ paddingBottom: 800 }}
                 />
+                )}
             </ScrollView>
         </View>
     );

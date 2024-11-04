@@ -72,7 +72,7 @@ const Quiz = () => {
         updatedSelectedOptions[questionIndex] = optionIndex; // Atualiza a opção selecionada
         setSelectedOptions(updatedSelectedOptions); // Atualiza o estado com as novas opções selecionadas
     };
-
+    
     // Função chamada ao enviar o quiz
     const handleSubmit = () => {
         let calculatedScore = 0; // Inicializa a pontuação
