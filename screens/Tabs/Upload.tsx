@@ -1,97 +1,89 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
-import { Camera, CameraMode, CameraPictureOptions, CameraProps, CameraType, CameraView, FlashMode, useCameraPermissions } from 'expo-camera';
+import { View, SafeAreaView } from 'react-native';
+import React from 'react';
+import { CameraMode, CameraType, CameraView, FlashMode } from 'expo-camera';
+import CameraTools from '../../Components/UploadComponents/CameraTools';
+import MainRowActions from '../../Components/UploadComponents/MainRowActions';
+import PictureView from '../../Components/UploadComponents/PictureView';
+import VideoViewComponent from '../../Components/UploadComponents/VideoView';
 import * as ImagePicker from 'expo-image-picker';
-import CamOptions from '../../Components/UploadComponents/CamOptions';
-import CamControls from '../../Components/UploadComponents/CamControls';
-import PicturePreviewSection from '../../Components/UploadComponents/PicturePreviewSection';
 
 const Upload = () => {
 
-  const [permission, requestPermission] = useCameraPermissions();
-  const [facing, setFacing] = useState<CameraType>('back');
-  const [flash, setFlash] = useState<FlashMode>('off');
-  const [mode, setMode] = useState<CameraMode>('picture');
-  const [picture, setPicture] = useState<any>(null);
-  const cameraRef = useRef<CameraView | null>(null);
+  const cameraRef = React.useRef<CameraView>(null);
 
-  if (!permission) {
-    return <View />;
+  const [cameraMode, setCameraMode] = React.useState<CameraMode>('picture');
+  const [cameraFlash, setCameraFlash] = React.useState<FlashMode>('off');
+  const [cameraFacing, setCameraFacing] = React.useState<CameraType>('back');
+
+  const [picture, setPicture] = React.useState<string>(''); // "https://picsum.photos/seed/696/3000/2000"
+  const [video, setVideo] = React.useState<string>(''); //  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+
+  const [isRecording, setIsRecording] = React.useState<boolean>(false);
+
+  const handleTakePicture = async () => {
+    const response = await cameraRef.current?.takePictureAsync();
+    setPicture(response!.uri);
   }
 
-  if (!permission.granted) {
-    return (
-      <View className='flex-1 justify-center' >
-        <Text className='text-center pb-2.5' >Precisamos da sua permissão para mostrar a camera!</Text>
-        <TouchableOpacity
-          onPress={requestPermission}
-        >
-          <Text className='text-red-900' >Permitir</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
-
-  function toggleCameraFacing() {
-    setFacing(currentFacing => currentFacing === 'back' ? 'front' : 'back');
-  }
-
-  function toggleFlash() {
-    setFlash(flash => flash === 'off' ? 'on' : 'off');
-  }
-
-  const takePicture = async () => {
-    if (cameraRef.current) {
-      const options = {
-        quality: 1,
-        base64: true,
-        exif: false
-      }
-
-      const takedPicture = await cameraRef.current.takePictureAsync(options);
-
-      setPicture(takedPicture);
+  const toggleRecord = async () => {
+    if (isRecording) {
+      cameraRef.current?.stopRecording();
+      setIsRecording(false);
+    } else {
+      setIsRecording(true);
+      const response = await cameraRef.current?.recordAsync();
+      setVideo(response!.uri);
     }
   }
-
-  const handleCapture = () => {
-    if (mode === 'picture') {
-      takePicture();
-    }
-  }
-
-  const handleRetakePicture = () => setPicture(null);
-  if (picture) return <PicturePreviewSection picture={picture} handleRetakePicture={handleRetakePicture} />
 
   const openGallery = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
+      allowsEditing: false,
+      quality: 1
     });
+
+    if (!result.canceled && result.assets && result.assets.length > 0) {
+      const selectedAsset = result.assets[0];
+      if (selectedAsset.type === 'video') {
+        setVideo(selectedAsset.uri);
+      } else if (selectedAsset.type === 'image') {
+        setPicture(selectedAsset.uri);
+      }
+    }
   }
 
-  return (
-    <SafeAreaView className='flex-1' >
-      <View className='flex-1' >
-        <CameraView
-          ref={cameraRef}
-          facing={facing}
-          mode={mode}
-          flash={flash}
-          className='flex-1'
-        >
-          <CamOptions setMode={setMode} toggleFlash={toggleFlash} flash={flash} />
+  if (picture) return <PictureView picture={picture} setPicture={setPicture} />
+  if (video) return <VideoViewComponent video={video} setVideo={setVideo} />
 
-          <View className='absolute bottom-14 w-full' >
-            <CamControls
-              onCapture={handleCapture}
-              toggleCameraFacing={toggleCameraFacing}
+  return (
+    <View className='flex-1' >
+      <CameraView
+        className='flex-1'
+        ref={cameraRef}
+        facing={cameraFacing}
+        mode={cameraMode}
+        flash={cameraFlash}
+        onCameraReady={() => console.log('Camera is ready')}
+      >
+        <SafeAreaView className='flex-1 pt-10' >
+          <View className='flex-1 p-1.5' >
+
+            <CameraTools cameraFlash={cameraFlash} setCameraFlash={setCameraFlash} cameraMode={cameraMode} setCameraMode={setCameraMode} />
+
+            <MainRowActions
+              isRecording={isRecording}
+              setCameraFacing={setCameraFacing}
+              cameraMode={cameraMode}
+              handleTakePicture={cameraMode === 'picture' ? handleTakePicture : toggleRecord}
               openGallery={openGallery}
             />
+
           </View>
-        </CameraView>
-      </View>
-    </SafeAreaView>
+        </SafeAreaView>
+      </CameraView>
+    </View>
+
   );
 }
 
