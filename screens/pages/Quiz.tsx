@@ -24,7 +24,34 @@ const Quiz = () => {
             option: ["Concreto", "Alumínio", "Aço", "Madeira"],
             correctOption: 2,
         },
-        // Demais questões aqui...
+
+        {
+            id: "2",
+            question: "Qual é a unidade de medida de tensão no Sistema Internacional (SI)?",
+            option: ["Newton (N)", "Pascal (Pa)", "Joule (J)", "Watt (W)"],
+            correctOption: 1,
+        },
+
+        {
+            id: "3",
+            question: "Qual é o principal gás que causa o efeito estufa e está diretamente relacionado às atividades humanas?",
+            option: ["Oxigênio", "Metano", "Dióxido de enxofre", "Dióxido de carbono"],
+            correctOption: 3,
+        },
+
+        {
+            id: "4",
+            question: "Qual é a unidade de medida de resistência elétrica?",
+            option: ["Volt", "Ampère", "Ohm", "Watt"],
+            correctOption: 2,
+        },
+
+        {
+            id: "5",
+            question: "Em um sistema hidráulico, qual componente é utilizado para armazenar energia sob a forma de pressão?",
+            option: ["Válvula de controle", "Cilindro hidráulico", "Bomba hidráulica", "Acumulador hidráulico"],
+            correctOption: 3,
+        },
     ];
 
     // Estado para armazenar a questão atual, a opção selecionada e a pontuação do usuário
@@ -32,18 +59,6 @@ const Quiz = () => {
     const [selectedOption, setSelectedOption] = useState<number | null>(null);
     const [score, setScore] = useState(0);
 
-<<<<<<< HEAD
-    // Função chamada ao selecionar uma opção em uma pergunta
-    const handleOptionSelect = (questionIndex: number, optionIndex: number) => {
-        const updatedSelectedOptions = [...selectedOptions]; // Copia as opções selecionadas
-        updatedSelectedOptions[questionIndex] = optionIndex; // Atualiza a opção selecionada
-        setSelectedOptions(updatedSelectedOptions); // Atualiza o estado com as novas opções selecionadas
-    };
-    
-    // Função chamada ao enviar o quiz
-    const handleSubmit = () => {
-        let calculatedScore = 0; // Inicializa a pontuação
-=======
     const navigation = useNavigation<NavigationProp>();
 
     // Função que avança para a próxima questão ou exibe o resultado final
@@ -52,7 +67,6 @@ const Quiz = () => {
             alert("Por favor, selecione uma opção antes de continuar.");
             return;
         }
->>>>>>> 1625944d9b3f93e694848fb2134d6895978712fc
 
         // Incrementa a pontuação se a resposta estiver correta
         if (selectedOption === questions[currentQuestion].correctOption) {
