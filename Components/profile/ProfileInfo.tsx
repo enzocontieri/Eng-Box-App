@@ -18,13 +18,6 @@ const ProfileInfo = () => {
             </View>
 
             <View className='flex-row items-center mt-2' >
-                <Ionicons name='location-sharp' size={25} color="#303030" />
-                <Text className='text-base text-[#4A4A4A] ml-2' style={{ fontFamily: 'poppins-medium' }} >
-                    {userProfile.location}
-                </Text>
-            </View>
-
-            <View className='flex-row items-center mt-2' >
                 <Image
                     source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}
                     className="w-[25px] h-[25px] mr-2"

@@ -93,22 +93,6 @@ const PersonalData: React.FC = () => {
               )}
             </View>
 
-            <UserInfoInput
-              label='Localização'
-              value={userProfile.location}
-              editable={isEditing}
-              placeholder={userProfile.location}
-              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
-            />
-
-            <UserInfoInput
-              label='Gênero'
-              value={userProfile.gender}
-              editable={isEditing}
-              placeholder={userProfile.gender}
-              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
-            />
-
             <TouchableOpacity
               onPress={isEditing ? handleSave : toggleEditMode}
               className='mt-4 mb-8 bg-[#1F3B4D] w-80 h-16 items-center justify-center rounded-xl shadow-xl'

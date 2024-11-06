@@ -13,8 +13,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         bannerUrl: 'https://picsum.photos/200/',
         profilePhotoUrl: 'https://picsum.photos/200/300',
         name: 'John Doe',
-        location: 'Salvador, BA',
-        gender: 'Masculino',
         email: 'john.doe@email.com',
         password: '12345',
     });
