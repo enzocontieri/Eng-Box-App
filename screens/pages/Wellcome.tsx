@@ -53,7 +53,8 @@ export default function Wellcome() {
 				</Text>
 			</TouchableOpacity>
 			<View className="justify-center items-center">
-				<TouchableOpacity>
+				<TouchableOpacity 
+				onPress={()=> navigation.navigate('PrivacyPolicy')}>
 					<Text className="ml-1 mt-[150] text-[#09090b]">
 						Politica de privacidade | Termos e condições
 					</Text>

@@ -18,6 +18,7 @@ import PersonalData from './options-menu/PersonalData';
 import PostDetails from './pages/PostDetails';
 import QuizzResult from './pages/QuizzResult';
 import Quiz from './pages/Quiz';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 export {
     Home,
@@ -39,6 +40,7 @@ export {
     PostDetails,
     QuizzResult,
     Quiz,
+    PrivacyPolicy
 }
 
 
