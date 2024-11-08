@@ -68,7 +68,7 @@ const ChangeTelephoneScreen = () => {
                         control={control}
                         name='phoneNumber'
                         rules={{
-                            required: 'Número de telfone é obrigatório',
+                            required: 'Número de telefone é obrigatório',
                             minLength: {
                                 value: 10,
                                 message: 'O número de telefone deve ter pelo menos 10 dígitos',
@@ -79,7 +79,7 @@ const ChangeTelephoneScreen = () => {
                             },
                             pattern: {
                                 value: /^\+?[1-9]\d{1,14}$/,
-                                message: 'Insira um número de telfone válido',
+                                message: 'Insira um número de telefone válido',
                             }
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (

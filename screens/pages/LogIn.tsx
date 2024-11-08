@@ -105,6 +105,7 @@ export default function LogIn() {
 										value: 51,
 										message: 'Limite excedido de caracteres',
 									},
+								
 								}}
 								render={({
 									field: { value, onChange },
