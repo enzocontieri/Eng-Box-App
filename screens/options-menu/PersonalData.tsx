@@ -1,17 +1,23 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Alert, TextInput, ScrollView } from 'react-native';
+import { View, SafeAreaView, Alert, ScrollView } from 'react-native';
 import React, { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
 import { useUser } from '../../Components/profile/UserContext';
 import * as ImagePicker from 'expo-image-picker';
 import Header from '../../Components/PersonalData/Header';
 import { BannerPicker, ProfilePhotoPicker } from '../../Components/PersonalData/ImagesPicker';
-import UserInfoInput from '../../Components/PersonalData/UserInfoInput';
+import PersonalDataButton from '../../Components/PersonalData/PersonalDataButton';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../utils/types/navigation';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type ImageKey = 'bannerUrl' | 'profilePhotoUrl';
 
+type NavigationProp = StackNavigationProp<RootStackParamList>;
+
 const PersonalData: React.FC = () => {
+
+  const navigation = useNavigation<NavigationProp>();
+
   const { userProfile, setUserProfile } = useUser();
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const pickImage = async (key: ImageKey): Promise<void> => {
@@ -33,13 +39,6 @@ const PersonalData: React.FC = () => {
     }
   };
 
-  const toggleEditMode = (): void => setIsEditing(!isEditing);
-
-  const handleSave = (): void => {
-    setIsEditing(false);
-    Alert.alert('Sucesso', 'As informações foram salvas com sucesso!');
-  }
-
   return (
     <SafeAreaView>
       <ScrollView>
@@ -55,55 +54,19 @@ const PersonalData: React.FC = () => {
 
           {/* Inputs das Informações do Usuário */}
           <View className='mt-8 justify-center items-center' >
-            <UserInfoInput
-              label='Nome'
-              value={userProfile.name}
-              editable={isEditing}
-              placeholder={userProfile.name}
-              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
-            />
 
-            <UserInfoInput
-              label='Email'
-              value={userProfile.email}
-              editable={isEditing}
-              placeholder={userProfile.email}
-              onChangeText={(text: string) => setUserProfile({ ...userProfile, name: text })}
-            />
+            <PersonalDataButton onPress={() => navigation.navigate('ChangeName')} text='Nome' />
 
-            {/* Input de Senha */}
-            <View className='mb-4 relative' >
-              <Text className='text-xl text-[#B0B3C5]' style={{ fontFamily: 'poppins-regular' }} >Senha</Text>
-              <TextInput
-                editable={isEditing}
-                placeholder='Digite sua senha'
-                secureTextEntry={!showPassword}
-                value={userProfile.password}
-                onChangeText={(text: string) => setUserProfile({ ...userProfile, password: text })}
-                className='border-2 rounded-xl pl-2 pr-10 border-[#B0BEC5] w-80 h-12 text-[#B0B3C5] text-base'
-                style={{ fontFamily: 'poppins-medium' }}
-              />
-              {isEditing && (
-                <TouchableOpacity
-                  onPress={() => setShowPassword(!showPassword)}
-                  className='absolute right-4 top-[50%] transform -translate-y-1/2'
-                >
-                  <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={24} color={'#B0BEC5'} />
-                </TouchableOpacity>
-              )}
-            </View>
+            <PersonalDataButton onPress={() => navigation.navigate('ChangeUsername')} text='Nome de Usuário' />
 
-            <TouchableOpacity
-              onPress={isEditing ? handleSave : toggleEditMode}
-              className='mt-4 mb-8 bg-[#1F3B4D] w-80 h-16 items-center justify-center rounded-xl shadow-xl'
-            >
-              <Text
-                className='text-white text-lg'
-                style={{ fontFamily: 'poppins-medium' }}
-              >
-                {isEditing ? 'Salvar' : 'Editar'}
-              </Text>
-            </TouchableOpacity>
+            <PersonalDataButton onPress={() => navigation.navigate('ChangeProfileMedia')} text='Fotos do Perfil' />
+
+            <PersonalDataButton onPress={() => navigation.navigate('ChangeEmail')} text='Email' />
+
+            <PersonalDataButton onPress={() => navigation.navigate('ChangePassword')} text='Senha' />
+
+            <PersonalDataButton onPress={() => navigation.navigate('ChangeTelephone')} text='Telefone' />
+
           </View>
         </View>
       </ScrollView>

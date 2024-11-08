@@ -13,8 +13,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         bannerUrl: 'https://picsum.photos/200/',
         profilePhotoUrl: 'https://picsum.photos/200/300',
         name: 'John Doe',
+        username: 'john.doe',
         email: 'john.doe@email.com',
         password: '12345',
+        phoneNumber: '(85) 97584-6778'
     });
 
     return (

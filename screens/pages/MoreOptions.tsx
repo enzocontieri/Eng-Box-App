@@ -42,40 +42,7 @@ const MoreOptions = () => {
 
 						<Ionicons name="chevron-forward" size={30} color="#767676" />
 					</TouchableOpacity>
-					<TouchableOpacity
-						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
-						onPress={() => navigation.navigate('Help')}
-					>
-						<Ionicons name="help-circle-outline" size={30} color="#767676" />
 
-						<View className="flex-1 items-center">
-							<Text
-								className=" text-[#767676] font-semibold text-[20px]"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Ajuda
-							</Text>
-						</View>
-
-						<Ionicons name="chevron-forward" size={30} color="#767676" />
-					</TouchableOpacity>
-					<TouchableOpacity
-						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
-						onPress={() => navigation.navigate('Info')}
-					>
-						<Ionicons name="alert-circle" size={30} color="#767676" />
-
-						<View className="flex-1 items-center">
-							<Text
-								className=" text-[#767676] font-semibold text-[20px]"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Info
-							</Text>
-						</View>
-
-						<Ionicons name="chevron-forward" size={30} color="#767676" />
-					</TouchableOpacity>
 					<TouchableOpacity
 						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
 						onPress={() => navigation.navigate('PersonalData')}
@@ -93,6 +60,43 @@ const MoreOptions = () => {
 
 						<Ionicons name="chevron-forward" size={30} color="#767676" />
 					</TouchableOpacity>
+
+					<TouchableOpacity
+						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
+						onPress={() => navigation.navigate('Info')}
+					>
+						<Ionicons name="alert-circle" size={30} color="#767676" />
+
+						<View className="flex-1 items-center">
+							<Text
+								className=" text-[#767676] font-semibold text-[20px]"
+								style={{ fontFamily: 'poppins-medium' }}
+							>
+								Info
+							</Text>
+						</View>
+
+						<Ionicons name="chevron-forward" size={30} color="#767676" />
+					</TouchableOpacity>
+
+					<TouchableOpacity
+						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
+						onPress={() => navigation.navigate('Help')}
+					>
+						<Ionicons name="help-circle-outline" size={30} color="#767676" />
+
+						<View className="flex-1 items-center">
+							<Text
+								className=" text-[#767676] font-semibold text-[20px]"
+								style={{ fontFamily: 'poppins-medium' }}
+							>
+								Ajuda
+							</Text>
+						</View>
+
+						<Ionicons name="chevron-forward" size={30} color="#767676" />
+					</TouchableOpacity>
+
 					<TouchableOpacity
 						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
 						onPress={handleLogoutApp}

@@ -19,6 +19,12 @@ import PostDetails from './pages/PostDetails';
 import QuizzResult from './pages/QuizzResult';
 import Quiz from './pages/Quiz';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import ChangeNameScreen from '../Components/PersonalData/ChangeNameScreen';
+import ChangeUsernameScreen from '../Components/PersonalData/ChangeUsernameScreen';
+import ChangeEmailScreen from '../Components/PersonalData/ChangeEmailScreen';
+import ChangePasswordScreen from '../Components/PersonalData/ChangePasswordScreen';
+import ChangeTelephoneScreen from '../Components/PersonalData/ChangeTelephoneScreen';
+import ChangeProfileMediaScreen from '../Components/PersonalData/ChangeProfileMediaScreen';
 
 export {
     Home,
@@ -40,7 +46,13 @@ export {
     PostDetails,
     QuizzResult,
     Quiz,
-    PrivacyPolicy
+    PrivacyPolicy,
+    ChangeNameScreen,
+    ChangeUsernameScreen,
+    ChangeEmailScreen,
+    ChangePasswordScreen,
+    ChangeTelephoneScreen,
+    ChangeProfileMediaScreen,
 }
 
 

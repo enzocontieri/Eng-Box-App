@@ -101,7 +101,7 @@ export default function App() {
 	return (
 		<UserProvider>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="Wellcome">
+				<Stack.Navigator initialRouteName="Main">
 					<Stack.Screen
 						name="Quiz"
 						component={Screens.Quiz}
@@ -185,6 +185,36 @@ export default function App() {
 					<Stack.Screen
 						name="PrivacyPolicy"
 						component={Screens.PrivacyPolicy}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="ChangeName"
+						component={Screens.ChangeNameScreen}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="ChangeUsername"
+						component={Screens.ChangeUsernameScreen}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="ChangeEmail"
+						component={Screens.ChangeEmailScreen}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="ChangePassword"
+						component={Screens.ChangePasswordScreen}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="ChangeTelephone"
+						component={Screens.ChangeTelephoneScreen}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="ChangeProfileMedia"
+						component={Screens.ChangeProfileMediaScreen}
 						options={{ headerShown: false }}
 					/>
 				</Stack.Navigator>

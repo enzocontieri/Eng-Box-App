@@ -7,13 +7,12 @@ const ProfileInfo = () => {
 
     const { userProfile } = useUser();
 
-
     return (
         <View className='ml-4 mt-4'>
             <View className='flex-row items-center'>
                 <Ionicons name='person-sharp' size={25} color="#303030" />
                 <Text className='text-base text-[#4A4A4A] ml-2' style={{ fontFamily: 'poppins-medium' }} >
-                    {userProfile.name}
+                    {userProfile.name} | @{userProfile.username}
                 </Text>
             </View>
 

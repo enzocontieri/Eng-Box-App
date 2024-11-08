@@ -14,6 +14,12 @@ export type RootStackParamList = {
     Register: undefined;
     Quiz: undefined;
     QuizzResult: { score: number; total: number };
+    ChangeName: undefined;
+    ChangeUsername: undefined;
+    ChangeEmail: undefined;
+    ChangePassword: undefined;
+    ChangeTelephone: undefined;
+    ChangeProfileMedia: undefined;
 }
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
