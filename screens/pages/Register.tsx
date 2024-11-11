@@ -71,6 +71,10 @@ export default function Register() {
                                     maxLength: {
                                         value: 51,
                                         message: "Limite excedido de caracteres"
+                                    },
+                                    pattern: {
+                                        value: /^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$/,
+                                        message: 'O nome só pode conter letras, acentos e espaços. Caracteres especiais são inválidos.'
                                     }
                                 }}
                                 render={({field: {value, onChange}, fieldState: {error}}) => (
@@ -155,6 +159,10 @@ export default function Register() {
                                     maxLength: {
                                         value: 51,
                                         message: "Limite excedido de caracteres"
+                                    },
+                                    pattern: {
+                                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                        message: 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
                                     }
                                 }}
                                 render={({field: {value, onChange}, fieldState: {error}}) => (

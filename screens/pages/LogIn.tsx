@@ -152,6 +152,11 @@ export default function LogIn() {
 										value: 51,
 										message: 'Limite excedido de caracteres',
 									},
+									pattern: {
+                                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                        message: 'Senha inválida. Por favor, verifique e tente novamente.',
+                                    }
+
 								}}
 								render={({
 									field: { value, onChange },
