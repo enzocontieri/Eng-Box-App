@@ -24,7 +24,13 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photoPermission": "The app access your photos to let you share them with your friends."
+        }
+      ]
     ]
   }
 }

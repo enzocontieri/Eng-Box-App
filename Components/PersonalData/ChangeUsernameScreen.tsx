@@ -3,7 +3,7 @@ import React from 'react';
 import GoBackButton from '../GoBackButton';
 import { Controller, useForm } from 'react-hook-form';
 import HandleSaveButton from './HandleSaveButton';
-import SucessModal from './SucessModal';
+import SuccessModal from './SuccessModal';
 import { useUser } from '../profile/UserContext';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -45,7 +45,7 @@ const ChangeUsernameScreen = () => {
             setIsChanged(false);
             setModalVisible(true);
 
-            setTimeout(() => setModalVisible(false), 2000);
+            setTimeout(() => setModalVisible(false), 1000);
         }
     }
 
@@ -105,7 +105,7 @@ const ChangeUsernameScreen = () => {
                 />
             </View>
 
-            <SucessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+            <SuccessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
         </SafeAreaView>
     );
 }

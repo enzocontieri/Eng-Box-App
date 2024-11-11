@@ -3,20 +3,19 @@ import { UserProfile } from '../../utils/types/UserProfile';
 
 interface UserContextProps {
     userProfile: UserProfile;
-    setUserProfile: (profile: UserProfile) => void;
+    setUserProfile: React.Dispatch<React.SetStateAction<UserProfile>>;
 }
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [userProfile, setUserProfile] = useState<UserProfile>({
-        bannerUrl: 'https://picsum.photos/200/',
         profilePhotoUrl: 'https://picsum.photos/200/300',
         name: 'John Doe',
         username: 'john.doe',
         email: 'john.doe@email.com',
         password: '12345',
-        phoneNumber: '(85) 97584-6778'
+        phoneNumber: '(85) 97584-6778',
     });
 
     return (

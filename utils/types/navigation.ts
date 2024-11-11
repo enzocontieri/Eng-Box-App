@@ -19,7 +19,6 @@ export type RootStackParamList = {
     ChangeEmail: undefined;
     ChangePassword: undefined;
     ChangeTelephone: undefined;
-    ChangeProfileMedia: undefined;
 }
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;

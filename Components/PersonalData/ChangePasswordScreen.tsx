@@ -4,7 +4,7 @@ import { useUser } from '../profile/UserContext';
 import { Controller, useForm } from 'react-hook-form';
 import GoBackButton from '../GoBackButton';
 import HandleSaveButton from './HandleSaveButton';
-import SucessModal from './SucessModal';
+import SuccessModal from './SuccessModal';
 import { Ionicons } from '@expo/vector-icons';
 
 const ChangePasswordScreen = () => {
@@ -148,7 +148,7 @@ const ChangePasswordScreen = () => {
                 <HandleSaveButton onPress={handleSubmit(onSubmit)} isChanged={isChanged} />
             </View>
 
-            <SucessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+            <SuccessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
         </SafeAreaView>
     );
 }

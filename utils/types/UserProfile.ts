@@ -1,6 +1,5 @@
 export interface UserProfile {
-    bannerUrl: string;
-    profilePhotoUrl: string;
+    profilePhotoUrl?: string | null;
     name: string;
     username: string;
     phoneNumber: string;

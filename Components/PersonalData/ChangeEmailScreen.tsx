@@ -3,7 +3,7 @@ import React from 'react';
 import { useUser } from '../profile/UserContext';
 import { Ionicons } from '@expo/vector-icons';
 import { Controller, useForm } from 'react-hook-form';
-import SucessModal from './SucessModal';
+import SuccessModal from './SuccessModal';
 import HandleSaveButton from './HandleSaveButton';
 import GoBackButton from '../GoBackButton';
 
@@ -100,7 +100,7 @@ const ChangeEmailScreen = () => {
                 />
             </View>
 
-            <SucessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+            <SuccessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
         </SafeAreaView>
     );
 }

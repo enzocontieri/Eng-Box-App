@@ -1,35 +1,28 @@
 import { View, Image } from 'react-native';
 import React from 'react';
 import { useUser } from './UserContext';
+import { Ionicons } from '@expo/vector-icons';
 
 const ProfileImagesSection = () => {
 
     const { userProfile } = useUser();
 
     return (
-        <View>
-            {/* Banner */}
-            <View className='relative w-full h-[200px]' >
-                <Image
-                    source={{ uri: userProfile.bannerUrl }}
-                    className='w-full h-full'
-                    resizeMode='cover'
-                />
-            </View>
-
-            {/* Photo + Level Icon */}
-            <View className='items-center mt-[-100px]' >
-                <View className='relative' >
+        <View className='items-center justify-center'>
+            <View className='relative w-40 h-40 rounded-full items-center justify-center shadow-sm' >
+                {userProfile.profilePhotoUrl ? (
                     <Image
                         source={{ uri: userProfile.profilePhotoUrl }}
-                        className='w-[150px] h-[150px] rounded-full'
+                        className='w-full h-full '
                     />
-                    <View className='absolute bottom-[-5px] right-[-5px] bg-[#444443] rounded-full w-[50px] h-[50px]' >
-                        <Image
-                            source={require('../../assets/icons/user-pages-icons/account-level-icons/ex-level-icon.png')}
-                            className='w-[50px] h-[50px]'
-                        />
-                    </View>
+                ) : (
+                    <Ionicons name="person" size={100} color="#ccc" />
+                )}
+                <View className='absolute bottom-0 right-[-2px] bg-white rounded-full' >
+                    <Image
+                        source={require('../../assets/icons/user-pages-icons/account-level-icons/ex-level-icon.png')}
+                        className='w-12 h-12'
+                    />
                 </View>
             </View>
         </View>

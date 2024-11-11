@@ -1,10 +1,10 @@
-import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, SafeAreaView, TextInput } from 'react-native';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import GoBackButton from '../GoBackButton';
 import { useUser } from '../profile/UserContext';
 import HandleSaveButton from './HandleSaveButton';
-import SucessModal from './SucessModal';
+import SuccessModal from './SuccessModal';
 import { Ionicons } from '@expo/vector-icons';
 
 const ChangeNameScreen = () => {
@@ -39,7 +39,7 @@ const ChangeNameScreen = () => {
         setIsChanged(false);
         setModalVisible(true);
 
-        setTimeout(() => setModalVisible(false), 2000);
+        setTimeout(() => setModalVisible(false), 1000);
     };
 
     return (
@@ -93,7 +93,7 @@ const ChangeNameScreen = () => {
                 />
             </View>
 
-            <SucessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
+            <SuccessModal visible={modalVisible} onClose={() => setModalVisible(false)} />
         </SafeAreaView>
     );
 }

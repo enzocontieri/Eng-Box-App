@@ -24,7 +24,6 @@ import ChangeUsernameScreen from '../Components/PersonalData/ChangeUsernameScree
 import ChangeEmailScreen from '../Components/PersonalData/ChangeEmailScreen';
 import ChangePasswordScreen from '../Components/PersonalData/ChangePasswordScreen';
 import ChangeTelephoneScreen from '../Components/PersonalData/ChangeTelephoneScreen';
-import ChangeProfileMediaScreen from '../Components/PersonalData/ChangeProfileMediaScreen';
 
 export {
     Home,
@@ -52,7 +51,6 @@ export {
     ChangeEmailScreen,
     ChangePasswordScreen,
     ChangeTelephoneScreen,
-    ChangeProfileMediaScreen,
 }
 
 
