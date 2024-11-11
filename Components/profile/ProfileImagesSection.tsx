@@ -13,7 +13,7 @@ const ProfileImagesSection = () => {
                 {userProfile.profilePhotoUrl ? (
                     <Image
                         source={{ uri: userProfile.profilePhotoUrl }}
-                        className='w-full h-full '
+                        className='w-full h-full rounded-full'
                     />
                 ) : (
                     <Ionicons name="person" size={100} color="#ccc" />
