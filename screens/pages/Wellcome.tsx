@@ -22,17 +22,16 @@ export default function Wellcome() {
 	}, []);
 
 	return (
-		<View className="flex-1 bg-[#F9F9F9] items-center justify-center mt-70">
+		<View className="flex-1 bg-[#F9F9F9]  items-center">
 			<View className="justify-center items-center mt-[-30] w-full h-64 mb-10">
 				<Image
 					source={require('../../assets/images/login/ImagemDeWellcome.png')}
 					className="absolute shadown top-0 left-0 w-full h-100 object-cover "
 				/>
 				<View className="justify-center items-center mt-[200]">
-					<Text className="mb-4 text-4xl font-bold text-[#F9F9F9]">
-						ENG BOX
-					</Text>
-					<Text className="text-[#F9F9F9] text-sm">PENSE FORA DA CAIXA</Text>
+					<Image
+						source={require('../../assets/images/login/LogoDoApp.png')}
+						/>
 				</View>
 			</View>
 
