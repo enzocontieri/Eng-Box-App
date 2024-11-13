@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
 	Image,
-	Keyboard,
 	KeyboardAvoidingView,
 	Platform,
 	ScrollView,
@@ -14,7 +13,6 @@ import {
 import 'tailwindcss/tailwind.css';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Controller, useForm } from 'react-hook-form';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
 	checkIsRemember,
@@ -55,22 +53,19 @@ export default function LogIn() {
 		>
 			<ScrollView className="bg-[#F9F9F9]">
 				<View className="bg-[#F9F9F9]">
-					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+					
 						<View className="relative flex justify-center items-center  w-full h-64 mb-6">
 							<Image
 								source={require('../../assets/images/login/ImagemDeFundo.png')}
 								className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
 							/>
 							<View className="justify-center items-center">
-								<Text className="mb-4 text-4xl font-bold text-[#F9F9F9]">
-									ENG BOX
-								</Text>
-								<Text className="text-[#F9F9F9] text-sm">
-									PENSE FORA DA CAIXA
-								</Text>
+							<Image
+						source={require('../../assets/images/login/LogoDoApp.png')}
+						/>
 							</View>
 						</View>
-					</TouchableWithoutFeedback>
+					
 					<View className="flex justify-center items-center bg-[#F9F9F9]">
 						{/*Wellcome*/}
 						<Text

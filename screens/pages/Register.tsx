@@ -40,8 +40,9 @@ export default function Register() {
                             className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
                         />
                         <View className='justify-center items-center'>
-                            <Text className='mb-4 text-4xl font-bold text-[#F9F9F9]'>ENG BOX</Text>
-                            <Text className='text-[#F9F9F9] text-sm'>PENSE FORA DA CAIXA</Text>
+                        <Image
+						source={require('../../assets/images/login/LogoDoApp.png')}
+						/>
                         </View>
                     </View>
 
