@@ -1,9 +1,8 @@
 import React from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Image, Text, View, TouchableOpacity, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, TextInput } from 'react-native';
+import { Image, Text, View, TouchableOpacity, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, TextInput, Modal, Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScrollView } from 'react-native-gesture-handler';
 import { Keyboard } from 'react-native';
 import { Video } from 'expo-av';
 
@@ -13,6 +12,7 @@ const Upload = () => {
   const [mediaType, setMediaType] = React.useState<"image" | "video" | null>(null);
   const [title, setTitle] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const [successfulUploadModalVisible, setSuccessfulUploadModalVisible] = React.useState(false);
 
   const pickMedia = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -34,10 +34,10 @@ const Upload = () => {
   }
 
   const handlePost = () => {
-    console.log('Media:', media);
-    console.log('Title:', title);
-    console.log('Description:', description);
+    setSuccessfulUploadModalVisible(true);
   }
+
+  const isButtonDisabled = !media || title.trim() === '' || description.trim() === '';
 
   return (
     <KeyboardAvoidingView
@@ -100,21 +100,52 @@ const Upload = () => {
                   onChangeText={setDescription}
                   multiline
                   className='w-full text-sm text-[#455A64]'
-                style={{ fontFamily: 'poppins-regular' }}
+                  style={{ fontFamily: 'poppins-regular' }}
 
                 />
               </View>
 
               <TouchableOpacity
                 className='w-full h-16 items-center justify-center bg-[#1F3B4D] rounded-lg mt-8'
+                onPress={handlePost}
+                disabled={isButtonDisabled}
               >
                 <Text className='text-lg text-[#FFFFFF]' style={{ fontFamily: 'poppins-medium' }} >Enviar</Text>
               </TouchableOpacity>
             </View>
           </View>
+
+          <Modal
+            transparent={true}
+            visible={successfulUploadModalVisible}
+            animationType='fade'
+            onRequestClose={() => setSuccessfulUploadModalVisible}
+          >
+            <View className='flex-1 justify-center items-center' >
+              <View className="bg-white w-4/5 px-6 py-2 rounded-xl items-center shadow-md" >
+                <View className='my-4' >
+                  <Ionicons name='checkmark-circle' size={60} color='#50B454' />
+                </View>
+                <Text className="text-lg text-[#1F3B4D] text-center mb-2" style={{ fontFamily: 'poppins-medium' }}>
+                  Post enviado para validação!
+                </Text>
+                <Text className="text-base text-[#455A64] text-center mb-4" style={{ fontFamily: 'poppins-regular' }}>
+                  Você será informado assim que a validação for concluída.
+                </Text>
+
+                <TouchableOpacity
+                  onPress={() => setSuccessfulUploadModalVisible(false)}
+                  className='bg-[#1F3B4D] w-full py-3 items-center justify-center rounded-md mb-4 shadow-md'
+                >
+                  <Text className='text-white text-base' style={{ fontFamily: 'poppins-medium' }} >Certo</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+
         </SafeAreaView>
       </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    </KeyboardAvoidingView >
   );
 }
 
