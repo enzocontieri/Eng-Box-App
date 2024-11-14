@@ -63,7 +63,7 @@ const MoreOptions = () => {
 
 					<TouchableOpacity
 						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
-						onPress={() => navigation.navigate('Info')}
+						onPress={() => navigation.navigate('Sobre')}
 					>
 						<Ionicons name="alert-circle" size={30} color="#767676" />
 

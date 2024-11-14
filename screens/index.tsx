@@ -11,7 +11,7 @@ import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import MoreOptions from './pages/MoreOptions';
 import Help from './options-menu/Help';
-import Info from './options-menu/Info';
+import Sobre from './options-menu/Sobre';
 import LogOut from './options-menu/LogOut';
 import Notifications from './options-menu/Notifications';
 import PersonalData from './options-menu/PersonalData';
@@ -38,7 +38,6 @@ export {
     Register,
     MoreOptions,
     Help,
-    Info,
     LogOut,
     Notifications,
     PersonalData,
@@ -51,6 +50,7 @@ export {
     ChangeEmailScreen,
     ChangePasswordScreen,
     ChangeTelephoneScreen,
+    Sobre
 }
 
 

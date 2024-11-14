@@ -143,8 +143,8 @@ export default function App() {
 						options={{ headerShown: false }}
 					/>
 					<Stack.Screen
-						name="Info"
-						component={Screens.Info}
+						name="Sobre"
+						component={Screens.Sobre}
 						options={{ headerShown: false }}
 					/>
 					<Stack.Screen
