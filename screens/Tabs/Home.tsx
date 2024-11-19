@@ -34,21 +34,15 @@ const HomeHeader = ({ username }: HomeHeaderProps) => {
 
 	return (
 		<View className="px-4 flex flex-row mt-5 items-center gap-x-3 mb-5">
-			<View className="h-icon w-icon">
+			<View className="bg-black h-full w-full">
 				<TouchableOpacity onPress={() => navigation.navigate('Profile')}>
 					<Image
-						source={require('../../assets/icons/user-pages-icons/user-photo/ex-user-photo.png')}
-						className="w-full h-full"
-						resizeMode="cover"
+						source={require('../../assets/images/login/LogoDoApp.png')}
+						
 					/>
 				</TouchableOpacity>
 			</View>
-			<Text
-				className="text-lg font-medium"
-				style={{ fontFamily: 'poppins-medium' }}
-			>
-				{username}
-			</Text>
+			
 		</View>
 	);
 };

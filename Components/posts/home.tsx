@@ -43,11 +43,7 @@ const PostComponent = ({ post }: PostProps) => {
 				<Text className="whitespace-normal w-80">{post.description}</Text>
 			</View>
 
-			{/* Área pra ver comentários e realizar curtida do post  */}
-			<View className="mt-8 flex-row items-center justify-around">
-				<LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />
-				<CommentButton />
-			</View>
+
 		</>
 	);
 };
