@@ -101,7 +101,7 @@ export default function App() {
 	return (
 		<UserProvider>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="Wellcome">
+				<Stack.Navigator initialRouteName="Sobre">
 					<Stack.Screen
 						name="Quiz"
 						component={Screens.Quiz}
