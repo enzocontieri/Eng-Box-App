@@ -8,14 +8,14 @@ import {
     Platform,
 } from 'react-native'
 import React from 'react'
-import {useNavigation} from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import 'tailwindcss/tailwind.css';
-import {useForm, Controller} from 'react-hook-form';
-import {ScrollView} from 'react-native-gesture-handler';
+import { useForm, Controller } from 'react-hook-form';
+import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {StackNavigationProp} from "@react-navigation/stack";
-import {RootStackParamList} from "../../utils/types/navigation";
-import {FormData} from "../../utils/types/form/formData";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../utils/types/navigation";
+import { FormData } from "../../utils/types/form/formData";
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -23,7 +23,7 @@ type NavigationProp = StackNavigationProp<RootStackParamList>;
 export default function Register() {
     /* Este código retorna exceção na pagina Register */
     const navigation = useNavigation<NavigationProp>();
-    const {control, handleSubmit, getValues} = useForm<FormData>();
+    const { control, handleSubmit, getValues } = useForm<FormData>();
     return (
 
         <KeyboardAvoidingView
@@ -40,23 +40,23 @@ export default function Register() {
                             className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
                         />
                         <View className='justify-center items-center'>
-                        <Image
-						source={require('../../assets/images/login/LogoDoApp.png')}
-						/>
+                            <Image
+                                source={require('../../assets/images/login/LogoDoApp.png')}
+                            />
                         </View>
                     </View>
 
                     <View className=' justify-center items-center bg-[#F9F9F9]'>
 
-                        <Text style={{fontFamily: 'poppins-semi-bold'}}
-                              className='text-[#00796B] mb-3 font-bold text-3xl ml-2'>Seja Bem-vindo</Text>
+                        <Text style={{ fontFamily: 'poppins-semi-bold' }}
+                            className='text-[#00796B] mb-3 font-bold text-3xl ml-2'>Seja Bem-vindo</Text>
                         <Text className='text-base text-[#455A64] mb-2 '>Crie sua conta</Text>
 
                         <View className='w-4/5 mb-4'>
                             <View
                                 className='flex-row items-center mb-2 mr-5 '
                             >
-                                <Ionicons name='person-sharp' size={20}/>
+                                <Ionicons name='person-sharp' size={20} />
                                 <Text className='ml-1 text-[#455A64]'>Usuário</Text>
                             </View>
 
@@ -78,7 +78,7 @@ export default function Register() {
                                         message: 'O nome só pode conter letras, acentos e espaços. Caracteres especiais são inválidos.'
                                     }
                                 }}
-                                render={({field: {value, onChange}, fieldState: {error}}) => (
+                                render={({ field: { value, onChange }, fieldState: { error } }) => (
                                     <>
                                         <TextInput
                                             className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl '
@@ -89,7 +89,7 @@ export default function Register() {
                                             autoCapitalize='none'
                                         />
                                         {error && <Text
-                                            style={{fontFamily: 'poppins-semi-bold'}}
+                                            style={{ fontFamily: 'poppins-semi-bold' }}
                                             className='text-[#ff375b] text-xs ml-2'>{error.message}</Text>}
                                     </>
                                 )}
@@ -101,7 +101,7 @@ export default function Register() {
                             <View
                                 className='flex-row items-center mb-2 mr-5 '
                             >
-                                <Ionicons name='mail' size={20}/>
+                                <Ionicons name='mail' size={20} />
                                 <Text className='ml-1 text-[#455A64]'>Email</Text>
                             </View>
 
@@ -123,7 +123,7 @@ export default function Register() {
                                         message: 'Email inválido'
                                     }
                                 }}
-                                render={({field: {value, onChange}, fieldState: {error}}) => (
+                                render={({ field: { value, onChange }, fieldState: { error } }) => (
                                     <>
                                         <TextInput
                                             className='bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl '
@@ -134,7 +134,7 @@ export default function Register() {
                                             autoCapitalize='none'
                                         />
                                         {error && <Text
-                                            style={{fontFamily: 'poppins-semi-bold'}}
+                                            style={{ fontFamily: 'poppins-semi-bold' }}
                                             className='text-[#ff375b] text-xs ml-2'>{error.message}</Text>}
                                     </>
                                 )}
@@ -144,7 +144,7 @@ export default function Register() {
                         <View className='w-4/5 mb-4'>
                             <View className='flex-row items-center mb-2 mr-5 '
                             >
-                                <Ionicons name='lock-closed' size={20}/>
+                                <Ionicons name='lock-closed' size={20} />
                                 <Text className='ml-1 text-[#455A64] '>Senha</Text>
                             </View>
 
@@ -166,7 +166,7 @@ export default function Register() {
                                         message: 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
                                     }
                                 }}
-                                render={({field: {value, onChange}, fieldState: {error}}) => (
+                                render={({ field: { value, onChange }, fieldState: { error } }) => (
                                     <>
                                         <TextInput
                                             className='bg-[#EDEDED] border border-[#B0BEC5]  shadow rounded-2xl px-4 py-4 '
@@ -177,7 +177,7 @@ export default function Register() {
                                             autoCapitalize='none'
                                         />
                                         {error && <Text
-                                            style={{fontFamily: 'poppins-semi-bold'}}
+                                            style={{ fontFamily: 'poppins-semi-bold' }}
                                             className='text-[#ff375b] text-xs ml-2'>{error.message}</Text>}
                                     </>
                                 )}
@@ -187,7 +187,7 @@ export default function Register() {
                         <View className='w-4/5 mb-4'>
                             <View className='flex-row items-center mb-2 mr-5 '
                             >
-                                <Ionicons name='lock-closed' size={20}/>
+                                <Ionicons name='lock-closed' size={20} />
                                 <Text className='ml-1 text-[#455A64] '>Confirmar senha</Text>
                             </View>
 
@@ -206,7 +206,7 @@ export default function Register() {
                                         message: "Limite excedido de caracteres"
                                     }
                                 }}
-                                render={({field: {value, onChange}, fieldState: {error}}) => (
+                                render={({ field: { value, onChange }, fieldState: { error } }) => (
                                     <>
                                         <TextInput
                                             className='bg-[#EDEDED] border border-[#B0BEC5]  shadow rounded-2xl px-4 py-4 '
@@ -217,7 +217,7 @@ export default function Register() {
                                             autoCapitalize='none'
                                         />
                                         {error && <Text
-                                            style={{fontFamily: 'poppins-semi-bold'}}
+                                            style={{ fontFamily: 'poppins-semi-bold' }}
                                             className='text-[#ff375b] text-xs ml-2'>{error.message}</Text>}
                                     </>
                                 )}

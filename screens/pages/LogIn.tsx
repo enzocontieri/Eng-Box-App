@@ -1,3 +1,4 @@
+
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
@@ -14,35 +15,52 @@ import 'tailwindcss/tailwind.css';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Controller, useForm } from 'react-hook-form';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { axiosLogin } from '../../services/axios';
 import {
 	checkIsRemember,
 	removeRememberMeData,
 	storeRememberMeData,
 } from '../../utils/async-storage/user-data';
+import { getToken, saveToken } from '../../utils/session/manager';
 import { FormData, LoginFormData } from '../../utils/types/form/formData';
 import { RootStackParamList } from '../../utils/types/navigation';
+import { TokenResponse } from '../../utils/types/token';
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 export default function LogIn() {
-	/* Este código retorna exceção na pagina Entrar */
 	const navigation = useNavigation<NavigationProp>();
 	const [rememberMe, setRememberMe] = useState(false);
-	const { control, handleSubmit } = useForm<FormData>();
+	const { control, handleSubmit, formState } = useForm<FormData>();
+	const { isSubmitting } = formState;
 
 	const handleFormSubmit = async (data: LoginFormData) => {
-		if (rememberMe) {
-			await storeRememberMeData();
-		} else {
-			await removeRememberMeData();
+		try {
+			const { data: tokenObject } = await axiosLogin.post<TokenResponse>(
+				'/api/usuario/login',
+				{
+					email: data.email,
+					senha: data.password,
+				},
+			);
+			await saveToken(tokenObject.token);
+
+			if (rememberMe) {
+				await storeRememberMeData();
+			} else {
+				await removeRememberMeData();
+			}
+			navigation.navigate('Main');
+		} catch (error: any) {
+			console.error(error);
 		}
-		navigation.navigate('Main');
 	};
 
 	useEffect(() => {
 		(async () => {
 			const isRemember = await checkIsRemember();
-			if (isRemember) navigation.navigate('Main');
+			const token = await getToken();
+			if (isRemember && token) navigation.navigate('Main');
 		})();
 	}, []);
 
@@ -53,19 +71,19 @@ export default function LogIn() {
 		>
 			<ScrollView className="bg-[#F9F9F9]">
 				<View className="bg-[#F9F9F9]">
-					
-						<View className="relative flex justify-center items-center  w-full h-64 mb-6">
-							<Image
-								source={require('../../assets/images/login/ImagemDeFundo.png')}
-								className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
-							/>
-							<View className="justify-center items-center">
-							<Image
-						source={require('../../assets/images/login/LogoDoApp.png')}
+
+					<View className="relative flex justify-center items-center  w-full h-64 mb-6">
+						<Image
+							source={require('../../assets/images/login/ImagemDeFundo.png')}
+							className="absolute shadown top-0 left-0 w-full h-full bg-[#F9F9F9] object-cover"
 						/>
-							</View>
+						<View className="justify-center items-center">
+							<Image
+								source={require('../../assets/images/login/LogoDoApp.png')}
+							/>
 						</View>
-					
+					</View>
+
 					<View className="flex justify-center items-center bg-[#F9F9F9]">
 						{/*Wellcome*/}
 						<Text
@@ -148,10 +166,11 @@ export default function LogIn() {
 										message: 'Limite excedido de caracteres',
 									},
 									pattern: {
-                                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                                        message: 'Senha inválida. Por favor, verifique e tente novamente.',
-                                    }
-
+										value:
+											/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+										message:
+											'Senha inválida. Por favor, verifique e tente novamente.',
+									},
 								}}
 								render={({
 									field: { value, onChange },
@@ -210,8 +229,9 @@ export default function LogIn() {
 
 						{/*Button Enter */}
 						<TouchableOpacity
-							className="w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl"
+							className={'w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl'}
 							onPress={handleSubmit(handleFormSubmit)}
+							disabled={isSubmitting}
 						>
 							<Text className="text-center text-white text-lg">Entrar</Text>
 						</TouchableOpacity>
