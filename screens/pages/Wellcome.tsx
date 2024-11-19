@@ -7,6 +7,7 @@ import {
 	checkIsRemember,
 	getRememberMeData,
 } from '../../utils/async-storage/user-data';
+import { getToken } from '../../utils/session/manager';
 import { RootStackParamList } from '../../utils/types/navigation';
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
@@ -52,8 +53,7 @@ export default function Wellcome() {
 				</Text>
 			</TouchableOpacity>
 			<View className="justify-center items-center">
-				<TouchableOpacity 
-				onPress={()=> navigation.navigate('PrivacyPolicy')}>
+				<TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
 					<Text className="ml-1 mt-[150] text-[#09090b]">
 						Politica de privacidade | Termos e condições
 					</Text>
