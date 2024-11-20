@@ -81,9 +81,9 @@ const ProfilePhotoPicker: React.FC = () => {
                         <View className='flex-row justify-center gap-2 my-4' >
                             <TouchableOpacity
                                 onPress={() => { removeImage(); setModalVisible(false); }}
-                                className='bg-[#455A64] items-center justify-center rounded-lg w-1/2 py-3'
+                                className='items-center justify-center rounded-lg w-1/2 py-3'
                             >
-                                <Text className='text-base text-white' style={{ fontFamily: 'poppins-medium' }} >Remover</Text>
+                                <Text className='text-base text-[#455A64]' style={{ fontFamily: 'poppins-medium' }} >Remover</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity
