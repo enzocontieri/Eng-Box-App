@@ -1,4 +1,3 @@
-
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
@@ -22,7 +21,7 @@ import {
 	storeRememberMeData,
 } from '../../utils/async-storage/user-data';
 import { getToken, saveToken } from '../../utils/session/manager';
-import { FormData, LoginFormData } from '../../utils/types/form/formData';
+import { LoginFormData } from '../../utils/types/form/formData';
 import { RootStackParamList } from '../../utils/types/navigation';
 import { TokenResponse } from '../../utils/types/token';
 
@@ -31,10 +30,10 @@ type NavigationProp = StackNavigationProp<RootStackParamList>;
 export default function LogIn() {
 	const navigation = useNavigation<NavigationProp>();
 	const [rememberMe, setRememberMe] = useState(false);
-	const { control, handleSubmit, formState } = useForm<FormData>();
+	const { control, handleSubmit, formState } = useForm<LoginFormData>();
 	const { isSubmitting } = formState;
 
-	const handleFormSubmit = async (data: LoginFormData) => {
+	const handleLoginFormSubmit = async (data: LoginFormData) => {
 		try {
 			const { data: tokenObject } = await axiosLogin.post<TokenResponse>(
 				'/api/usuario/login',
@@ -71,7 +70,6 @@ export default function LogIn() {
 		>
 			<ScrollView className="bg-[#F9F9F9]">
 				<View className="bg-[#F9F9F9]">
-
 					<View className="relative flex justify-center items-center  w-full h-64 mb-6">
 						<Image
 							source={require('../../assets/images/login/ImagemDeFundo.png')}
@@ -230,7 +228,7 @@ export default function LogIn() {
 						{/*Button Enter */}
 						<TouchableOpacity
 							className={'w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl'}
-							onPress={handleSubmit(handleFormSubmit)}
+							onPress={handleSubmit(handleLoginFormSubmit)}
 							disabled={isSubmitting}
 						>
 							<Text className="text-center text-white text-lg">Entrar</Text>

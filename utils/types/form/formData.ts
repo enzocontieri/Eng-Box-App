@@ -1,7 +1,7 @@
-export interface FormData {
+export interface RegisterFormData {
 	email: string;
 	password: string;
-	UserName: string;
+	username: string;
 	confirmPassword: string;
 }
 
