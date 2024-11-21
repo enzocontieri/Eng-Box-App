@@ -10,7 +10,6 @@ const PostDetails = () => {
 	const navigation = useNavigation();
 	const route = useRoute();
 
-	const [isLiked, setIsLiked] = useState(false); // Estado para o Botão de Curtit
 	const { imageUrl, title, description } = route.params; // Parâmetros passados pela navegação
 
 	return (
@@ -54,12 +53,6 @@ const PostDetails = () => {
 						>
 							{description}
 						</Text>
-
-						{/* Botões Curtir + Comentários */}
-						<View className="flex-row items-center justify-between mt-8">
-							<LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />
-							<CommentButton />
-						</View>
 					</View>
 				</View>
 			</ScrollView>
