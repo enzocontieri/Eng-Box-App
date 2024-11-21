@@ -14,7 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../utils/types/navigation";
-import { FormData } from "../../utils/types/form/formData";
+import { ForgotFormData } from "../../utils/types/form/formData";
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -22,7 +22,7 @@ type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 export default function ForgotPassword() {
     /* Este código retorna exceção na pagina Esqueceu sua Senha */
-    const { control, handleSubmit } = useForm<FormData>();
+    const { control, handleSubmit } = useForm<ForgotFormData>();
     const navigation = useNavigation<NavigationProp>();
 
     return (
@@ -117,7 +117,7 @@ export default function ForgotPassword() {
                         className='shadow text-[#767676]'
                         onPress={() => navigation.navigate('LogIn')}>
                         <Text
-                            className='text-sm text-[#00796B] ml-1'>Aperte Para Voltar</Text>
+                            className='text-sm text-[#1F3B4D] ml-1'>Aperte Para Voltar</Text>
                     </TouchableOpacity>
 
                 </View>

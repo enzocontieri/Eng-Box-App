@@ -68,7 +68,7 @@ export default function Register() {
 					<View className=" justify-center items-center bg-[#F9F9F9]">
 						<Text
 							style={{ fontFamily: 'poppins-semi-bold' }}
-							className="text-[#00796B] mb-3 font-bold text-3xl ml-2"
+							className="text-[#1F3B4D] mb-3 font-bold text-3xl ml-2"
 						>
 							Seja Bem-vindo
 						</Text>
@@ -79,7 +79,7 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="person-sharp" size={20} />
-								<Text className="ml-1 text-[#455A64]">Usuário</Text>
+								<Text className="font-bold ml-1 text-[#455A64]">Usuário</Text>
 							</View>
 
 							<Controller
@@ -130,7 +130,7 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="mail" size={20} />
-								<Text className="ml-1 text-[#455A64]">Email</Text>
+								<Text className=" font-bold ml-1 text-[#455A64]">Email</Text>
 							</View>
 
 							<Controller
@@ -180,7 +180,7 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="lock-closed" size={20} />
-								<Text className="ml-1 text-[#455A64] ">Senha</Text>
+								<Text className="font-bold ml-1 text-[#455A64] ">Senha</Text>
 							</View>
 
 							<Controller
@@ -231,7 +231,7 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="lock-closed" size={20} />
-								<Text className="ml-1 text-[#455A64] ">Confirmar senha</Text>
+								<Text className="font-bold ml-1 text-[#455A64] ">Confirmar senha</Text>
 							</View>
 
 							<Controller
@@ -277,7 +277,7 @@ export default function Register() {
 							/>
 						</View>
 						<TouchableOpacity
-							className="w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl"
+							className="w-4/5 bg-[#1F3B4D] shadow-lg py-4 mb-4 rounded-2xl"
 							onPress={handleSubmit(handleRegisterFormSubmit)}
 							disabled={isSubmitting}
 						>
@@ -293,7 +293,7 @@ export default function Register() {
 							className="shadow text-[#767676]"
 							onPress={() => navigation.navigate('LogIn')}
 						>
-							<Text className="text-sm text-[#00796B] ml-1">Entrar</Text>
+							<Text className="font-semibold text-sm text-[#1F3B4D] ml-1">Entrar</Text>
 						</TouchableOpacity>
 					</View>
 				</View>

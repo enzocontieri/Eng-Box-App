@@ -45,16 +45,16 @@ export default function Wellcome() {
 			</TouchableOpacity>
 
 			<TouchableOpacity
-				className="w-4/5 bg-[#FFFFFF] shadow-lg py-3.5 mb-4 rounded-2xl"
+				className="border border-[#1F3B4D] w-4/5 bg-[#FFFFFF] shadow-lg py-3.5 mb-4 rounded-2xl"
 				onPress={() => navigation.navigate('LogIn')}
 			>
-				<Text className="text-center border-[#F9F9F9] text-[#1F3B4D] text-xl">
+				<Text className=" text-center border-[#F9F9F9] text-[#1F3B4D] text-xl">
 					Entrar
 				</Text>
 			</TouchableOpacity>
 			<View className="justify-center items-center">
 				<TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
-					<Text className="ml-1 mt-[150] text-[#09090b]">
+					<Text className="font-semibold ml-1 mt-[150] text-[#09090b]">
 						Politica de privacidade | Termos e condições
 					</Text>
 				</TouchableOpacity>

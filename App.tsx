@@ -32,7 +32,7 @@ function TabNavigator() {
 				},
 				headerShown: false,
 				tabBarShowLabel: false,
-				tabBarActiveTintColor: '#00796B',
+				tabBarActiveTintColor: '#1F3B4D',
 			})}
 		>
 			<Tab.Screen name="Home" component={Screens.Home} />
@@ -77,7 +77,7 @@ const renderTabIcon = ({
 	return (
 		<View
 			style={{
-				borderColor: focused ? '#00796B' : 'transparent',
+				borderColor: focused ? '#1F3B4D' : 'transparent',
 				borderBottomWidth: focused ? 1 : 0,
 				padding: 3,
 			}}

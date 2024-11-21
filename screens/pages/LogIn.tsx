@@ -86,7 +86,7 @@ export default function LogIn() {
 						{/*Wellcome*/}
 						<Text
 							style={{ fontFamily: 'poppins-semi-bold' }}
-							className="text-[#00796B] mb-3 font-bold text-3xl ml-2"
+							className="text-[#1F3B4D] mb-3 font-bold text-3xl ml-2"
 						>
 							Bem-vindo de Volta!
 						</Text>
@@ -100,7 +100,7 @@ export default function LogIn() {
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="person-sharp" size={20} />
 
-								<Text className="ml-1 text-[#455A64]">Usuário</Text>
+								<Text className="font-bold ml-1 text-[#1F3B4D]">Usuário</Text>
 							</View>
 
 							<Controller
@@ -147,7 +147,7 @@ export default function LogIn() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="lock-closed" size={20} />
-								<Text className="ml-1 text-[#455A64] ">Senha</Text>
+								<Text className="font-bold ml-1 text-[#1F3B4D] ">Senha</Text>
 							</View>
 
 							<Controller
@@ -204,7 +204,7 @@ export default function LogIn() {
 									onPress={() => setRememberMe(!rememberMe)}
 								>
 									{rememberMe && (
-										<View className="w-full h-full bg-[#00796B]">
+										<View className="w-full h-full bg-[#1F3B4D]">
 											<Ionicons
 												name="checkbox-outline"
 												size={20}
@@ -218,7 +218,7 @@ export default function LogIn() {
 								<TouchableOpacity
 									onPress={() => navigation.navigate('ForgotPassword')}
 								>
-									<Text className="shadow text-sm text-[#00796B] ml-6 ">
+									<Text className="font-semibold shadow text-sm text-[#1F3B4D] ml-6 ">
 										Esqueceu sua Senha?
 									</Text>
 								</TouchableOpacity>
@@ -227,7 +227,7 @@ export default function LogIn() {
 
 						{/*Button Enter */}
 						<TouchableOpacity
-							className={'w-4/5 bg-[#00796B] shadow-lg py-4 mb-4 rounded-2xl'}
+							className={'w-4/5 bg-[#1F3B4D] shadow-lg py-4 mb-4 rounded-2xl'}
 							onPress={handleSubmit(handleLoginFormSubmit)}
 							disabled={isSubmitting}
 						>
@@ -243,7 +243,7 @@ export default function LogIn() {
 								className="shadow text-[#767676]"
 								onPress={() => navigation.navigate('Register')}
 							>
-								<Text className="text-sm text-[#00796B] ml-1">Registre-se</Text>
+								<Text className="font-semibold text-sm text-[#1F3B4D] ml-1">Registre-se</Text>
 							</TouchableOpacity>
 						</View>
 					</View>
