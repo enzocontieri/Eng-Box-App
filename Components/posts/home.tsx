@@ -1,51 +1,50 @@
-import { useState } from 'react';
-import { Image, ImageSourcePropType, Text, View } from 'react-native';
+import React from 'react';
+import { Image, Text, View } from 'react-native';
 import { Post } from '../../utils/types/post';
-import CommentButton from '../buttons/comment';
-import LikeButton from '../buttons/like';
 
 type PostProps = {
-	post: Post;
+  post: Post;
 };
 
 const PostComponent = ({ post }: PostProps) => {
-	const [isLiked, setIsLiked] = useState(false);
+  
+  const imageUrl = post.fotos && post.fotos.length > 0 ? post.fotos[0].url : null;  
 
-	return (
-		<>
-			{/* Area da imagem e cabeçalho do post */}
-			<View>
-				<View className="bg-primaryGray px-4 py-1 rounded-tl-xl rounded-tr-xl">
-					<View className="flex flex-row items-center gap-x-3">
-						<View className="h-11 w-11">
-							<Image
-								source={require('../../assets/icons/user-pages-icons/user-photo/ex-user-photo.png')}
-								className="w-full h-full"
-								resizeMode="cover"
-							/>
-						</View>
-						<Text style={{ fontFamily: 'poppins-medium' }}>{post.author}</Text>
-					</View>
-				</View>
+  return (
+    <View>
+   
+      <View className="bg-primaryGray px-4 py-1 rounded-tl-xl rounded-tr-xl">
+        <View className="flex flex-row items-center gap-x-3">
+          <View className="h-11 w-11">
+            <Image
+              source={require('../../assets/icons/user-pages-icons/user-photo/ex-user-photo.png')}
+              className="w-full h-full"
+              resizeMode="cover"
+            />
+          </View>
+          <Text className="font-medium">{post.idUsuario || 'Autor desconhecido'}</Text>
+        </View>
+      </View>
 
-				<View className="h-[430px] w-[430px] self-center">
-					<Image
-						source={post.imageUrl as ImageSourcePropType}
-						className="w-full h-full"
-						resizeMode="cover"
-					/>
-				</View>
-			</View>
+      <View className="h-[430px] w-[430px] self-center">
+        {imageUrl ? (
+          <Image
+            source={{ uri: imageUrl }}  
+            className="w-full h-full"
+            resizeMode="cover"
+          />
+        ) : (
+          <Text className="text-center">Imagem não disponível</Text>
+        )}
+      </View>
 
-			{/* Área pra ver descrição do post  */}
-			<View className="mx-3 space-y-1">
-				<Text className="font-medium text-2xl">{post.title}</Text>
-				<Text className="whitespace-normal w-80">{post.description}</Text>
-			</View>
-
-
-		</>
-	);
+      
+      <View className="mx-3 space-y-1">
+        <Text className="font-medium text-2xl">{post.titulo || 'Sem título'}</Text>
+        <Text className="whitespace-normal w-80">{post.conteudo || 'Sem descrição'}</Text>
+      </View>
+    </View>
+  );
 };
 
 export default PostComponent;

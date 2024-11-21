@@ -69,7 +69,7 @@ const MoreOptions = () => {
 								className=" text-[#767676] font-semibold text-[20px]"
 								style={{ fontFamily: 'poppins-medium' }}
 							>
-								Info
+								Sobre
 							</Text>
 						</View>
 

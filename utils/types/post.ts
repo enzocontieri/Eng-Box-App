@@ -1,7 +1,10 @@
-export interface Post {
+export interface Foto {
+	url: string;  
+  }
+  export interface Post {
 	id: number;
-	description: string;
-	author: string;
-	title: string;
-	imageUrl: string;
-}
+	idUsuario: string;
+	titulo: string;
+	conteudo: string;
+	fotos: Foto[];  
+  }
