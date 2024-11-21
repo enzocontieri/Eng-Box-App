@@ -13,7 +13,7 @@ const Home = () => {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const response = await axiosPostsGet.get('/api/receitas');
+				const response = await axiosPostsGet.get('/api/Enge/receitas');
 				console.log(response.data);
 				setPosts(response.data);
 			} catch (error) {
