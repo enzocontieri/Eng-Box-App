@@ -33,11 +33,11 @@ const HomeHeader = ({ username }: HomeHeaderProps) => {
 	const navigation = useNavigation();
 
 	return (
-		<View className="px-4 flex flex-row mt-5 items-center gap-x-3 mb-5">
-			<View className="bg-black h-full w-full">
+		<View className="px-4 flex flex-row my-6 items-center gap-x-3 mb+-5">
+			<View className=" h-full w-full">
 				<TouchableOpacity onPress={() => navigation.navigate('Profile')}>
 					<Image
-						source={require('../../assets/images/login/LogoDoApp.png')}
+						source={require('../../assets/images/login/LogoAppHome.png')}
 						
 					/>
 				</TouchableOpacity>
