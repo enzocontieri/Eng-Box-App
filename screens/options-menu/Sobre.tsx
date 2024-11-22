@@ -1,59 +1,57 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
-import GoBackButton from "../../Components/GoBackButton";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import GoBackButton from '../../Components/GoBackButton';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { AboutDevsBox, AboutTextBox } from '../../Components/AboutTextBox';
+
 
 const Sobre = () => {
   return (
     <SafeAreaView>
+      <ScrollView>
+        <GoBackButton title='Sobre' />
 
-      <ScrollView className="bg-[#F4F7F6]  ">
-        <GoBackButton
-          title="Sobre"
+        <View className='flex items-center mt-10'>
 
-        />
-        <View className="bg-white p-6 pt-6 pb-2 rounded-lg shadow-lg mb-5">
-          <Text
-            style={{ fontFamily: 'poppins-semi-bold' }}
-            className="text-[#1F3B4D]  mb-3">
-            Objetivo do aplicativo:
+          <AboutTextBox
+            iconName='information-circle'
+            iconSize={30}
+            boxTitle='Sobre o aplicativo'
+            boxTextContent='O EngBox é uma ferramenta voltada para promover o consumo sustentável através de práticas e dicas específicas da área de Engenharia.
+              Ele faz parte de uma família de aplicativos que exploram a sustentabilidade em diferentes campos, como Gastronomia, Moda, Farmácia
+              e Engenharia.'
+          />
 
-          </Text>
-          <Text className="text-[#455A64]  text-base mb-6">
-            - Incentivar a conscientização e educação dos engenheiros sobre
-            práticas sustentáveis no dia a dia.{"\n"}- Engajar stakeholders em
-            torno de metas de sustentabilidade e redução de impacto ambiental.
-            {"\n"}- Adotar tecnologias limpas, como o uso de energia solar, eólica
-            e biogás.{"\n"}- Desenhar produtos e sistemas que utilizem menos água
-            e emitam menos poluentes.
-          </Text>
+          <AboutTextBox
+            iconName='flag'
+            iconSize={30}
+            boxTitle='Objetivo'
+            boxTextContent='Nosso objetivo é oferecer soluções práticas e acessíveis para ajudar as pessoas a adotarem hábitos mais sustentáveis,
+            aplicando conhecimentos técnicos da área de Engenharia. Com isso, buscamos contribuir para um impacto positivo no meio ambiente e 
+            na sociedade.'
+          />
 
-          <Text
-            style={{ fontFamily: 'poppins-semi-bold' }}
-            className="text-[#1F3B4D]  mb-3">Desenvolvedores:</Text>
-          <Text className="text-[#455A64]  text-base mb-6">
-            - Gabriel Silva Magalhães{"\n"}- Lucas Costa Leite Santana{"\n"}-
-            Arthur Victor Vitoriano{"\n"}- Vitor Vitoriano{"\n"}- Yago Mário
-            Cerqueira{"\n"}- Edioelson Júnior Teixeira{"\n"}- Enzo Colombo
-            Contieri{"\n"}- Hanspeter Dietiker
-          </Text>
+          <AboutDevsBox />
 
-          <Text
-            style={{ fontFamily: 'poppins-semi-bold' }}
-            className="text-[#1F3B4D]  mb-3">Professor:</Text>
-          <Text className="text-[#455A64]  text-base mb-6">
-            - Welligton Lacerda
-          </Text>
+          <AboutTextBox
+            iconName='school'
+            iconSize={30}
+            boxTitle='Orientadores'
+            boxTextContent='• Wellington Lacerda'
+          />
 
-          <Text
-            style={{ fontFamily: 'poppins-semi-bold' }}
-            className="text-[#1F3B4D] mb-3">Universidade:</Text>
-          <Text className="text-[#455A64]  text-base">- UNIFACS</Text>
+          <AboutTextBox
+            iconName='library'
+            iconSize={30}
+            boxTitle='Universidade'
+            boxTextContent='Este projeto foi desenvolvido por estudantes da UNIFACS, que integra o grupo Grupo Anima Educação. A iniciativa reflete o compromisso 
+            da instituição com a inovação e a sustentabilidade.'
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
+}
 
 export default Sobre;
