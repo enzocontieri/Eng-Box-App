@@ -1,8 +1,8 @@
 export interface UserProfile {
-    profilePhotoUrl?: string | null;
-    name: string;
-    username: string;
-    phoneNumber: string;
-    email: string;
-    password: string;
+	profilePhotoUrl?: string | null;
+	name: string;
+	username: string;
+	phoneNumber: string;
+	email: string;
+	password: string;
 }

@@ -11,7 +11,6 @@ import {
 	View,
 } from 'react-native';
 import 'tailwindcss/tailwind.css';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { Controller, useForm } from 'react-hook-form';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { axiosLogin } from '../../services/axios';
@@ -22,10 +21,8 @@ import {
 } from '../../utils/async-storage/user-data';
 import { getToken, saveToken } from '../../utils/session/manager';
 import { LoginFormData } from '../../utils/types/form/formData';
-import { RootStackParamList } from '../../utils/types/navigation';
+import { NavigationProp } from '../../utils/types/navigation';
 import { TokenResponse } from '../../utils/types/token';
-
-type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 export default function LogIn() {
 	const navigation = useNavigation<NavigationProp>();
@@ -42,6 +39,7 @@ export default function LogIn() {
 					senha: data.password,
 				},
 			);
+
 			await saveToken(tokenObject.token);
 
 			if (rememberMe) {
@@ -49,9 +47,11 @@ export default function LogIn() {
 			} else {
 				await removeRememberMeData();
 			}
+
+			alert('Login realizado com sucesso!');
 			navigation.navigate('Main');
 		} catch (error: any) {
-			console.error(error);
+			console.error(error.response);
 		}
 	};
 
@@ -200,7 +200,7 @@ export default function LogIn() {
 						<View className="w-4/5 flex-row justify between mb-6">
 							<View className="flex-row items-center">
 								<TouchableOpacity
-									className={`shadow w-6 h-6 rounded-sm border-2 ${rememberMe ? 'bg-[#D9D9D9]' : 'bg-white border-[#D9D9D9]'}`}
+									className={`shadow w-6 h-6 rounded-sm border-2 $rememberMe ? 'bg-[#D9D9D9]' : 'bg-white border-[#D9D9D9]'`}
 									onPress={() => setRememberMe(!rememberMe)}
 								>
 									{rememberMe && (

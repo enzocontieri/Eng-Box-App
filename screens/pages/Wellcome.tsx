@@ -2,15 +2,12 @@ import { useEffect } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import 'tailwindcss/tailwind.css';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import {
 	checkIsRemember,
 	getRememberMeData,
 } from '../../utils/async-storage/user-data';
-import { getToken } from '../../utils/session/manager';
-import { RootStackParamList } from '../../utils/types/navigation';
+import { NavigationProp } from '../../utils/types/navigation';
 
-type NavigationProp = StackNavigationProp<RootStackParamList>;
 export default function Wellcome() {
 	const navigation = useNavigation<NavigationProp>();
 
@@ -29,9 +26,7 @@ export default function Wellcome() {
 					className="absolute shadown top-0 left-0 w-full h-100 object-cover "
 				/>
 				<View className="justify-center items-center mt-[200]">
-					<Image
-						source={require('../../assets/images/login/LogoDoApp.png')}
-						/>
+					<Image source={require('../../assets/images/login/LogoDoApp.png')} />
 				</View>
 			</View>
 
