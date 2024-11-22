@@ -29,7 +29,7 @@ export default function Register() {
 
 	const handleRegisterFormSubmit = async (data: RegisterFormData) => {
 		try {
-			const { data: responseUser } = await axiosLogin.post('/api/usuario', {
+			const { data: message } = await axiosLogin.post('/api/usuario', {
 				email: data.email,
 				senha: data.password,
 				nome: data.username,
@@ -38,7 +38,7 @@ export default function Register() {
 				tokens: `${Math.random()}`,
 				telefone: '123232323',
 			});
-			console.log(responseUser);
+
 			alert('Perfil criado com sucesso!');
 			navigation.navigate('LogIn');
 		} catch (error) {
@@ -231,7 +231,9 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="lock-closed" size={20} />
-								<Text className="font-bold ml-1 text-[#455A64] ">Confirmar senha</Text>
+								<Text className="font-bold ml-1 text-[#455A64] ">
+									Confirmar senha
+								</Text>
 							</View>
 
 							<Controller
@@ -293,7 +295,9 @@ export default function Register() {
 							className="shadow text-[#767676]"
 							onPress={() => navigation.navigate('LogIn')}
 						>
-							<Text className="font-semibold text-sm text-[#1F3B4D] ml-1">Entrar</Text>
+							<Text className="font-semibold text-sm text-[#1F3B4D] ml-1">
+								Entrar
+							</Text>
 						</TouchableOpacity>
 					</View>
 				</View>

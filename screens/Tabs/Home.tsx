@@ -1,60 +1,50 @@
-import { useEffect, useState } from "react";
-import { Post } from "../../utils/types/post";
-import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../../utils/types/navigation";
-import { getToken } from "../../utils/session/manager";
-import { Image, TouchableOpacity, View } from "react-native";
-import PostComponent from "../../Components/posts/home";
-import { FlatList } from "react-native-gesture-handler";
-import { getApiAxios } from "../../services/axios";
-
-
-	
-
-
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Image, TouchableOpacity, View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import PostComponent from '../../Components/posts/home';
+import { getApiAxios } from '../../services/axios';
+import { getToken } from '../../utils/session/manager';
+import { NavigationProp } from '../../utils/types/navigation';
+import { Post } from '../../utils/types/post';
 
 const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [loading, setLoading] = useState(true);
 	const navigation = useNavigation<NavigationProp>();
 
-	useEffect(() => {
+	const fetchPosts = async () => {
+		try {
+			const api = await getApiAxios();
+			const response = await api.get('/api/Enge/receitas');
 
-		
-		const fetchPosts = async () => {
-			try {
+			setPosts(response.data);
+		} catch (error) {
+			console.error('Erro ao buscar posts:', error);
+		} finally {
+			setLoading(false);
+		}
+	};
 
-				const api = await getApiAxios()
-				const response = await api.get('/api/Enge/receitas');
+	useFocusEffect(
+		React.useCallback(() => {
+			// Do something when the screen is focused
+			(async () => {
+				const token = await getToken();
+				if (!token) {
+					alert('Você precisa realizar o login para acessar!');
+					navigation.navigate('LogIn');
+					return;
+				}
 
-				console.log(response.data);
-				setPosts(response.data);
-			} catch (error) {
-				console.error('Erro ao buscar posts:', error);
-			} finally {
-				setLoading(false);
-			}
-		};
-		
-		(async () => {
-			const token = await getToken();
-			if (!token) {
-				alert('Você precisa realizar o login para acessar!');
-				navigation.navigate('LogIn');
-				return 
-			}
-
-			fetchPosts();
-		})();
-		
-	}, []);
-
-
-
-	useEffect(() => {
-		
-	}, []);
-
+				fetchPosts();
+			})();
+			return () => {
+				// Do something when the screen is unfocused
+				// Useful for cleanup functions
+			};
+		}, []),
+	);
 
 	const renderPost = ({ item }: { item: Post }) => (
 		<View className="mb-8">
@@ -64,8 +54,7 @@ const Home = () => {
 
 	if (loading) {
 		return (
-			<View className="flex-1 justify-center items-center bg-white">
-			</View>
+			<View className="flex-1 justify-center items-center bg-white"></View>
 		);
 	}
 

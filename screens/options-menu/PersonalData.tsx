@@ -3,12 +3,9 @@ import React from 'react';
 import ProfilePhotoPicker from '../../Components/PersonalData/ImagesPicker';
 import PersonalDataButton from '../../Components/PersonalData/PersonalDataButton';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../../utils/types/navigation';
-import { StackNavigationProp } from '@react-navigation/stack';
 import GoBackButton from '../../Components/GoBackButton';
+import { NavigationProp } from '../../utils/types/navigation';
 
-
-type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 const PersonalData: React.FC = () => {
 

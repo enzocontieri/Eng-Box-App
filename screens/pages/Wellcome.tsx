@@ -1,22 +1,28 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import 'tailwindcss/tailwind.css';
-import { useNavigation } from '@react-navigation/native';
-import {
-	checkIsRemember,
-	getRememberMeData,
-} from '../../utils/async-storage/user-data';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { checkIsRemember } from '../../utils/async-storage/user-data';
+import { getToken } from '../../utils/session/manager';
 import { NavigationProp } from '../../utils/types/navigation';
 
 export default function Wellcome() {
 	const navigation = useNavigation<NavigationProp>();
 
-	useEffect(() => {
-		(async () => {
-			const isRemember = await checkIsRemember();
-			if (isRemember) navigation.navigate('Main');
-		})();
-	}, []);
+	useFocusEffect(
+		React.useCallback(() => {
+			// Do something when the screen is focused
+			(async () => {
+				const isRemember = await checkIsRemember();
+				const token = await getToken();
+				if (isRemember && token) navigation.navigate('Main');
+			})();
+			return () => {
+				// Do something when the screen is unfocused
+				// Useful for cleanup functions
+			};
+		}, []),
+	);
 
 	return (
 		<View className="flex-1 bg-[#F9F9F9]  items-center">

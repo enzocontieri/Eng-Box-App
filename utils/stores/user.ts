@@ -3,12 +3,12 @@ import { UserResponse } from '../types/user-response';
 
 interface UserState {
 	user: UserResponse | null;
-	setUser: (newUser: UserResponse) => void;
+	setUser: (newUser: UserResponse | null) => void;
 	clearUser: () => void;
 }
 
 export const userStore = create<UserState>((set) => ({
 	user: null,
-	setUser: (newUser: UserResponse) => set({ user: newUser }),
+	setUser: (newUser: UserResponse | null) => set({ user: newUser }),
 	clearUser: () => set({ user: null }),
 }));

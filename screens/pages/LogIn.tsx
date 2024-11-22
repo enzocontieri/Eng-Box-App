@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
 	Image,
@@ -55,13 +55,19 @@ export default function LogIn() {
 		}
 	};
 
-	useEffect(() => {
-		(async () => {
-			const isRemember = await checkIsRemember();
-			const token = await getToken();
-			if (isRemember && token) navigation.navigate('Main');
-		})();
-	}, []);
+	useFocusEffect(
+		React.useCallback(() => {
+			(async () => {
+				const isRemember = await checkIsRemember();
+				const token = await getToken();
+				if (isRemember && token) navigation.navigate('Main');
+			})();
+			return () => {
+				// Do something when the screen is unfocused
+				// Useful for cleanup functions
+			};
+		}, []),
+	);
 
 	return (
 		<KeyboardAvoidingView
@@ -243,7 +249,9 @@ export default function LogIn() {
 								className="shadow text-[#767676]"
 								onPress={() => navigation.navigate('Register')}
 							>
-								<Text className="font-semibold text-sm text-[#1F3B4D] ml-1">Registre-se</Text>
+								<Text className="font-semibold text-sm text-[#1F3B4D] ml-1">
+									Registre-se
+								</Text>
 							</TouchableOpacity>
 						</View>
 					</View>
