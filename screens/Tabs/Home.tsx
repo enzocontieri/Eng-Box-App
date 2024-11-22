@@ -1,42 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View, Image, ActivityIndicator } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-import PostComponent from '../../Components/posts/home';
-import posts from '../../data/posts';
-import { getToken } from '../../utils/session/manager';
-import { NavigationProp } from '../../utils/types/navigation';
-import { Post } from '../../utils/types/post';
+import { useEffect, useState } from "react";
+import { Post } from "../../utils/types/post";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProp } from "../../utils/types/navigation";
+import { getToken } from "../../utils/session/manager";
+import { Image, TouchableOpacity, View } from "react-native";
+import PostComponent from "../../Components/posts/home";
+import { FlatList } from "react-native-gesture-handler";
+import { getApiAxios } from "../../services/axios";
 
-const Home = () => {
-	const navigation = useNavigation<NavigationProp>();
 
-	useEffect(() => {
-		(async () => {
-			const token = await getToken();
-			if (!token) {
-				alert('Você precisa realizar o login para acessar!');
-				navigation.navigate('LogIn');
-			}
-		})();
-	}, []);
+	
 
-=======
-import { axiosPostsGet } from '../../services/axios';
-import PostComponent from '../../Components/posts/home';
-import { Post } from '../../utils/types/post';
+
 
 const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [loading, setLoading] = useState(true);
-
+	const navigation = useNavigation<NavigationProp>();
 
 	useEffect(() => {
+
+		
 		const fetchPosts = async () => {
 			try {
-				const response = await axiosPostsGet.get('/api/Enge/receitas');
+
+				const api = await getApiAxios()
+				const response = await api.get('/api/Enge/receitas');
+
 				console.log(response.data);
 				setPosts(response.data);
 			} catch (error) {
@@ -45,12 +35,27 @@ const Home = () => {
 				setLoading(false);
 			}
 		};
+		
+		(async () => {
+			const token = await getToken();
+			if (!token) {
+				alert('Você precisa realizar o login para acessar!');
+				navigation.navigate('LogIn');
+				return 
+			}
 
-		fetchPosts();
+			fetchPosts();
+		})();
+		
 	}, []);
 
 
->>>>>>> ad6e051ba9f4f09138326309f87ad93ff1471f69
+
+	useEffect(() => {
+		
+	}, []);
+
+
 	const renderPost = ({ item }: { item: Post }) => (
 		<View className="mb-8">
 			<PostComponent post={item} />
@@ -85,19 +90,18 @@ const HomeHeader = ({ username }: HomeHeaderProps) => {
 	const navigation = useNavigation();
 
 	return (
-<<<<<<< HEAD
 		<View className="px-4 flex flex-row mt-5 items-center gap-x-3 mb-5">
 			<View className="bg-black h-full w-full">
 				<TouchableOpacity onPress={() => navigation.navigate('Profile')}>
 					<Image source={require('../../assets/images/login/LogoDoApp.png')} />
 				</TouchableOpacity>
-=======
-		<View className="px-4 flex flex-row my-6 items-center gap-x-3">
-			<View>
-				<Image
-					source={require('../../assets/images/login/LogoAppHome.png')}
-				/>
->>>>>>> ad6e051ba9f4f09138326309f87ad93ff1471f69
+			</View>
+			<View className="px-4 flex flex-row my-6 items-center gap-x-3">
+				<View>
+					<Image
+						source={require('../../assets/images/login/LogoAppHome.png')}
+					/>
+				</View>
 			</View>
 		</View>
 	);

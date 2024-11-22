@@ -24,3 +24,17 @@ export const getUserDetails = async () => {
 		return null;
 	}
 };
+
+export const getUserDetailsByEmail = async (email: string) => {
+	const token = await getToken();
+	if (token) {
+		const axios = await getApiAxios();
+		const { data: user } = await axios.get<UserResponse>(
+			`/api/usuario/${email}`,
+		);
+
+		return user;
+	} else {
+		return null;
+	}
+};
