@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, TouchableOpacity, FlatList, ImageBackground, Image, ActivityIndicator } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
 import { data } from '../../data/dataEspecialist';
 import { useNavigation } from '@react-navigation/native';
@@ -22,8 +22,17 @@ const CategoryComponent = () => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true)
+    const [cards, setCards] = useState(false)
     const navigation = useNavigation();
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 500);
+        return () => clearTimeout(timeout);
+    }, [loading]);
+    
+    
     const updateSearch = (search) => {
         setSearch(search);
       };
@@ -131,39 +140,47 @@ const CategoryComponent = () => {
                     <TouchableOpacity
                         key={index}
                         className={`bg-white h-13 mb-2 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between ${selectedCategories.includes(category.label) ? 'bg-[#78CAD2]' : ''}`}
-                        onPress={() => toggleCategory(category.label)}
+                        onPress={() => {toggleCategory(category.label); setLoading(true); setCards(true) }}
                     >
                         <Text className={`${selectedCategories.includes(category.label) ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'poppins-medium' }}>{category.label}</Text>
                         <Image source={category.icon} className="w-6 h-6 ml-2" />
                     </TouchableOpacity>
                 ))}
             </ScrollView>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            {cards ? (
+                <>
+                <ScrollView showsVerticalScrollIndicator={false}>
                 {loading ? (
-                    <ActivityIndicator 
-                    className='my-48 '
-                    size="large"
-                    color="#4A4A4A"
-                    />    )
-                : (
+                    <ActivityIndicator className="my-48" size="large" color="#4A4A4A" />
+                ) : (
                     <FlatList
-                    data={filteredData}
-                    renderItem={({ item }) => (
-                        <Item
-                            username={item.username}
-                            description={item.description}
-                            CategoryIcon={item.CategoryIcon}
-                            icon={item.icon}
-                            title={item.title}
-                            useravatar={item.useravatar}
-                        />
-                    )}
-                    keyExtractor={(item) => item.username || item.id}
-                    scrollEnabled={false}
-                    contentContainerStyle={{ paddingBottom: 800 }}
-                />
+                        data={filteredData}
+                        renderItem={({ item }) => (
+                            <Item
+                                username={item.username}
+                                description={item.description}
+                                CategoryIcon={item.CategoryIcon}
+                                icon={item.icon}
+                                title={item.title}
+                                useravatar={item.useravatar}
+                            />
+                        )}
+                        keyExtractor={(item) => item.id}
+                        scrollEnabled={false}
+                        contentContainerStyle={{ paddingBottom: 800 }}
+                    />
                 )}
-            </ScrollView>
+                </ScrollView>
+                </>
+            ) : (
+                <>
+                    <View className='items-center justify-center flex'>
+                        <Text className='text-base mt-32 text-[#4A4A4A]' style={{ fontFamily: 'poppins-medium', opacity: 0.6 }}>Nenhum Resultado</Text>
+                    </View>
+                    {console.log(cards)}
+                </>
+            )}
+            
         </View>
     );
 }

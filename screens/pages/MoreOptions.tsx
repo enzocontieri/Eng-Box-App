@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { removeRememberMeData } from '../../utils/async-storage/user-data';
-
+import GoBackButton from '../../Components/GoBackButton';
+import { SafeAreaView } from 'react-native-safe-area-context';
 const MoreOptions = () => {
 	const navigation = useNavigation();
 
@@ -14,15 +15,11 @@ const MoreOptions = () => {
 
 	return (
 		<SafeAreaView>
+			<GoBackButton title='Opções'/>
 			<View className="flex items-center justify-center ">
-				<View className="bg-white w-[80%] h-32 my-2 rounded-md shadow flex-row items-center mt-[25%]"></View>
+				<View className="bg-white w-[80%] h-32 my-2 rounded-md shadow flex-row items-center mt-[15%]"></View>
 
-				<TouchableOpacity
-					onPress={() => navigation.goBack()}
-					className="absolute top-10 left-5 bg-white p-2 rounded-full"
-				>
-					<Ionicons name="chevron-back" size={18} color="#767676" />
-				</TouchableOpacity>
+				
 
 				<View className="top-16 w-[90%] items-center gap-5">
 					<TouchableOpacity
@@ -72,7 +69,7 @@ const MoreOptions = () => {
 								className=" text-[#767676] font-semibold text-[20px]"
 								style={{ fontFamily: 'poppins-medium' }}
 							>
-								Info
+								Sobre
 							</Text>
 						</View>
 

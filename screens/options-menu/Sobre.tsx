@@ -1,56 +1,57 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import GoBackButton from '../../Components/GoBackButton';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { AboutDevsBox, AboutTextBox } from '../../Components/AboutTextBox';
+
 
 const Sobre = () => {
   return (
-    <View className="mt-12" style={styles.container}>
-      <Text style={styles.title}>Sobre</Text>
+    <SafeAreaView>
+      <ScrollView>
+        <GoBackButton title='Sobre' />
 
-      <Text style={styles.subtitle}>Objetivo do aplicativo:</Text>
-      <Text style={styles.text}>
-        - Incentivar a conscientização e educação dos engenheiros sobre práticas
-        sustentáveis no dia a dia.{"\n"} - Engajar stakeholders em torno de metas de
-        sustentabilidade e redução de impacto ambiental.{"\n"} - Adotar tecnologias
-        limpas, como o uso de energia solar, eólica e biogás.{"\n"} - Desenhar produtos
-        e sistemas que utilizem menos água e emitam menos poluentes.
-      </Text>
+        <View className='flex items-center mt-10'>
 
-      <Text style={styles.subtitle}>Desenvolvedores:</Text>
-      <Text style={styles.text}>
-        - Gabriel Silva Magalhães{"\n"}- Lucas Costa Leite Santana{"\n"}- Arthur
-        Victor Vitoriano{"\n"}- Yago Mário Cerqueira{"\n"}- Edioelson Júnior
-        Teixeira{"\n"}- Enzo Colombo Contieri{"\n"}- Hanspeter Dietiker
-      </Text>
+          <AboutTextBox
+            iconName='information-circle'
+            iconSize={30}
+            boxTitle='Sobre o aplicativo'
+            boxTextContent='O EngBox é uma ferramenta voltada para promover o consumo sustentável através de práticas e dicas específicas da área de Engenharia.
+              Ele faz parte de uma família de aplicativos que exploram a sustentabilidade em diferentes campos, como Gastronomia, Moda, Farmácia
+              e Engenharia.'
+          />
 
-      <Text style={styles.subtitle}>Professor:</Text>
-      <Text style={styles.text}>- Welligton Lacerda</Text>
+          <AboutTextBox
+            iconName='flag'
+            iconSize={30}
+            boxTitle='Objetivo'
+            boxTextContent='Nosso objetivo é oferecer soluções práticas e acessíveis para ajudar as pessoas a adotarem hábitos mais sustentáveis,
+            aplicando conhecimentos técnicos da área de Engenharia. Com isso, buscamos contribuir para um impacto positivo no meio ambiente e 
+            na sociedade.'
+          />
 
-      <Text style={styles.subtitle}>Universidade:</Text>
-      <Text style={styles.text}> - UNIFACS </Text>
-    </View>
+          <AboutDevsBox />
+
+          <AboutTextBox
+            iconName='school'
+            iconSize={30}
+            boxTitle='Orientadores'
+            boxTextContent='• Wellington Lacerda'
+          />
+
+          <AboutTextBox
+            iconName='library'
+            iconSize={30}
+            boxTitle='Universidade'
+            boxTextContent='Este projeto foi desenvolvido por estudantes da UNIFACS, que integra o grupo Grupo Anima Educação. A iniciativa reflete o compromisso 
+            da instituição com a inovação e a sustentabilidade.'
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
-};
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 25,
-    backgroundColor: "white",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    marginTop: 17,
-  },
-  text: {
-    fontSize: 17,
-    lineHeight: 22,
-    marginTop: 5,
-  },
-});
+}
+
 export default Sobre;

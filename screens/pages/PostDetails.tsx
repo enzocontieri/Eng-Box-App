@@ -1,17 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import * as React from 'react';
+import { Image, Modal, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import CommentButton from '../../Components/buttons/comment';
-import LikeButton from '../../Components/buttons/like';
 
 const PostDetails = () => {
 	const navigation = useNavigation();
 	const route = useRoute();
 
-	const [isLiked, setIsLiked] = useState(false); // Estado para o Botão de Curtit
 	const { imageUrl, title, description } = route.params; // Parâmetros passados pela navegação
+
+	const [modalVisible, setModalVisible] = React.useState<boolean>(false);
 
 	return (
 		<SafeAreaView className="flex-1">
@@ -31,10 +30,20 @@ const PostDetails = () => {
 
 				{/* Container Principal */}
 				<View className="flex-1 items-center justify-center mt-10">
+
+					<View className='flex self-end mr-2 mt-16' >
+						<TouchableOpacity onPress={() => {
+							setModalVisible(true);
+							console.log(modalVisible);
+						}} >
+							<Ionicons name='ellipsis-vertical' size={24} />
+						</TouchableOpacity>
+					</View>
+
 					{/* Imagem do Post */}
 					<Image
 						source={imageUrl}
-						className="w-11/12 h-[45vh] rounded-lg mt-16"
+						className="w-full h-[45vh] mt-4"
 						resizeMode="cover"
 					/>
 
@@ -54,15 +63,42 @@ const PostDetails = () => {
 						>
 							{description}
 						</Text>
-
-						{/* Botões Curtir + Comentários */}
-						<View className="flex-row items-center justify-between mt-8">
-							<LikeButton isLiked={isLiked} setIsLiked={setIsLiked} />
-							<CommentButton />
-						</View>
 					</View>
 				</View>
 			</ScrollView>
+
+			<Modal
+				visible={modalVisible}
+				transparent={true}
+				animationType='fade'
+				onRequestClose={() => setModalVisible(false)}
+			>
+				<View className='w-full h-full flex-1 items-center justify-center' >
+					<View className='bg-white w-3/4 p-6 rounded-xl shadow-md' >
+						<TouchableOpacity
+							className='flex self-end m-1'
+							onPress={() => {
+								console.log("Modal Fechado");
+								setModalVisible(false);
+							}}
+						>
+							<Ionicons name='close-circle-outline' size={28} color={'#455A64'} />
+						</TouchableOpacity>
+
+						<View className='flex items-center gap-5'>
+							<Text className='text-lg text-[#1F2B4D]' style={{ fontFamily: 'poppins-medium' }} >Opções do post</Text>
+							<TouchableOpacity
+								onPress={() => {
+									console.log("Post removido")
+								}}
+								className='bg-[#455A64] items-center justify-center px-14 py-2 rounded-lg'
+							>
+								<Text className='text-base text-white' style={{ fontFamily: 'poppins-medium' }} >Remover Post</Text>
+							</TouchableOpacity>
+						</View>
+					</View>
+				</View>
+			</Modal>
 		</SafeAreaView>
 	);
 };
