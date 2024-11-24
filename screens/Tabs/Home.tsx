@@ -76,13 +76,15 @@ type HomeHeaderProps = {
 };
 
 const HomeHeader = ({ username }: HomeHeaderProps) => {
-	const navigation = useNavigation();
+	const navigation = useNavigation<NavigationProp>()
 
 	return (
 		<View className="px-4 flex flex-row mt-5 items-center gap-x-3 mb-5">
 			<View className="bg-black h-full w-full">
-				<TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-					<Image source={require('../../assets/images/login/LogoDoApp.png')} />
+				<TouchableOpacity
+					onPress={() => navigation.navigate('Profile')}>
+					<Image
+						source={require('../../assets/images/login/LogoDoApp.png')} />
 				</TouchableOpacity>
 			</View>
 			<View className="px-4 flex flex-row my-6 items-center gap-x-3">

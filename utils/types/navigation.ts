@@ -7,6 +7,7 @@ export type RootStackParamList = {
 		title: string;
 		description: string;
 	};
+	Profile: undefined;
 	PersonalData: undefined;
 	Sobre: undefined;
 	Help: undefined;
