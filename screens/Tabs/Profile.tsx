@@ -11,11 +11,12 @@ import { getUserDetails } from '../../utils/session/user-data';
 import { NavigationProp } from '../../utils/types/navigation';
 import { UserResponse } from '../../utils/types/user-response';
 import { getApiAxios } from '../../services/axios';
+import { Post } from '../../utils/types/post';
 
 const Profile = () => {
 	const navigation = useNavigation<NavigationProp>();
 	const [userProfile, setUserProfile] = useState<UserResponse | null>(null);
-	const [userReceitas, setUserReceitas] = useState([])
+	const [userPostagens, setUserPostagens] = useState<Post[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	const fetchUserPosts = async () => {
@@ -23,7 +24,9 @@ const Profile = () => {
 		try {
 			const api = await getApiAxios();
 			const response = await api.get('/api/Enge/receitas')
-			setUserReceitas(response.data)
+			const userPosts = response.data.filter
+				((post: Post) => post.idUsuario === userProfile?.email); // gambiarra
+			setUserPostagens(userPosts)
 
 		} catch (error) {
 			console.error('Erro ao carregar os dados do Usuario:', error)
@@ -79,7 +82,7 @@ const Profile = () => {
 					</Text>
 				</View>
 
-				<PostList />
+				<PostList posts={userPostagens} />
 			</ScrollView>
 		</SafeAreaView>
 	);
