@@ -106,7 +106,7 @@ export default function LogIn() {
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="person-sharp" size={20} />
 
-								<Text className="font-bold ml-1 text-[#1F3B4D]">Usuário</Text>
+								<Text className="font-bold ml-1 text-[#1F3B4D]">Email</Text>
 							</View>
 
 							<Controller
@@ -130,7 +130,7 @@ export default function LogIn() {
 									<>
 										<TextInput
 											className="bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl "
-											placeholder="Nome de Usuário ou Email"
+											placeholder="Email"
 											value={value}
 											onChangeText={onChange}
 											keyboardType="email-address"
