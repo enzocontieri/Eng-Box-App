@@ -37,7 +37,7 @@ export default function Wellcome() {
 			</View>
 
 			<TouchableOpacity
-				className="w-4/5 bg-[#1F3B4D] shadow-lg py-3.5 mb-4 mt-[200] rounded-2xl"
+				className="w-4/5 bg-[#767676] shadow-lg py-3.5 mb-4 mt-[230] rounded-2xl"
 				onPress={() => navigation.navigate('Register')}
 			>
 				<Text className="text-center text-[#FFFFFF] text-xl">
@@ -46,10 +46,10 @@ export default function Wellcome() {
 			</TouchableOpacity>
 
 			<TouchableOpacity
-				className="border border-[#1F3B4D] w-4/5 bg-[#FFFFFF] shadow-lg py-3.5 mb-4 rounded-2xl"
+				className="border border-[#5A5A5A] w-4/5 bg-[#FFFFFF] shadow-lg py-3.5 mb-4 rounded-2xl"
 				onPress={() => navigation.navigate('LogIn')}
 			>
-				<Text className=" text-center border-[#F9F9F9] text-[#1F3B4D] text-xl">
+				<Text className=" text-center border-[#F9F9F9] text-[#5A5A5A] text-xl">
 					Entrar
 				</Text>
 			</TouchableOpacity>

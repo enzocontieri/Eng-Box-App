@@ -51,8 +51,8 @@ export default function ForgotPassword() {
                     {/*ForgotPassword */}
                     <View className='flex justify-center items-center'>
                         <Text style={{ fontFamily: 'poppins-semi-bold' }}
-                            className='text-[#1F3B4D] mb-4 font-bold text-3xl ml-1'>Esqueceu sua senha?</Text>
-                        <Text className='text-[#455A64] ml-1 mb-8 text-justify w-[322px] font-bold  '>
+                            className='text-[#5A5A5A] mb-4 font-bold text-3xl ml-1'>Esqueceu sua senha?</Text>
+                        <Text className='text-[#5B5B5B] ml-1 mb-8 text-justify w-[322px] font-bold  '>
                             Digite o endereço de e-mail para o qual deseja que suas informações de redefinição de senha
                             sejam enviadas.</Text>
                     </View>
@@ -63,7 +63,7 @@ export default function ForgotPassword() {
                         <View className='flex-row items-center mb-4 mr-5 '
                         >
                             <Ionicons name='mail' size={20} />
-                            <Text className='ml-1 text-[#455A64] '>Email</Text>
+                            <Text className='ml-1 text-[#5B5B5B] '>Email</Text>
                         </View>
 
                         <Controller
@@ -83,7 +83,7 @@ export default function ForgotPassword() {
                             render={({ field: { value, onChange }, fieldState: { error } }) => (
                                 <>
                                     <TextInput
-                                        className='bg-[#EDEDED] border border-[#B0BEC5] shadow rounded-2xl px-4 py-4  '
+                                        className='bg-[#EDEDED] border border-[#5B5B5B] shadow rounded-2xl px-4 py-4  '
                                         placeholder='Digite seu Email'
                                         onChangeText={onChange}
                                         value={value}
@@ -103,7 +103,7 @@ export default function ForgotPassword() {
 
                     {/*Button Send*/}
                     <TouchableOpacity
-                        className='w-4/5 bg-[#1F3B4D] shadow-lg py-4 mb-5 rounded-2xl'
+                        className='w-4/5 bg-[#5A5A5A] shadow-lg py-4 mb-5 rounded-2xl'
                         onPress={handleSubmit((data) => {
                             console.log(data);
                         })}>
@@ -114,10 +114,10 @@ export default function ForgotPassword() {
 
 
                     <TouchableOpacity
-                        className='shadow text-[#767676]'
+                        className='shadow text-[#5A5A5A]'
                         onPress={() => navigation.navigate('LogIn')}>
                         <Text
-                            className='text-sm text-[#1F3B4D] ml-1'>Aperte Para Voltar</Text>
+                            className='text-sm text-[#5A5A5A] ml-1'>Aperte Para Voltar</Text>
                     </TouchableOpacity>
 
                 </View>

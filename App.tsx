@@ -32,7 +32,7 @@ function TabNavigator() {
 				},
 				headerShown: false,
 				tabBarShowLabel: false,
-				tabBarActiveTintColor: '#1F3B4D',
+				tabBarActiveTintColor: '#5A5A5A',
 			})}
 		>
 			<Tab.Screen name="Home" component={Screens.Home} />
@@ -77,7 +77,7 @@ const renderTabIcon = ({
 	return (
 		<View
 			style={{
-				borderColor: focused ? '#1F3B4D' : 'transparent',
+				borderColor: focused ? '#5A5A5A' : 'transparent',
 				borderBottomWidth: focused ? 1 : 0,
 				padding: 3,
 			}}
@@ -101,7 +101,7 @@ export default function App() {
 	return (
 		<UserProvider>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="Main">
+				<Stack.Navigator initialRouteName="Wellcome">
 					<Stack.Screen
 						name="Quiz"
 						component={Screens.Quiz}

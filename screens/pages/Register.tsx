@@ -68,18 +68,18 @@ export default function Register() {
 					<View className=" justify-center items-center bg-[#F9F9F9]">
 						<Text
 							style={{ fontFamily: 'poppins-semi-bold' }}
-							className="text-[#1F3B4D] mb-3 font-bold text-3xl ml-2"
+							className="text-[#767676] mb-3 font-bold text-3xl ml-2"
 						>
 							Seja Bem-vindo
 						</Text>
-						<Text className="text-base text-[#455A64] mb-2 ">
+						<Text className="text-base text-[#767676] mb-2 ">
 							Crie sua conta
 						</Text>
 
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="person-sharp" size={20} />
-								<Text className="font-bold ml-1 text-[#455A64]">Usuário</Text>
+								<Text className="font-bold ml-1 text-[#767676]">Usuário</Text>
 							</View>
 
 							<Controller
@@ -107,7 +107,7 @@ export default function Register() {
 								}) => (
 									<>
 										<TextInput
-											className="bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl "
+											className="bg-[#EDEDED] border border-[#767676] shadow px-4 py-4 rounded-2xl "
 											placeholder="Nome de Usuário"
 											value={value}
 											onChangeText={onChange}
@@ -130,7 +130,7 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="mail" size={20} />
-								<Text className=" font-bold ml-1 text-[#455A64]">Email</Text>
+								<Text className=" font-bold ml-1 text-[#767676]">Email</Text>
 							</View>
 
 							<Controller
@@ -158,7 +158,7 @@ export default function Register() {
 								}) => (
 									<>
 										<TextInput
-											className="bg-[#EDEDED] border border-[#B0BEC5] shadow px-4 py-4 rounded-2xl "
+											className="bg-[#EDEDED] border border-[#767676] shadow px-4 py-4 rounded-2xl "
 											placeholder="Digite seu Email"
 											value={value}
 											onChangeText={onChange}
@@ -180,7 +180,7 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="lock-closed" size={20} />
-								<Text className="font-bold ml-1 text-[#455A64] ">Senha</Text>
+								<Text className="font-bold ml-1 text-[#767676] ">Senha</Text>
 							</View>
 
 							<Controller
@@ -209,7 +209,7 @@ export default function Register() {
 								}) => (
 									<>
 										<TextInput
-											className="bg-[#EDEDED] border border-[#B0BEC5]  shadow rounded-2xl px-4 py-4 "
+											className="bg-[#EDEDED] border border-[#767676]  shadow rounded-2xl px-4 py-4 "
 											placeholder="Digite sua senha"
 											value={value}
 											onChangeText={onChange}
@@ -231,7 +231,7 @@ export default function Register() {
 						<View className="w-4/5 mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
 								<Ionicons name="lock-closed" size={20} />
-								<Text className="font-bold ml-1 text-[#455A64] ">
+								<Text className="font-bold ml-1 text-[#767676] ">
 									Confirmar senha
 								</Text>
 							</View>
@@ -259,7 +259,7 @@ export default function Register() {
 								}) => (
 									<>
 										<TextInput
-											className="bg-[#EDEDED] border border-[#B0BEC5]  shadow rounded-2xl px-4 py-4 "
+											className="bg-[#EDEDED] border border-[#767676]  shadow rounded-2xl px-4 py-4 "
 											placeholder="Digite sua senha novamente"
 											value={value}
 											onChangeText={onChange}
@@ -279,7 +279,7 @@ export default function Register() {
 							/>
 						</View>
 						<TouchableOpacity
-							className="w-4/5 bg-[#1F3B4D] shadow-lg py-4 mb-4 rounded-2xl"
+							className="w-4/5 bg-[#767676] shadow-lg py-4 mb-4 rounded-2xl"
 							onPress={handleSubmit(handleRegisterFormSubmit)}
 							disabled={isSubmitting}
 						>
@@ -289,13 +289,13 @@ export default function Register() {
 
 					<View className="flex-row justify-center items-center mb-4">
 						<View className="flex-row justify-center items-center">
-							<Text className="text-gray-700 ">Já tem uma Conta?</Text>
+							<Text className="text-[#767676] ">Já tem uma Conta?</Text>
 						</View>
 						<TouchableOpacity
 							className="shadow text-[#767676]"
 							onPress={() => navigation.navigate('LogIn')}
 						>
-							<Text className="font-semibold text-sm text-[#1F3B4D] ml-1">
+							<Text className="font-semibold text-sm text-[#767676] ml-1">
 								Entrar
 							</Text>
 						</TouchableOpacity>
