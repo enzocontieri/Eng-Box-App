@@ -1,6 +1,6 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HeaderMenu from '../../Components/buttons/HeaderMenu';
 import PostList from '../../Components/profile/PostList';
@@ -10,10 +10,29 @@ import { getToken } from '../../utils/session/manager';
 import { getUserDetails } from '../../utils/session/user-data';
 import { NavigationProp } from '../../utils/types/navigation';
 import { UserResponse } from '../../utils/types/user-response';
+import { getApiAxios } from '../../services/axios';
 
 const Profile = () => {
 	const navigation = useNavigation<NavigationProp>();
 	const [userProfile, setUserProfile] = useState<UserResponse | null>(null);
+	const [userReceitas, setUserReceitas] = useState([])
+	const [loading, setLoading] = useState(true);
+
+	const fetchUserPosts = async () => {
+
+		try {
+			const api = await getApiAxios();
+			const response = await api.get('/api/Enge/receitas')
+			setUserReceitas(response.data)
+
+		} catch (error) {
+			console.error('Erro ao carregar os dados do Usuario:', error)
+			Alert.alert('Erro', 'Não foi possível carregar os dados do perfil.')
+
+		} finally {
+			setLoading(false)
+		}
+	}
 
 	useFocusEffect(
 		React.useCallback(() => {
@@ -27,6 +46,7 @@ const Profile = () => {
 				} else {
 					const user = await getUserDetails();
 					setUserProfile(user);
+					await fetchUserPosts();
 				}
 			})();
 			return () => {

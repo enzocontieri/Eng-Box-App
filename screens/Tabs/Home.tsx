@@ -1,12 +1,13 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import PostComponent from '../../Components/posts/home';
 import { getApiAxios } from '../../services/axios';
 import { getToken } from '../../utils/session/manager';
 import { NavigationProp } from '../../utils/types/navigation';
 import { Post } from '../../utils/types/post';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -21,6 +22,7 @@ const Home = () => {
 			setPosts(response.data);
 		} catch (error) {
 			console.error('Erro ao buscar posts:', error);
+			Alert.alert('Erro', 'Não foi possível carregar as Postagens')
 		} finally {
 			setLoading(false);
 		}
@@ -79,22 +81,21 @@ const HomeHeader = ({ username }: HomeHeaderProps) => {
 	const navigation = useNavigation<NavigationProp>()
 
 	return (
-		<View className="px-4 flex flex-row mt-5 items-center gap-x-3 mb-5">
-			<View className="bg-black h-full w-full">
-				<TouchableOpacity
-					onPress={() => navigation.navigate('Profile')}>
-					<Image
-						source={require('../../assets/images/login/LogoDoApp.png')} />
-				</TouchableOpacity>
-			</View>
-			<View className="px-4 flex flex-row my-6 items-center gap-x-3">
-				<View>
-					<Image
-						source={require('../../assets/images/login/LogoAppHome.png')}
-					/>
+		<SafeAreaView>
+
+			<View className="px-4 flex flex-row my-6 items-center gap-x-3 mb-5 ">
+				<View className=" h-full w-full">
+
+					<View>
+						<Image
+							source={require('../../assets/images/login/LogoAppHome.png')}
+						/>
+					</View>
 				</View>
+
 			</View>
-		</View>
+		</SafeAreaView>
+
 	);
 };
 
