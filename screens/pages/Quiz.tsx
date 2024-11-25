@@ -1,22 +1,92 @@
+import React, { useState } from "react";
 import {
     View,
     Text,
     SafeAreaView,
-    FlatList,
     TouchableOpacity,
-    Alert,
+    Modal,
 } from "react-native";
-import React, { useState } from "react";
+import 'tailwindcss/tailwind.css';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from "../../utils/types/navigation";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 // Define o tipo de navegação para o componente
-type NavigationProp = StackNavigationProp<RootStackParamList, 'Quiz'>;
+type NavigationProp = StackNavigationProp<RootStackParamList>;
+
+// Define os tipos das props do componente Option
+type OptionProps = {
+    option: string;
+    index: number;
+    selectedOption: number | null;
+    setSelectedOption: (index: number) => void;
+};
+
+// Componente para renderizar uma opção de resposta
+const Option: React.FC<OptionProps> = ({ option, index, selectedOption, setSelectedOption }) => {
+    const optionLabel = String.fromCharCode(65 + index); // Gera 'A', 'B', 'C', etc.
+    return (
+        <TouchableOpacity
+            accessible={true}
+            accessibilityLabel={`Opção ${optionLabel}`}
+            className={`flex-row h-16 items-center rounded-lg my-2 w-96 ${selectedOption === index ? "bg-gray-400" : "bg-gray-500"}`}
+            onPress={() => setSelectedOption(index)}
+        >
+            <View className={`rounded-xl h-10 w-10 justify-center items-center ml-5 ${selectedOption === index ? 'bg-gray-500' : 'bg-gray-400'}`}>
+                <Text style={{ fontFamily: 'poppins-semi-bold' }}
+                    className="text-white">
+                    {optionLabel}
+                </Text>
+            </View>
+            <View className="flex-1 mr-14 justify-center items-center">
+                <Text style={{ fontFamily: 'poppins-semi-bold' }}
+                    className={`text-center text-base ${selectedOption === index ? 'text-gray-500' : 'text-white'}`}>
+                    {option}
+                </Text>
+            </View>
+        </TouchableOpacity>
+    );
+};
+
+// Componente de alerta personalizado
+const CustomAlert = ({ visible, title, message, onClose }: { visible: boolean, title: string, message: string, onClose: () => void }) => (
+    <Modal
+        transparent={true}
+        animationType="fade"
+        visible={visible}
+    >
+        <View className="flex-1 justify-center items-center bg-black bg-opacity-50">
+            <View className="bg-white rounded-lg p-6 w-80">
+                <Text
+                    style={{ fontFamily: "poppins-semi-bold" }}
+                    className="text-gray-500 text-lg mb-4 text-center"
+                >
+                    {title}
+                </Text>
+                <Text
+                    style={{ fontFamily: "poppins-semi-bold" }}
+                    className="text-black text-base mb-6 text-center"
+                >
+                    {message}
+                </Text>
+                <TouchableOpacity
+                    className="bg-gray-500 rounded-lg p-3"
+                    onPress={onClose}
+                >
+                    <Text
+                        style={{ fontFamily: "poppins-semi-bold" }}
+                        className="text-white text-center"
+                    >
+                        Fechar
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    </Modal>
+);
 
 // Componente principal do Quiz
 const Quiz = () => {
-    // Array de questões com id, question, options e correctOption para armazenar opções e resposta correta
     const questions = [
         {
             id: "1",
@@ -24,21 +94,18 @@ const Quiz = () => {
             option: ["Concreto", "Alumínio", "Aço", "Madeira"],
             correctOption: 2,
         },
-
         {
             id: "2",
             question: "Qual é a unidade de medida de tensão no Sistema Internacional (SI)?",
             option: ["Newton (N)", "Pascal (Pa)", "Joule (J)", "Watt (W)"],
             correctOption: 1,
         },
-
         {
             id: "3",
             question: "Qual é o principal gás que causa o efeito estufa e está diretamente relacionado às atividades humanas?",
             option: ["Oxigênio", "Metano", "Dióxido de enxofre", "Dióxido de carbono"],
             correctOption: 3,
         },
-
         {
             id: "4",
             question: "Qual é a unidade de medida de resistência elétrica?",
@@ -52,132 +119,85 @@ const Quiz = () => {
             option: ["Válvula de controle", "Cilindro hidráulico", "Bomba hidráulica", "Acumulador hidráulico"],
             correctOption: 3,
         },
+
     ];
 
-    // Estado para armazenar a questão atual, a opção selecionada e a pontuação do usuário
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
-    const [score, setScore] = useState(0);
+const [currentQuestion, setCurrentQuestion] = useState(0);
+const [selectedOption, setSelectedOption] = useState<number | null>(null);
+const [score, setScore] = useState(0);
+const [alertVisible, setAlertVisible] = useState(false);
+const [resultAlertVisible, setResultAlertVisible] = useState(false);
 
-    const navigation = useNavigation<NavigationProp>();
+const navigation = useNavigation<NavigationProp>();
 
-    // Função que avança para a próxima questão ou exibe o resultado final
-    const handleNextQuestion = () => {
-        if (selectedOption === null) {
-            alert("Por favor, selecione uma opção antes de continuar.");
-            return;
-        }
+const handleNextQuestion = () => {
+    if (selectedOption === null) {
+        setAlertVisible(true);
+        return;
+    }
 
-        // Incrementa a pontuação se a resposta estiver correta
-        if (selectedOption === questions[currentQuestion].correctOption) {
-            setScore(score + 1);
-        }
+    if (selectedOption === questions[currentQuestion].correctOption) {
+        setScore(score + 1);
+    }
 
-        const nextQuestion = currentQuestion + 1;
-        // Verifica se há mais perguntas ou exibe o total de acertos
-        if (nextQuestion < questions.length) {
-            setCurrentQuestion(nextQuestion);
-            setSelectedOption(null);
-        } else {
-            Alert.alert(
-                `Você acertou ${score} de ${questions.length} perguntas.`
-            );
-            // Navega para a tela de resultado com pontuação final
-            navigation.navigate('QuizzResult', { score: score, total: questions.length });
-        }
-    };
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questions.length) {
+        setCurrentQuestion(nextQuestion);
+        setSelectedOption(null);
+    } else {
+        setResultAlertVisible(true); // Mostra o alerta de resultado
+    }
+};
 
-    return (
-        <SafeAreaView className="h-full">
-            {/* FlatList para exibir apenas a questão atual */}
-            <FlatList
-                data={[questions[currentQuestion]]} // Exibe apenas a questão atual
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                    <View style={{ alignItems: 'center', padding: 20 }}>
+return (
+    <SafeAreaView className="h-full">
+        {/* Alerta de seleção de opção */}
+        <CustomAlert
+            visible={alertVisible}
+            title="Atenção"
+            message="Por favor, selecione uma opção antes de continuar."
+            onClose={() => setAlertVisible(false)}
+        />
 
-                        <Text className="text-[#00796B] font-bold text-2xl">Quiz</Text>
+        {/* Alerta de resultado */}
+        <CustomAlert
+            visible={resultAlertVisible}
+            title="Resultado"
+            message={`Você acertou ${score} de ${questions.length} perguntas.`}
+            onClose={() => {
+                setResultAlertVisible(false);
+                navigation.navigate('QuizzResult');
+            }}
+        />
 
-                        {/* Exibe a pergunta */}
-                        <Text className="text-gray-600 font-bold text-lg mt-10 ml-[3.25%]">
-                            {item.question}
-                        </Text>
+        <View className="items-center p-5">
+            <Text style={{ fontFamily: 'poppins-semi-bold' }} className="text-gray-500 text-2xl">Quiz</Text>
+            <Text style={{ fontFamily: 'poppins-semi-bold' }} className="text-black text-lg mt-10 ml-3">
+                {questions[currentQuestion].question}
+            </Text>
 
-                        {/* Mapeia as opções da questão atual */}
-                        {item.option.map((option, index) => {
-                            const optionLabel = String.fromCharCode(65 + index); // Letras (A, B, C, D)
+            {/* Renderiza opções */}
+            <View className="mt-10">
+                {questions[currentQuestion].option.map((option, index) => (
+                    <Option
+                        key={index}
+                        option={option}
+                        index={index}
+                        selectedOption={selectedOption}
+                        setSelectedOption={setSelectedOption}
+                    />
+                ))}
+            </View>
 
-                            return (
-                                <TouchableOpacity
-                                    key={index}
-                                    style={{
-                                        backgroundColor: selectedOption === index ? "#C9C4C4" : "#00796B",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        top: 50,
-                                        padding: 16,
-                                        borderRadius: 16,
-                                        marginVertical: 5,
-                                        width: 340,
-                                        alignSelf: "center",
-                                    }}
-                                    onPress={() => setSelectedOption(index)} // Define a opção selecionada
-                                >
-                                    <View
-                                        style={{
-                                            backgroundColor: "#3EA99F",
-                                            borderRadius: 9,
-                                            padding: 9,
-                                            width: 40,
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            marginRight: 10,
-                                        }}
-                                    >
-                                        <Text style={{ color: "#fff", fontWeight: "bold" }}>
-                                            {optionLabel}
-                                        </Text>
-                                    </View>
-
-                                    <View style={{
-                                        alignSelf: 'center',
-                                        justifyContent: 'center',
-                                        flex: 1,
-                                        right: 25,
-                                    }}>
-                                        <Text style={{
-                                            color: selectedOption === index ? '#767676' : '#fff', // Trocar a cor do texto ao ser selecionado
-                                            fontWeight: 'bold',
-                                            textAlign: 'center',
-                                        }}>
-                                            {option}
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
-                            );
-                        })}
-
-                        {/* Botão para enviar a resposta e ir para a próxima pergunta */}
-                        <TouchableOpacity
-                            onPress={handleNextQuestion}
-                            disabled={selectedOption === null} // Desabilita o botão se nenhuma opção foi selecionada
-                            style={{
-                                marginTop: 20,
-                                top: 100,
-                                padding: 25,
-                                borderRadius: 18,
-                                backgroundColor: selectedOption !== null ? "#00796B" : "gray",
-                                width: 340,
-                                alignSelf: "center",
-                            }}
-                        >
-                            <Text className="text-center text-white font-bold">Enviar</Text>
-                        </TouchableOpacity>
-                    </View>
-                )}
-            />
-        </SafeAreaView>
-    );
+            <TouchableOpacity
+                className={`mt-10 ${selectedOption !== null ? 'bg-gray-500' : 'bg-gray-400'} rounded-2xl w-96 h-16 p-4`}
+                onPress={handleNextQuestion}
+            >
+                <Text style={{ fontFamily: 'poppins-semi-bold' }} className="text-white text-center text-base">Próxima Pergunta</Text>
+            </TouchableOpacity>
+        </View>
+    </SafeAreaView>
+);
 };
 
 export default Quiz;
