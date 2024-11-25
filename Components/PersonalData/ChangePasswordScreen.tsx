@@ -9,15 +9,13 @@ import {
 	View,
 } from 'react-native';
 import { getApiAxios } from '../../services/axios';
-import { getUserDetails } from '../../utils/session/user-data';
 import { userStore } from '../../utils/stores/user';
 import GoBackButton from '../GoBackButton';
-import { useUser } from '../profile/UserContext';
 import HandleSaveButton from './HandleSaveButton';
 import SuccessModal from './SuccessModal';
 
 const ChangePasswordScreen = () => {
-	let user = userStore.getState().user;
+	const user = userStore.getState().user;
 
 	const {
 		control,
@@ -26,25 +24,17 @@ const ChangePasswordScreen = () => {
 		setError,
 	} = useForm({
 		defaultValues: {
-			currentPassword: '',
 			newPassword: '',
 		},
 	});
 
 	const [isChanged, setIsChanged] = React.useState(false);
 	const [modalVisible, setModalVisible] = React.useState(false);
-	const [showCurrentPassword, setShowCurrentPassword] =
-		React.useState<boolean>(false);
 	const [showNewPassword, setShowNewPassword] = React.useState<boolean>(false);
 
-	const onSubmit = async (data: {
-		currentPassword: string;
-		newPassword: string;
-	}) => {
+	const onSubmit = async (data: { newPassword: string }) => {
 		try {
-			if (!user) {
-				user = await getUserDetails();
-			} else {
+			if (user) {
 				const api = await getApiAxios();
 				const response = await api.put(`/api/usuario/${user.email}`, {
 					senha: data.newPassword,
@@ -62,63 +52,13 @@ const ChangePasswordScreen = () => {
 
 	return (
 		<SafeAreaView className="flex-1 mt-4 justify-center">
-			<GoBackButton title="Senha" />
+			<GoBackButton title="Alterar Senha" />
 
 			<Text className="text-sm text-[#1F2B4D] ml-9 mt-8 w-10/12">
-				Para alterar a senha, insira sua senha atual e a nova senha desejada.
+				Para alterar sua senha, informe a nova senha desejada.
 			</Text>
 
 			<View className="flex items-center flex-1">
-				{/* <View> */}
-				<Text
-					className="text-lg text-[#1F2B4D] self-start ml-9 mt-4"
-					style={{ fontFamily: 'poppins-medium' }}
-				>
-					Senha atual
-				</Text>
-				{/* </View> */}
-				<View className="flex-row w-10/12 h-14 items-center border-2 rounded-xl border-[#B0BEC5] pl-2 mt-1 justify-between">
-					<TouchableOpacity
-						onPress={() => setShowCurrentPassword(!showCurrentPassword)}
-						className="h-full items-center justify-center"
-					>
-						<Ionicons
-							name={showCurrentPassword ? 'eye-off' : 'eye'}
-							size={24}
-							color={'#B0BEC5'}
-						/>
-					</TouchableOpacity>
-					<Controller
-						control={control}
-						name="currentPassword"
-						rules={{
-							required: 'Senha atual é obrigatória',
-						}}
-						render={({ field: { onChange, onBlur, value } }) => (
-							<TextInput
-								value={value}
-								placeholder="Senha atual"
-								secureTextEntry={!showCurrentPassword}
-								onChangeText={(text) => {
-									onChange(text);
-									setIsChanged(true);
-								}}
-								onBlur={onBlur}
-								className="w-11/12 h-full pl-2 text-[#B0BEC5] text-base"
-								style={{ fontFamily: 'poppins-medium' }}
-							/>
-						)}
-					/>
-				</View>
-				{errors.currentPassword && (
-					<Text
-						className="text-red-500 text-justify"
-						style={{ fontFamily: 'poppins-regular' }}
-					>
-						{errors.currentPassword.message}
-					</Text>
-				)}
-
 				<Text
 					className="text-lg text-[#1F2B4D] self-start ml-9 mt-6"
 					style={{ fontFamily: 'poppins-medium' }}
@@ -163,6 +103,7 @@ const ChangePasswordScreen = () => {
 								secureTextEntry={!showNewPassword}
 								onChangeText={(text) => {
 									onChange(text);
+									setIsChanged(true);
 								}}
 								onBlur={onBlur}
 								className="w-full h-full pl-2 text-[#B0B3C5] text-base"

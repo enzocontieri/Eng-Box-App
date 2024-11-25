@@ -6,12 +6,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoBackButton from '../../Components/GoBackButton';
 import { removeRememberMeData } from '../../utils/async-storage/user-data';
 import { removeToken } from '../../utils/session/manager';
+import { userStore } from '../../utils/stores/user';
 const MoreOptions = () => {
 	const navigation = useNavigation();
 
 	const handleLogoutApp = async () => {
 		await removeRememberMeData();
 		await removeToken();
+		userStore.getState().clearUser();
 		navigation.navigate('Wellcome');
 	};
 
