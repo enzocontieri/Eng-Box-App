@@ -113,7 +113,7 @@ export default function LogIn() {
 								control={control}
 								name="email"
 								rules={{
-									required: 'O Email ou Nome de Usuario é obrigatorio',
+									required: 'O Email é obrigatorio',
 									minLength: {
 										value: 3,
 										message: 'Este campo deve ter no minimo 3 caracteres',

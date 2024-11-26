@@ -26,7 +26,7 @@ const Profile = () => {
 			const response = await api.get('/api/Enge/receitas');
 			const userPosts = response.data.filter(
 				(post: Post) => post.idUsuario === userProfile?.email,
-			); // gambiarra
+			); 
 			setUserPostagens(userPosts);
 		} catch (error) {
 			console.error('Erro ao carregar os dados do Usuario:', error);

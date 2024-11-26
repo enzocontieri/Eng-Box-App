@@ -17,3 +17,7 @@ export const getApiAxios = async () => {
 
 	return api;
 };
+export const PostApiAxios = axios.create({
+	
+	baseURL: process.env.API_URL
+});

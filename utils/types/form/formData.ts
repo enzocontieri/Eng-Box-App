@@ -1,3 +1,5 @@
+import { Foto } from "../post";
+
 export interface RegisterFormData {
 	email: string;
 	password: string;
@@ -13,5 +15,12 @@ export interface LoginFormData {
 
 export interface ForgotFormData {
 	email: string;
-	
+
+}
+
+export interface UploadFormData {
+	tema: string
+	titulo: string;
+	conteudo: string;
+	fotos: Foto[]
 }
