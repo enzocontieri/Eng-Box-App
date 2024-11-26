@@ -122,7 +122,7 @@ const ProfilePhotoPicker: React.FC = () => {
 				</TouchableOpacity>
 			</View>
 
-			<ProfileInfo />
+			<ProfileInfo user={user} />
 
 			<Modal
 				visible={modalVisible}

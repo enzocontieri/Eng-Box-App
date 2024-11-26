@@ -2,27 +2,16 @@ import { useFocusEffect } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Image, Text, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { getConsumerLevel } from '../../utils/getConsumerLevel';
 import { userStore } from '../../utils/stores/user';
 import { User } from '../../utils/types/user';
+import { UserResponse } from '../../utils/types/user-response';
 
-const ProfileInfo = () => {
-	const [userProfile, setUserProfile] = useState<User>();
+type ProfileInfoProps = {
+	user: UserResponse | null;
+};
 
-	useFocusEffect(
-		React.useCallback(() => {
-			// Do something when the screen is focused
-			const user = userStore.getState().user;
-			if (user) {
-				setUserProfile(user);
-			}
-
-			return () => {
-				// Do something when the screen is unfocused
-				// Useful for cleanup functions
-			};
-		}, []),
-	);
-
+const ProfileInfo = ({ user }: ProfileInfoProps) => {
 	return (
 		<View className="ml-4 mt-4 self-start ">
 			<View className="flex-row items-center">
@@ -31,7 +20,7 @@ const ProfileInfo = () => {
 					className="text-base text-[#4A4A4A] ml-2"
 					style={{ fontFamily: 'poppins-medium' }}
 				>
-					{userProfile?.nome} | @{userProfile?.nome}
+					{user?.nome} | @{user?.nome}
 				</Text>
 			</View>
 
@@ -44,7 +33,7 @@ const ProfileInfo = () => {
 					className="text-base text-[#50B454]"
 					style={{ fontFamily: 'poppins-medium' }}
 				>
-					Consumidor Verde
+					{getConsumerLevel(user?.nivelConsciencia)}
 				</Text>
 			</View>
 		</View>

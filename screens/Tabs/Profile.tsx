@@ -1,17 +1,18 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { Alert, ScrollView, Text, View } from 'react-native';
+import React, { useState, useTransition } from 'react';
+import { ActivityIndicator, Alert, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HeaderMenu from '../../Components/buttons/HeaderMenu';
 import PostList from '../../Components/profile/PostList';
 import ProfileImagesSection from '../../Components/profile/ProfileImagesSection';
 import ProfileInfo from '../../Components/profile/ProfileInfo';
+import Spinner from '../../Components/spinner';
+import { getApiAxios } from '../../services/axios';
 import { getToken } from '../../utils/session/manager';
 import { getUserDetails } from '../../utils/session/user-data';
 import { NavigationProp } from '../../utils/types/navigation';
-import { UserResponse } from '../../utils/types/user-response';
-import { getApiAxios } from '../../services/axios';
 import { Post } from '../../utils/types/post';
+import { UserResponse } from '../../utils/types/user-response';
 
 const Profile = () => {
 	const navigation = useNavigation<NavigationProp>();
@@ -20,22 +21,18 @@ const Profile = () => {
 	const [loading, setLoading] = useState(true);
 
 	const fetchUserPosts = async () => {
-
 		try {
 			const api = await getApiAxios();
-			const response = await api.get('/api/Enge/receitas')
-			const userPosts = response.data.filter
-				((post: Post) => post.idUsuario === userProfile?.email); // gambiarra
-			setUserPostagens(userPosts)
-
+			const response = await api.get('/api/Enge/receitas');
+			const userPosts = response.data.filter(
+				(post: Post) => post.idUsuario === userProfile?.email,
+			); // gambiarra
+			setUserPostagens(userPosts);
 		} catch (error) {
-			console.error('Erro ao carregar os dados do Usuario:', error)
-			Alert.alert('Erro', 'Não foi possível carregar os dados do perfil.')
-
-		} finally {
-			setLoading(false)
+			console.error('Erro ao carregar os dados do Usuario:', error);
+			Alert.alert('Erro', 'Não foi possível carregar os dados do perfil.');
 		}
-	}
+	};
 
 	useFocusEffect(
 		React.useCallback(() => {
@@ -49,15 +46,18 @@ const Profile = () => {
 				} else {
 					const user = await getUserDetails();
 					setUserProfile(user);
+
 					await fetchUserPosts();
 				}
+				setLoading(false);
 			})();
 			return () => {
-				// Do something when the screen is unfocused
-				// Useful for cleanup functions
+				setLoading(true);
 			};
 		}, []),
 	);
+
+	if (loading) return <Spinner />;
 
 	return (
 		<SafeAreaView className="flex-1">
@@ -71,7 +71,7 @@ const Profile = () => {
 
 				<ProfileImagesSection user={userProfile} />
 
-				<ProfileInfo />
+				<ProfileInfo user={userProfile} />
 
 				<View className="flex items-center justify-center w-full h-[40px] border-b-2 border-[#B8B8B8] mt-[32px]">
 					<Text
