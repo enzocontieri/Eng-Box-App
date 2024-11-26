@@ -2,12 +2,12 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Alert, Image, TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import PostComponent from '../../Components/posts/home';
 import { getApiAxios } from '../../services/axios';
 import { getToken } from '../../utils/session/manager';
 import { NavigationProp } from '../../utils/types/navigation';
 import { Post } from '../../utils/types/post';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -22,7 +22,7 @@ const Home = () => {
 			setPosts(response.data);
 		} catch (error) {
 			console.error('Erro ao buscar posts:', error);
-			Alert.alert('Erro', 'Não foi possível carregar as Postagens')
+			Alert.alert('Erro', 'Não foi possível carregar as Postagens');
 		} finally {
 			setLoading(false);
 		}
@@ -78,24 +78,20 @@ type HomeHeaderProps = {
 };
 
 const HomeHeader = ({ username }: HomeHeaderProps) => {
-	const navigation = useNavigation<NavigationProp>()
+	const navigation = useNavigation<NavigationProp>();
 
 	return (
 		<SafeAreaView>
-
 			<View className="px-4 flex flex-row my-6 items-center gap-x-3 mb-5 ">
 				<View className=" h-full w-full">
-
 					<View>
 						<Image
 							source={require('../../assets/images/login/LogoAppHome.png')}
 						/>
 					</View>
 				</View>
-
 			</View>
 		</SafeAreaView>
-
 	);
 };
 
