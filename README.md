@@ -37,7 +37,7 @@
 
 ## Link Documentação (Apenas clicar em cima do Badge) :
 Documentação: <a style="float:left" href="https://a30.gitbook.io/eng-box-app" target="_blank">
-    <img width="100" height="30" src="https://github.com/hanspeterdietiker/Eng-Box-App/assets/126719678/2b766c01-9f85-4002-9370-292fa840bd06">
+    <img width="100" height="30" src="https://github.com/enzocontieri/Eng-Box-App">
 </a>
 
 ## 📞 Contato
