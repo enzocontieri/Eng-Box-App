@@ -6,8 +6,10 @@
   - Hanspeter Dietiker ([GitHub](https://github.com/hanspeterdietiker)) ([Linkedin](https://www.linkedin.com/in/hanspeterdietiker/))
   - Edioelson Junior ([GitHub](https://github.com/DeveloperEdd)) ([Linkedin](https://www.linkedin.com/in/edioelson/))
   - Gabriel Silva Magalhães ([GitHub](https://github.com/Gabrielsilvamagalhaes)) ([Linkedin](https://www.linkedin.com/in/gabriel-smagalhaes32/))
-  - Lucas ([Github](https://github.com/luketao17))
-  - Yago ([Github](https://github.com/yagooc1))
+  - Lucas Costa ([Github](https://github.com/luketao17))
+  - Yago Mário ([Github](https://github.com/yagooc1))
+  - Arthur Victor
+  - Vitor Vitoriano
 
 ## 📂 Instruções do Projeto :
 1.Ambiente de Desenvolvimento:
@@ -35,7 +37,7 @@
 - <img widtg="80" height="30" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
 - <img widtg="80" height="30" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
 
-## Link Documentação (Apenas clicar em cima do Badge) :
+## 🔗 Links (Apenas clicar em cima do Badge) :
 Documentação: <a style="float:left" href="https://a30.gitbook.io/eng-box-app" target="_blank">
     <img width="100" height="30" src="https://github.com/hanspeterdietiker/A3-Project-Unifacs/assets/126719678/2b766c01-9f85-4002-9370-292fa840bd06">
 </a>
