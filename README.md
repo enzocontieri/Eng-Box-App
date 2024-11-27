@@ -35,6 +35,10 @@
 - <img widtg="80" height="30" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
 - <img widtg="80" height="30" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
 
+## Link Documentação (Apenas clicar em cima do Badge) :
+Documentação: <a style="float:left" href="https://a30.gitbook.io/eng-box-app" target="_blank">
+</a>
+
 ## 📞 Contato
 - Para mais informações ou para colaborar com o projeto, entre em contato com os desenvolvedores através dos perfis do GitHub ou nas plataformas de comunicação da Unifacs.
 
