@@ -1,4 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
+import { RegisterFormData } from './form/formData';
 
 export type RootStackParamList = {
 	MoreOptions: undefined;
@@ -18,8 +19,8 @@ export type RootStackParamList = {
 	LogIn: undefined;
 	ForgotPassword: undefined;
 	Register: undefined;
-	Quiz: undefined;
-	QuizzResult: { score: number; total: number };
+	Quiz: { user: RegisterFormData };
+	QuizzResult: { score: number; user: RegisterFormData };
 	ChangeName: undefined;
 	ChangeUsername: undefined;
 	ChangeEmail: undefined;

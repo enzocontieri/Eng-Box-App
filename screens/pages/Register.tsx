@@ -10,15 +10,12 @@ import {
 	View,
 } from 'react-native';
 import 'tailwindcss/tailwind.css';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { Controller, useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { axiosLogin } from '../../services/axios';
 import { RegisterFormData } from '../../utils/types/form/formData';
-import { RootStackParamList } from '../../utils/types/navigation';
-
-type NavigationProp = StackNavigationProp<RootStackParamList>;
+import { NavigationProp } from '../../utils/types/navigation';
 
 export default function Register() {
 	/* Este código retorna exceção na pagina Register */
@@ -28,22 +25,7 @@ export default function Register() {
 	const { isSubmitting } = formState;
 
 	const handleRegisterFormSubmit = async (data: RegisterFormData) => {
-		try {
-			const { data: message } = await axiosLogin.post('/api/usuario', {
-				email: data.email,
-				senha: data.password,
-				nome: data.username,
-				nivelConsciencia: 4,
-				isMonitor: true,
-				tokens: `${Math.random()}`,
-				telefone: '123232323',
-			});
-
-			alert('Perfil criado com sucesso!');
-			navigation.navigate('LogIn');
-		} catch (error) {
-			console.error(error);
-		}
+		navigation.navigate('Quiz', { user: data });
 	};
 
 	return (

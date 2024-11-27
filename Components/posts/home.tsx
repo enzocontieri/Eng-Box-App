@@ -1,6 +1,9 @@
-import React from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import React, { useState } from 'react';
 import { Image, Text, View } from 'react-native';
+import { getUserDetailsByEmail } from '../../utils/session/user-data';
 import { Post } from '../../utils/types/post';
+import { UserResponse } from '../../utils/types/user-response';
 
 type PostProps = {
 	post: Post;
@@ -9,6 +12,21 @@ type PostProps = {
 const PostComponent = ({ post }: PostProps) => {
 	const imageUrl =
 		post.fotos && post.fotos.length > 0 ? post.fotos[0].url : null;
+	const [userPost, setUserPost] = useState<UserResponse | null>(null);
+
+	useFocusEffect(
+		React.useCallback(() => {
+			// Do something when the screen is focused
+			(async () => {
+				const user = await getUserDetailsByEmail(post.idUsuario);
+				setUserPost(user);
+			})();
+			return () => {
+				// Do something when the screen is unfocused
+				// Useful for cleanup functions
+			};
+		}, []),
+	);
 
 	return (
 		<View>
@@ -16,8 +34,12 @@ const PostComponent = ({ post }: PostProps) => {
 				<View className="flex flex-row items-center gap-x-3">
 					<View className="h-11 w-11">
 						<Image
-							source={require('../../assets/icons/user-pages-icons/user-photo/ex-user-photo.png')}
-							className="w-full h-full"
+							source={
+								userPost?.fotoUsu
+									? { uri: userPost?.fotoUsu }
+									: require('../../assets/icons/user-pages-icons/user-photo/ex-user-photo.png')
+							}
+							className="w-full h-full rounded-full"
 							resizeMode="cover"
 						/>
 					</View>

@@ -1,8 +1,13 @@
 import { ConsumerOptions } from './enums/consumer';
 
 export const getConsumerLevel = (nivelConsciencia: number | undefined) => {
-	if (nivelConsciencia) {
-		switch (nivelConsciencia) {
+	let nivel = nivelConsciencia;
+	if (nivel === 0) nivel++;
+
+	if (nivel) {
+		switch (nivel) {
+			case 0:
+				return ConsumerOptions.reckless;
 			case 1:
 				return ConsumerOptions.reckless;
 			case 2:
