@@ -17,8 +17,8 @@ const Home = () => {
 	const fetchPosts = async () => {
 		try {
 			const api = await getApiAxios();
-			const response = await api.get('/api/receitas');
-
+			const response = await api.get('/api/Enge/receitas');
+			console.log(response.data)
 			setPosts(response.data);
 		} catch (error) {
 			console.error('Erro ao buscar posts:', error);

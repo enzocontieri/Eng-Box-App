@@ -18,7 +18,7 @@ import { Keyboard } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Spinner from '../../Components/spinner';
-import { PostApiAxios, getApiAxios } from '../../services/axios';
+import { getApiAxios } from '../../services/axios';
 import { getToken } from '../../utils/session/manager';
 import { getUserDetails } from '../../utils/session/user-data';
 import { UploadFormData } from '../../utils/types/form/formData';
@@ -51,6 +51,7 @@ const Upload = () => {
 			const formData = new FormData();
 			formData.append('files', imageCover);
 			formData.append('tema', 'Enge');
+			formData.append('subtema', 'Enge');
 			formData.append('idUsuario', user?.email ?? '');
 			formData.append('titulo', data.titulo);
 			formData.append('conteudo', data.conteudo);
@@ -125,6 +126,7 @@ const Upload = () => {
 		titulo: titulo,
 		conteudo: conteudo,
 		tema: 'Enge',
+		subtema:'Enge',
 		fotos: [
 			{
 				uri: media ?? '',

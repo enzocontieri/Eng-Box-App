@@ -11,7 +11,7 @@ type PostProps = {
 
 const PostComponent = ({ post }: PostProps) => {
 	const imageUrl =
-		post.fotos && post.fotos.length > 0 ? post.fotos[0].url : null;
+		post.fotos && post.fotos.length > 0 ? post.fotos[0]  : "";
 	const [userPost, setUserPost] = useState<UserResponse | null>(null);
 
 	useFocusEffect(
@@ -52,7 +52,7 @@ const PostComponent = ({ post }: PostProps) => {
 			<View className="h-[430px] w-[430px] self-center">
 				{imageUrl ? (
 					<Image
-						source={{ uri: imageUrl }}
+						source={{ uri: imageUrl as any }}
 						className="w-full h-full"
 						resizeMode="cover"
 					/>

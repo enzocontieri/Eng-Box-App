@@ -17,6 +17,7 @@ export interface ForgotFormData {
 }
 
 export interface UploadFormData {
+	subtema: string,
 	tema: string;
 	titulo: string;
 	conteudo: string;
