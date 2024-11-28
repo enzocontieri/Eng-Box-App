@@ -20,7 +20,7 @@ export type RootStackParamList = {
 	ForgotPassword: undefined;
 	Register: undefined;
 	Quiz: { user: RegisterFormData };
-	QuizzResult: { score: number; user: RegisterFormData };
+	QuizzResult: { score: number };
 	ChangeName: undefined;
 	ChangeUsername: undefined;
 	ChangeEmail: undefined;

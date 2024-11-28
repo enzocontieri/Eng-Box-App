@@ -9,6 +9,7 @@ import {
 import 'tailwindcss/tailwind.css';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { axiosLogin } from '../../services/axios';
 import { RootStackParamList } from '../../utils/types/navigation';
 
 // Define o tipo de navegação para o componente
@@ -162,7 +163,7 @@ const Quiz = ({ route }: QuizProps) => {
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [selectedOption, setSelectedOption] = useState<number | null>(null);
-	const [score, setScore] = useState(0);
+	let [score, setScore] = useState(0);
 	const [alertVisible, setAlertVisible] = useState(false);
 	const [resultAlertVisible, setResultAlertVisible] = useState(false);
 
@@ -202,9 +203,27 @@ const Quiz = ({ route }: QuizProps) => {
 				visible={resultAlertVisible}
 				title="Resultado"
 				message={`Você acertou ${score} de ${questions.length} perguntas.`}
-				onClose={() => {
+				onClose={async () => {
 					setResultAlertVisible(false);
-					navigation.navigate('QuizzResult', { score: score, user: user });
+					try {
+						if (score === 0) score += 1;
+
+						const { data: message } = await axiosLogin.post('/api/usuario', {
+							email: user.email,
+							senha: user.password,
+							nome: user.username,
+							nivelConsciencia: score,
+							isMonitor: true,
+							tokens: `${Math.random()}`,
+							telefone: '123232323',
+						});
+
+						if (message) navigation.navigate('QuizzResult', { score: score });
+					} catch (error) {
+						navigation.navigate('Register');
+						alert('Erro ao criar usuário!');
+						console.error(error);
+					}
 				}}
 			/>
 
