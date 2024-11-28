@@ -24,7 +24,7 @@ const MoreOptions = () => {
 				<View className="bg-white w-[80%] h-32 my-2 rounded-md shadow flex-row items-center mt-[15%]"></View>
 
 				<View className="top-16 w-[90%] items-center gap-5">
-					<TouchableOpacity
+					{/* <TouchableOpacity
 						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
 						onPress={() => navigation.navigate('Notifications')}
 					>
@@ -40,7 +40,7 @@ const MoreOptions = () => {
 						</View>
 
 						<Ionicons name="chevron-forward" size={30} color="#767676" />
-					</TouchableOpacity>
+					</TouchableOpacity> */}
 
 					<TouchableOpacity
 						className="bg-white w-[90%] h-12 my-2 rounded-md shadow flex-row items-center justify-between px-4"
