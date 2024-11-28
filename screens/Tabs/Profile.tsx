@@ -1,5 +1,5 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import React, { useState, useTransition } from 'react';
+import React, { useEffect, useState, useTransition } from 'react';
 import { ActivityIndicator, Alert, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HeaderMenu from '../../Components/buttons/HeaderMenu';
@@ -20,19 +20,23 @@ const Profile = () => {
 	const [userPostagens, setUserPostagens] = useState<Post[]>([]);
 	const [loading, setLoading] = useState(true);
 
-	const fetchUserPosts = async () => {
+	const fetchUserPosts = async (userEmail: string) => {
 		try {
 			const api = await getApiAxios();
 			const response = await api.get('/api/Enge/receitas');
 			const userPosts = response.data.filter(
-				(post: Post) => post.idUsuario === userProfile?.email,
-			); 
+				(posts: Post) => posts.idUsuario === userEmail
+			);
 			setUserPostagens(userPosts);
+			console.log('Postagens filtradas', userPosts)
+
 		} catch (error) {
-			console.error('Erro ao carregar os dados do Usuario:', error);
+			console.error('Erro ao carregar as postagens:', error);
 			Alert.alert('Erro', 'Não foi possível carregar os dados do perfil.');
+
 		}
 	};
+
 
 	useFocusEffect(
 		React.useCallback(() => {
@@ -47,9 +51,13 @@ const Profile = () => {
 					const user = await getUserDetails();
 					setUserProfile(user);
 
-					await fetchUserPosts();
+					if (user) {
+						console.log("Buscando postagens...");
+						await fetchUserPosts(user.email);
+					}
 				}
-				setLoading(false);
+				setLoading(false)
+
 			})();
 			return () => {
 				setLoading(true);
@@ -82,7 +90,7 @@ const Profile = () => {
 					</Text>
 				</View>
 
-				<PostList posts={userPostagens} />
+				<PostList posts={userPostagens} key={userPostagens.length} />
 			</ScrollView>
 		</SafeAreaView>
 	);

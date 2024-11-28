@@ -51,7 +51,7 @@ const Upload = () => {
 			const formData = new FormData();
 			formData.append('files', imageCover);
 			formData.append('tema', 'Enge');
-			formData.append('subtema', 'Enge');
+			formData.append('subtemas', 'Enge');
 			formData.append('idUsuario', user?.email ?? '');
 			formData.append('titulo', data.titulo);
 			formData.append('conteudo', data.conteudo);
@@ -126,7 +126,7 @@ const Upload = () => {
 		titulo: titulo,
 		conteudo: conteudo,
 		tema: 'Enge',
-		subtema:'Enge',
+		subtemas:'Enge',
 		fotos: [
 			{
 				uri: media ?? '',

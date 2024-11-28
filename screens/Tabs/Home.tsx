@@ -8,6 +8,7 @@ import { getApiAxios } from '../../services/axios';
 import { getToken } from '../../utils/session/manager';
 import { NavigationProp } from '../../utils/types/navigation';
 import { Post } from '../../utils/types/post';
+import Spinner from '../../Components/spinner';
 
 const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -18,7 +19,7 @@ const Home = () => {
 		try {
 			const api = await getApiAxios();
 			const response = await api.get('/api/Enge/receitas');
-			console.log(response.data)
+
 			setPosts(response.data);
 		} catch (error) {
 			console.error('Erro ao buscar posts:', error);
@@ -54,11 +55,7 @@ const Home = () => {
 		</View>
 	);
 
-	if (loading) {
-		return (
-			<View className="flex-1 justify-center items-center bg-white"></View>
-		);
-	}
+	if (loading) return <Spinner />;
 
 	return (
 		<View className="flex-1 space-y-2 pt-4 bg-white">
