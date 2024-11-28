@@ -30,6 +30,8 @@ export default function LogIn() {
 	const { control, handleSubmit, formState } = useForm<LoginFormData>();
 	const { isSubmitting } = formState;
 
+	const [showPassword, setShowPassword] = React.useState<boolean>(false);
+
 	const handleLoginFormSubmit = async (data: LoginFormData) => {
 		try {
 			const { data: tokenObject } = await axiosLogin.post<TokenResponse>(
@@ -71,11 +73,11 @@ export default function LogIn() {
 
 	return (
 		<KeyboardAvoidingView
-			className="flex-1 bg-[#F9F9F9]"
+			className="flex-1"
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 		>
 			<ScrollView className="bg-[#F9F9F9]">
-				<View className="bg-[#F9F9F9]">
+				<View className=" justify-center items-center ">
 					<View className="relative flex justify-center items-center  w-full h-64 mb-6">
 						<Image
 							source={require('../../assets/images/login/ImagemDeFundo.png')}
@@ -88,7 +90,7 @@ export default function LogIn() {
 						</View>
 					</View>
 
-					<View className="flex justify-center items-center bg-[#F9F9F9]">
+					<View className="flex w-4/5 items-center">
 						{/*Wellcome*/}
 						<Text
 							style={{ fontFamily: 'poppins-semi-bold' }}
@@ -96,17 +98,17 @@ export default function LogIn() {
 						>
 							Bem-vindo de Volta!
 						</Text>
-						<Text className="text-base text-[#767676] mb-2">
+						<Text className="text-base text-[#767676] mb-2" style={{ fontFamily: "poppins-medium" }}>
 							Faça login na sua conta
 						</Text>
 
 						{/*Input User*/}
 
-						<View className="w-4/5 mb-4">
+						<View className="w-full mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
-								<Ionicons name="person-sharp" size={20} />
+								<Ionicons name="person-sharp" size={20} color={"#5A5A5A"} />
 
-								<Text className="font-bold ml-1 text-[#5A5A5A]">Email</Text>
+								<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }} >Email</Text>
 							</View>
 
 							<Controller
@@ -150,63 +152,75 @@ export default function LogIn() {
 						</View>
 
 						{/*Input Password*/}
-						<View className="w-4/5 mb-4">
+						<View className="w-full mb-4 ">
 							<View className="flex-row items-center mb-2 mr-5 ">
-								<Ionicons name="lock-closed" size={20} />
-								<Text className="font-bold ml-1 text-[#5A5A5A] ">Senha</Text>
+								<Ionicons name="lock-closed" size={20} color={"#5A5A5A"} />
+								<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }}>Senha</Text>
 							</View>
 
-							<Controller
-								control={control}
-								name="password"
-								rules={{
-									required: 'A senha é obrigatoria',
-									minLength: {
-										value: 3,
-										message: 'A senha deve ter pelo menos 3 caracteres',
-									},
-									maxLength: {
-										value: 51,
-										message: 'Limite excedido de caracteres',
-									},
-									pattern: {
-										value:
-											/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-										message:
-											'Senha inválida. Por favor, verifique e tente novamente.',
-									},
-								}}
-								render={({
-									field: { value, onChange },
-									fieldState: { error },
-								}) => (
-									<>
-										<TextInput
-											className="bg-[#EDEDED] border border-[#5B5B5B]  shadow rounded-2xl px-4 py-4 "
-											placeholder="Digite sua senha"
-											value={value}
-											onChangeText={onChange}
-											secureTextEntry={true}
-											autoCapitalize="none"
-										/>
-										{error && (
-											<Text
-												style={{ fontFamily: 'poppins-semi-bold' }}
-												className="text-[#ff375b] text-xs ml-2"
-											>
-												{error.message}
-											</Text>
-										)}
-									</>
-								)}
-							/>
+							<View className="flex-row w-full items-center  rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
+								<Controller
+									control={control}
+									name="password"
+									rules={{
+										required: 'A senha é obrigatoria',
+										minLength: {
+											value: 3,
+											message: 'A senha deve ter pelo menos 3 caracteres',
+										},
+										maxLength: {
+											value: 51,
+											message: 'Limite excedido de caracteres',
+										},
+										pattern: {
+											value:
+												/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+											message:
+												'Senha inválida. Por favor, verifique e tente novamente.',
+										},
+									}}
+									render={({
+										field: { value, onChange },
+										fieldState: { error },
+									}) => (
+										<>
+											<TextInput
+												className="rounded-2xl px-4 py-4 w-11/12"
+												placeholder="Digite sua senha"
+												value={value}
+												onChangeText={onChange}
+												secureTextEntry={!showPassword}
+												autoCapitalize="none"
+											/>
+											{error && (
+												<Text
+													style={{ fontFamily: 'poppins-semi-bold' }}
+													className="text-[#ff375b] text-xs ml-2"
+												>
+													{error.message}
+												</Text>
+											)}
+										</>
+									)}
+								/>
+								<TouchableOpacity
+									onPress={() => setShowPassword(!showPassword)}
+									className="items-center justify-center"
+								>
+									<Ionicons
+										name={showPassword ? 'eye-off' : 'eye'}
+										size={24}
+										color={'#5A5A5A'}
+									/>
+								</TouchableOpacity>
+							</View>
 						</View>
 
 						{/*Remember me and ForgotPassword */}
-						<View className="w-4/5 flex-row justify between mb-6">
+						<View className="w-full flex-row justify-around mb-6">
 							<View className="flex-row items-center">
 								<TouchableOpacity
-									className={`shadow w-6 h-6 rounded-sm border-2 $rememberMe ? 'bg-[#D9D9D9]' : 'bg-white border-[#D9D9D9]'`}
+									className={`shadow-sm w-6 h-6 rounded-sm border-2 ${rememberMe ? 'bg-[#D9D9D9]' : 'bg-white border-[#D9D9D9]'}`}
 									onPress={() => setRememberMe(!rememberMe)}
 								>
 									{rememberMe && (
@@ -220,11 +234,11 @@ export default function LogIn() {
 									)}
 								</TouchableOpacity>
 
-								<Text className="text-gray-700 ml-2">Lembrar de Mim</Text>
+								<Text className="text-[#767676] ml-2" style={{ fontFamily: "poppins-regular" }} >Lembrar de Mim</Text>
 								<TouchableOpacity
 									onPress={() => navigation.navigate('ForgotPassword')}
 								>
-									<Text className="font-semibold shadow text-sm text-[#5A5A5A] ml-6 ">
+									<Text className="shadow text-sm text-[#5A5A5A] ml-6 " style={{ fontFamily: "poppins-regular" }} >
 										Esqueceu sua Senha?
 									</Text>
 								</TouchableOpacity>
@@ -233,7 +247,7 @@ export default function LogIn() {
 
 						{/*Button Enter */}
 						<TouchableOpacity
-							className={'w-4/5 bg-[#5A5A5A] shadow-lg py-4 mb-4 rounded-2xl'}
+							className={'w-full bg-[#5A5A5A] shadow-lg py-4 mb-4 rounded-2xl'}
 							onPress={handleSubmit(handleLoginFormSubmit)}
 							disabled={isSubmitting}
 						>
@@ -243,13 +257,13 @@ export default function LogIn() {
 						{/*Link of Register */}
 						<View className=" flex-row justify-center items-center mb-4">
 							<View className="flex-row items-center">
-								<Text className="text-gray-700 ">Não tem uma Conta?</Text>
+								<Text className="text-[#767676]" style={{ fontFamily: "poppins-medium" }} >Não tem uma Conta?</Text>
 							</View>
 							<TouchableOpacity
 								className="shadow text-[#767676]"
 								onPress={() => navigation.navigate('Register')}
 							>
-								<Text className="font-semibold text-sm text-[#5A5A5A] ml-1">
+								<Text className="text-[#5A5A5A] ml-1 underline" style={{ fontFamily: "poppins-medium" }}>
 									Registre-se
 								</Text>
 							</TouchableOpacity>

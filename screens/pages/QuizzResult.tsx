@@ -25,37 +25,8 @@ type QuizResultProps = {
 };
 
 const QuizzResult = ({ route }: QuizResultProps) => {
-	let { score, user } = route.params;
+	const { score } = route.params;
 	const navigation = useNavigation<NavigationProp>();
-
-	useFocusEffect(
-		React.useCallback(() => {
-			// Do something when the screen is focused
-			(async () => {
-				try {
-					if (score === 0) score += 1;
-
-					const { data: message } = await axiosLogin.post('/api/usuario', {
-						email: user.email,
-						senha: user.password,
-						nome: user.username,
-						nivelConsciencia: score,
-						isMonitor: true,
-						tokens: `${Math.random()}`,
-						telefone: '123232323',
-					});
-				} catch (error) {
-					navigation.navigate('Register');
-					alert('Erro ao criar usuário!');
-					console.error(error);
-				}
-			})();
-			return () => {
-				// Do something when the screen is unfocused
-				// Useful for cleanup functions
-			};
-		}, []),
-	);
 
 	return (
 		<SafeAreaView className="h-full">

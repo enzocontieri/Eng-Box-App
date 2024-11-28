@@ -44,7 +44,7 @@ const PostComponent = ({ post }: PostProps) => {
 						/>
 					</View>
 					<Text className="font-medium">
-						{post.idUsuario || 'Autor desconhecido'}
+						{userPost?.nome || 'Autor desconhecido'}
 					</Text>
 				</View>
 			</View>
