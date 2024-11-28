@@ -17,19 +17,22 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
 
 	// Função que renderiza cada item da lista
 	const renderPostItem = ({ item }: { item: Post }) => (
+		
 		<TouchableOpacity
 			className="border-r border-b border-[#B8B8B8]"
 			style={{ width: width / 3 - 1 }}
 			onPress={() =>
 				navigation.navigate('PostDetails', {
-					imageUrl: item.fotos[0]?.url || '', // Passa a primeira foto como imagem principal
-					title: item.titulo,
-					description: item.conteudo,
+					imageUrl: item.fotos[0] || '', 
+					titulo: item.titulo,
+					conteudo: item.conteudo,
 				})
+				
 			}
 		>
+			
 			<Image
-				source={{ uri: item.fotos[0]?.url || 'https://via.placeholder.com/140' }}
+				source={{ uri: item.fotos[0] || 'https://via.placeholder.com/140' }} // dando erro por conta do any em navigation
 				className="w-[140.33px] h-[140.33px]"
 			/>
 		</TouchableOpacity>

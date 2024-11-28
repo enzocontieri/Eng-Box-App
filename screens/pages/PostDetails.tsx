@@ -8,7 +8,7 @@ const PostDetails = () => {
 	const navigation = useNavigation();
 	const route = useRoute();
 
-	const { imageUrl, title, description } = route.params; // Parâmetros passados pela navegação
+	const { imageUrl, titulo, conteudo } = route.params; // Parâmetros passados pela navegação
 
 	const [modalVisible, setModalVisible] = React.useState<boolean>(false);
 
@@ -42,7 +42,7 @@ const PostDetails = () => {
 
 					{/* Imagem do Post */}
 					<Image
-						source={imageUrl}
+						source={{ uri: imageUrl}}
 						className="w-full h-[45vh] mt-4"
 						resizeMode="cover"
 					/>
@@ -54,14 +54,14 @@ const PostDetails = () => {
 							className="text-2xl mb-2"
 							style={{ fontFamily: 'poppins-medium' }}
 						>
-							{title}
+							{titulo}
 						</Text>
 						{/* Descrição do Post */}
 						<Text
 							className="text-justify mt-2.5 leading-6"
 							style={{ fontFamily: 'poppins-regular' }}
 						>
-							{description}
+							{conteudo}
 						</Text>
 					</View>
 				</View>
