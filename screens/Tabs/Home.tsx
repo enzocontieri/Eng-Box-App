@@ -19,8 +19,9 @@ const Home = () => {
 		try {
 			const api = await getApiAxios();
 			const response = await api.get('/api/Enge/receitas');
-
-			setPosts(response.data);
+			const sortedPosts = response.data
+			.sort((a: Post, b: Post)=> new Date(b.dataCriacao).getTime()- new Date(a.dataCriacao).getTime())
+			setPosts(sortedPosts);
 		} catch (error) {
 			console.error('Erro ao buscar posts:', error);
 			Alert.alert('Erro', 'Não foi possível carregar as Postagens');
