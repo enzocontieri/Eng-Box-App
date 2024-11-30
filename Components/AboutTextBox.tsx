@@ -57,13 +57,13 @@ const DeveloperItem = ({ name, linkedInUrl }: Developer) => {
 	return (
 		<View className="flex-row items-center my-1">
 			<Text
-				className="text-base text-[#455A64]"
+				className="text-base text-[#767676]"
 				style={{ fontFamily: 'poppins-medium' }}
 			>
 				• {name}
 			</Text>
 			<TouchableOpacity onPress={handlePress} className="ml-2">
-				<Ionicons name="logo-linkedin" size={20} color="#1F3B4D" />
+				<Ionicons name="logo-linkedin" size={20} color="#767676" />
 			</TouchableOpacity>
 		</View>
 	);
@@ -73,10 +73,10 @@ export const AboutDevsBox = () => {
 	return (
 		<View className="bg-white w-11/12 p-3 rounded-lg shadow-md mb-4">
 			<View className="flex-row items-center gap-2">
-				<Ionicons name="code-slash" size={30} color={'#1F3B4D'} />
+				<Ionicons name="code-slash" size={30} color={'#767676'} />
 				<Text
-					className="text-xl text-[#1F3B4D]"
-					style={{ fontFamily: 'poppins-medium' }}
+					className="text-xl text-[#767676]"
+					style={{ fontFamily: 'poppins-semi-bold' }}
 				>
 					Desenvolvedores
 				</Text>
@@ -104,16 +104,16 @@ export const AboutTextBox = ({
 	return (
 		<View className="bg-white w-11/12 p-3 rounded-lg shadow-md mb-4">
 			<View className="flex-row items-center gap-2">
-				<Ionicons name={iconName} size={iconSize} color={'#1F3B4D'} />
+				<Ionicons name={iconName} size={iconSize} color={'#767676'} />
 				<Text
-					className="text-xl text-[#1F3B4D] "
-					style={{ fontFamily: 'poppins-medium' }}
+					className="text-xl text-[#767676] "
+					style={{ fontFamily: 'poppins-semi-bold' }}
 				>
 					{boxTitle}
 				</Text>
 			</View>
 			<Text
-				className="w-full text-justify self-start text-base px-2 my-2 text-[#455A64] mt-2.5"
+				className="w-full text-justify self-start text-base px-2 my-2 text-[#767676] mt-2.5"
 				style={{ fontFamily: 'poppins-medium' }}
 			>
 				{boxTextContent}

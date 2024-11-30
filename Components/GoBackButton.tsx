@@ -22,11 +22,11 @@ const GoBackButton = ({ title }: GoBackButtonProps) => {
                 onPress={() => navigation.goBack()}
                 className='absolute left-4 bg-white p-2 rounded-full shadow-lg'
             >
-                <Ionicons name='chevron-back' color='black' size={24} />
+                <Ionicons name='chevron-back' color='#767676' size={24} />
             </TouchableOpacity>
 
             {title && (
-                <Text className='text-3xl text-[#1F3B4D]' style={{ fontFamily: 'poppins-semi-bold' }} >{title}</Text>
+                <Text className='text-3xl text-[#767676]' style={{ fontFamily: 'poppins-semi-bold' }} >{title}</Text>
             )}
         </View>
     );
