@@ -158,7 +158,7 @@ export default function LogIn() {
 								<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }}>Senha</Text>
 							</View>
 
-							<View className="flex-row w-full items-center  rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
+							<View className="flex-row w-full items-center rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
 								<Controller
 									control={control}
 									name="password"
