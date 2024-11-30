@@ -59,7 +59,7 @@ const Upload = () => {
 			const api = await getApiAxios();
 			await api.postForm('/api/receitas', formData);
 
-			alert('Post criado com sucesso!');
+		
 			setSuccessfulUploadModalVisible(true);
 		} catch (error: any) {
 			if (error.response) {
