@@ -178,9 +178,9 @@ const Upload = () => {
 										className="items-center"
 										onPress={pickMedia}
 									>
-										<Ionicons name="add-circle" size={60} color="#B0BEC5" />
+										<Ionicons name="add-circle" size={60} color="#00000050" />
 										<Text
-											className="text-base text-[#B0BEC5]"
+											className="text-base text-[#767676]"
 											style={{ fontFamily: 'poppins-medium' }}
 										>
 											Selecionar arquivo
@@ -193,7 +193,7 @@ const Upload = () => {
 								placeholder="Escreva o título aqui..."
 								value={titulo}
 								onChangeText={setTitulo}
-								className="text-lg pt-6 pb-6 text-[#455A64]"
+								className="text-lg pt-6 pb-6 text-[#767676]"
 								style={{ fontFamily: 'poppins-medium' }}
 								scrollEnabled={false}
 								maxLength={20}
@@ -205,13 +205,13 @@ const Upload = () => {
 									value={conteudo}
 									onChangeText={setConteudo}
 									multiline
-									className="w-full text-sm text-[#455A64]"
+									className="w-full text-sm text-[#767676]"
 									style={{ fontFamily: 'poppins-regular' }}
 								/>
 							</View>
 
 							<TouchableOpacity
-								className="w-full h-16 items-center justify-center bg-[#1F3B4D] rounded-lg mt-8"
+								className="w-full h-16 items-center justify-center bg-[#767676] rounded-lg mt-8"
 								onPress={handlePost}
 								disabled={isButtonDisabled}
 							>
@@ -237,13 +237,13 @@ const Upload = () => {
 									<Ionicons name="checkmark-circle" size={60} color="#50B454" />
 								</View>
 								<Text
-									className="text-lg text-[#1F3B4D] text-center mb-2"
+									className="text-lg text-[#767676] text-center mb-2"
 									style={{ fontFamily: 'poppins-medium' }}
 								>
 									Post enviado para validação!
 								</Text>
 								<Text
-									className="text-base text-[#455A64] text-center mb-4"
+									className="text-base text-[#767676] text-center mb-4"
 									style={{ fontFamily: 'poppins-regular' }}
 								>
 									Você será informado assim que a validação for concluída.
@@ -251,7 +251,7 @@ const Upload = () => {
 
 								<TouchableOpacity
 									onPress={() => setSuccessfulUploadModalVisible(false)}
-									className="bg-[#1F3B4D] w-full py-3 items-center justify-center rounded-md mb-4 shadow-md"
+									className="bg-[#767676] w-full py-3 items-center justify-center rounded-md mb-4 shadow-md"
 								>
 									<Text
 										className="text-white text-base"

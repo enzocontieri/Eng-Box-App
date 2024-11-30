@@ -34,7 +34,7 @@ export default function Register() {
 
 	return (
 		<KeyboardAvoidingView
-			className=''
+			className='flex-1'
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 		>
 			<ScrollView className="">
