@@ -59,7 +59,7 @@ const Upload = () => {
 			const api = await getApiAxios();
 			await api.postForm('/api/receitas', formData);
 
-		
+
 			setSuccessfulUploadModalVisible(true);
 		} catch (error: any) {
 			if (error.response) {
@@ -126,7 +126,7 @@ const Upload = () => {
 		titulo: titulo,
 		conteudo: conteudo,
 		tema: 'Enge',
-		subtemas:'Enge',
+		subtemas: 'Enge',
 		fotos: [
 			{
 				uri: media ?? '',
@@ -153,24 +153,15 @@ const Upload = () => {
 							<View className="bg-[#FFFFFF] w-full h-2/5 items-center justify-center rounded-lg">
 								{media ? (
 									<View className="relative flex-1 w-full h-full">
-										{mediaType === 'video' ? (
-											<Video
-												source={{ uri: media }}
-												className="w-full h-full rounded-lg"
-												useNativeControls
-												isLooping
-											/>
-										) : (
-											<Image
-												source={{ uri: media }}
-												className="w-full h-full rounded-lg"
-											/>
-										)}
+										<Image
+											source={{ uri: media }}
+											className="w-full h-full rounded-lg"
+										/>
 										<TouchableOpacity
 											onPress={clearMedia}
-											className="absolute top-2 right-2 bg-white rounded-full p-1"
+											className="absolute top-2 right-2 bg-[#F9F9F9] rounded-full p-1"
 										>
-											<Ionicons name="trash" size={24} color="red" />
+											<Ionicons name="trash" size={24} color="#00000090" />
 										</TouchableOpacity>
 									</View>
 								) : (
