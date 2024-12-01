@@ -6,7 +6,8 @@ import {
     TextInput,
     KeyboardAvoidingView,
     Platform,
-    ScrollView
+    ScrollView,
+    Alert
 } from 'react-native'
 import React from 'react'
 import { useForm, Controller } from 'react-hook-form';
@@ -24,7 +25,7 @@ export default function ForgotPassword() {
     /* Este código retorna exceção na pagina Esqueceu sua Senha */
     const { control, handleSubmit } = useForm<ForgotFormData>();
     const navigation = useNavigation<NavigationProp>();
-
+    
     return (
         <KeyboardAvoidingView
             className='flex-1 bg-[#F9F9F9]'
@@ -105,14 +106,17 @@ export default function ForgotPassword() {
                     <TouchableOpacity
                         className='w-4/5 bg-[#5A5A5A] shadow-lg py-4 mb-5 rounded-2xl'
                         onPress={handleSubmit((data) => {
+                           Alert.alert("Email enviado!")
                             console.log(data);
                         })}>
                         <Text className='text-center text-white text-lg'>Enviar</Text>
+                        
                     </TouchableOpacity>
+                    
                 </View>
                 <View className='flex-row justify-center items-center mb-4'>
 
-
+                        
                     <TouchableOpacity
                         className='shadow text-[#5A5A5A]'
                         onPress={() => navigation.navigate('LogIn')}>
