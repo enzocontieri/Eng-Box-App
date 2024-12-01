@@ -11,7 +11,7 @@ type PostProps = {
 
 const PostComponent = ({ post }: PostProps) => {
 	const imageUrl =
-		post.fotos && post.fotos.length > 0 ? post.fotos[0]  : "";
+		post.fotos && post.fotos.length > 0 ? post.fotos[0] : "";
 	const [userPost, setUserPost] = useState<UserResponse | null>(null);
 
 	useFocusEffect(
@@ -43,7 +43,7 @@ const PostComponent = ({ post }: PostProps) => {
 							resizeMode="cover"
 						/>
 					</View>
-					<Text className="font-medium">
+					<Text className="text-sm" style={{ fontFamily: "poppins-semi-bold" }}>
 						{userPost?.nome || 'Autor desconhecido'}
 					</Text>
 				</View>
@@ -62,10 +62,10 @@ const PostComponent = ({ post }: PostProps) => {
 			</View>
 
 			<View className="mx-3 space-y-1">
-				<Text className="font-medium text-2xl">
+				<Text className="text-2xl text-[#767676]" style={{ fontFamily: "poppins-semi-bold" }}>
 					{post.titulo || 'Sem título'}
 				</Text>
-				<Text className="whitespace-normal w-80">
+				<Text className="whitespace-normal w-80 text-justify mt-2.5 leading-6 text-[#767676]" style={{ fontFamily: "poppins-medium" }}>
 					{post.conteudo || 'Sem descrição'}
 				</Text>
 			</View>

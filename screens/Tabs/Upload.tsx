@@ -187,7 +187,7 @@ const Upload = () => {
 								className="text-lg pt-6 pb-6 text-[#767676]"
 								style={{ fontFamily: 'poppins-medium' }}
 								scrollEnabled={false}
-								maxLength={20}
+								maxLength={30}
 							/>
 
 							<View className="bg-[#FFFFFF] w-full h-52 rounded-lg p-2.5">
@@ -222,7 +222,7 @@ const Upload = () => {
 						animationType="fade"
 						onRequestClose={() => setSuccessfulUploadModalVisible(false)}
 					>
-						<View className="flex-1 justify-center items-center">
+						<View className="flex-1 justify-center items-center bg-[#00000050]">
 							<View className="bg-white w-4/5 px-6 py-2 rounded-xl items-center shadow-md">
 								<View className="my-4">
 									<Ionicons name="checkmark-circle" size={60} color="#50B454" />
