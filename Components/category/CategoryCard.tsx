@@ -5,6 +5,7 @@ import { data } from '../../data/dataEspecialist';
 import { useNavigation } from '@react-navigation/native';
 import Search from './searchBar';
 import { SearchBar } from '@rneui/themed';
+import axios from 'axios';
 
 const categories = [
     { label: 'Civil', icon: require('../../assets/icons/iconsFilter/icone-eng.png') },
@@ -18,12 +19,15 @@ const categories = [
     { label: 'Computacao', icon: require('../../assets/icons/iconsFilter/computacao-em-nuvem.png') },
 ];
 
+
 const CategoryComponent = () => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true)
     const [cards, setCards] = useState(false)
+    const [posts, setPosts] = useState<Post[]>([]);
     const navigation = useNavigation();
+
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -50,7 +54,7 @@ const CategoryComponent = () => {
                     resizeMode="cover"
                 >
                     <View className="flex-row justify-between px-4 pt-3">
-                        <Text className='text-[22px] font-semibold text-black rounded p-1' style={{ fontFamily: 'poppins-medium' }}>{title}</Text>
+                        <Text className='text-[22px] font-semibold text-black rounded-xl p-2 bg-white' style={{ fontFamily: 'poppins-medium' }}>{title}</Text>
                         <Image
                             source={icon}
                             className='h-8 w-8'
@@ -65,12 +69,12 @@ const CategoryComponent = () => {
                                 resizeMode="cover"
                             />
                         </View>
-                        <Text className='text-black text-[20px] font-medium' style={{ fontFamily: 'poppins-medium' }}>@{username}</Text>
+                        <Text className='text-black text-[20px] font-medium rounded-lg p-1 bg-white' style={{ fontFamily: 'poppins-medium' }}>@{username}</Text>
                     </View>
 
-                    <View className='px-4'>
+                    <View className='px-4 bg-white rounded-md  py-3'>
                         <Text className='text-[#767676] text-[16px] font-normal' style={{ fontFamily: 'poppins-medium' }}>
-                            {description.length > 70? `${description.substring(0, 70)}...` : description}
+                            {description.length > 65 ? `${description.substring(0, 65)}...` : description}
                         </Text>
                     </View>
                 </ImageBackground>
@@ -78,9 +82,19 @@ const CategoryComponent = () => {
         </TouchableOpacity>
     );
 
-    // Filtrar pelas categorias selecionadas
-    const filteredData = data.filter(item => selectedCategories.includes(item.id));
     
+    const filteredData = data.filter(item => {
+        // Verificar se o item atende à busca ou às categorias selecionadas
+        const matchesSearch = search
+            ? item.title.toLowerCase().includes(search.toLowerCase())
+            : true; 
+        const matchesCategory = selectedCategories.length
+            ? selectedCategories.includes(item.id)
+            : true;
+        return matchesSearch && matchesCategory;
+    });
+    
+
 
     // Função para alternar entre categorias
     const toggleCategory = (category) => {
