@@ -39,7 +39,7 @@ const PostComponent = ({ post }: PostProps) => {
 							source={
 								userPost?.fotoUsu
 									? { uri: userPost?.fotoUsu }
-									: require('../../assets/icons/user-pages-icons/user-photo/ex-user-photo.png')
+									: require('../../assets/icons/iconsLogin/blank-user-photo.jpg')
 							}
 							className="w-full h-full rounded-full"
 							resizeMode="cover"
