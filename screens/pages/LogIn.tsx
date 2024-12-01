@@ -158,32 +158,27 @@ export default function LogIn() {
 								<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }}>Senha</Text>
 							</View>
 
-							<View className="flex-row w-full items-center rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
-								<Controller
-									control={control}
-									name="password"
-									rules={{
-										required: 'A senha é obrigatoria',
-										minLength: {
-											value: 3,
-											message: 'A senha deve ter pelo menos 3 caracteres',
-										},
-										maxLength: {
-											value: 51,
-											message: 'Limite excedido de caracteres',
-										},
-										pattern: {
-											value:
-												/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-											message:
-												'Senha inválida. Por favor, verifique e tente novamente.',
-										},
-									}}
-									render={({
-										field: { value, onChange },
-										fieldState: { error },
-									}) => (
-										<>
+							<Controller
+								control={control}
+								name="password"
+								rules={{
+									required: 'A senha é obrigatória',
+									minLength: {
+										value: 3,
+										message: 'A senha deve ter pelo menos 3 caracteres',
+									},
+									maxLength: {
+										value: 51,
+										message: 'Limite excedido de caracteres',
+									},
+									pattern: {
+										value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+										message: 'Senha inválida. Por favor, verifique e tente novamente.',
+									},
+								}}
+								render={({ field: { value, onChange }, fieldState: { error } }) => (
+									<View className="w-full">
+										<View className="flex-row items-center rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
 											<TextInput
 												className="rounded-2xl px-4 py-4 w-11/12"
 												placeholder="Digite sua senha"
@@ -192,28 +187,29 @@ export default function LogIn() {
 												secureTextEntry={!showPassword}
 												autoCapitalize="none"
 											/>
-											{error && (
-												<Text
-													style={{ fontFamily: 'poppins-semi-bold' }}
-													className="text-[#ff375b] text-xs ml-2"
-												>
-													{error.message}
-												</Text>
-											)}
-										</>
-									)}
-								/>
-								<TouchableOpacity
-									onPress={() => setShowPassword(!showPassword)}
-									className="items-center justify-center"
-								>
-									<Ionicons
-										name={showPassword ? 'eye-off' : 'eye'}
-										size={24}
-										color={'#5A5A5A'}
-									/>
-								</TouchableOpacity>
-							</View>
+											<TouchableOpacity
+												onPress={() => setShowPassword(!showPassword)}
+												className="items-center justify-center"
+											>
+												<Ionicons
+													name={showPassword ? 'eye-off' : 'eye'}
+													size={24}
+													color={'#5A5A5A'}
+												/>
+											</TouchableOpacity>
+										</View>
+										{error && (
+											<Text
+												style={{ fontFamily: 'poppins-semi-bold' }}
+												className="text-[#ff375b] text-xs mt-2"
+											>
+												{error.message}
+											</Text>
+										)}
+									</View>
+								)}
+							/>
+
 						</View>
 
 						{/*Remember me and ForgotPassword */}
