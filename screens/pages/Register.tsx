@@ -179,7 +179,7 @@ export default function Register() {
 									control={control}
 									name="password"
 									rules={{
-										required: 'A senha é obrigatoria',
+										required: 'A senha é obrigatória',
 										minLength: {
 											value: 3,
 											message: 'A senha deve ter pelo menos 3 caracteres',
@@ -189,16 +189,11 @@ export default function Register() {
 											message: 'Limite excedido de caracteres',
 										},
 										pattern: {
-											value:
-												/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-											message:
-												'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
+											value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\S]{8,}$/,
+											message: 'A senha deve conter ao menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
 										},
 									}}
-									render={({
-										field: { value, onChange },
-										fieldState: { error },
-									}) => (
+									render={({ field: { value, onChange }, fieldState: { error } }) => (
 										<View className="w-full">
 											<View className="flex-row items-center rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
 												<TextInput
