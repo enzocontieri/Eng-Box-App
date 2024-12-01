@@ -21,7 +21,7 @@ const MoreOptions = () => {
 		<SafeAreaView>
 			<GoBackButton title="Opções" />
 			<View className="flex items-center justify-center ">
-				<View className="bg-white w-[80%] h-32 my-2 rounded-md shadow flex-row items-center mt-[15%]"></View>
+				{/* <View className="bg-white w-[80%] h-32 my-2 rounded-md shadow flex-row items-center mt-[15%]"></View> */}
 
 				<View className="top-16 w-[90%] items-center gap-5">
 					{/* <TouchableOpacity
