@@ -118,7 +118,7 @@ const ProfilePhotoPicker: React.FC = () => {
 					className="absolute bottom-0 right-[-2px] bg-white rounded-full"
 					onPress={() => setModalVisible(true)}
 				>
-					<AntDesign name="pluscircle" size={45} color="#455A64" />
+					<AntDesign name="pluscircle" size={45} color="#767676" />
 				</TouchableOpacity>
 			</View>
 
@@ -130,7 +130,7 @@ const ProfilePhotoPicker: React.FC = () => {
 				animationType="fade"
 				onRequestClose={() => setModalVisible(false)}
 			>
-				<View className="w-full h-full flex-1 items-center justify-center">
+				<View className="w-full h-full flex-1 items-center justify-center bg-[#00000050]">
 					<View className="bg-white w-3/4 p-6 rounded-xl shadow-md">
 						<TouchableOpacity
 							className="absolute top-2 right-2"
@@ -139,12 +139,12 @@ const ProfilePhotoPicker: React.FC = () => {
 							<Ionicons
 								name="close-circle-outline"
 								size={28}
-								color={'#455A64'}
+								color={'#767676'}
 							/>
 						</TouchableOpacity>
 						<Text
-							className="text-center text-lg text-[#1F2B4D] mt-4"
-							style={{ fontFamily: 'poppins-medium' }}
+							className="text-center text-lg text-[#767676] mt-4"
+							style={{ fontFamily: 'poppins-semi-bold' }}
 						>
 							Deseja alterar a foto de perfil?
 						</Text>
@@ -157,7 +157,7 @@ const ProfilePhotoPicker: React.FC = () => {
 								className="items-center justify-center rounded-lg w-1/2 py-3"
 							>
 								<Text
-									className="text-base text-[#455A64]"
+									className="text-base text-[#767676]"
 									style={{ fontFamily: 'poppins-medium' }}
 								>
 									Remover
@@ -169,7 +169,7 @@ const ProfilePhotoPicker: React.FC = () => {
 									pickImage();
 									setModalVisible(false);
 								}}
-								className="bg-[#455A64] items-center justify-center w-1/2 rounded-lg"
+								className="bg-[#767676] items-center justify-center w-1/2 rounded-lg"
 							>
 								<Text
 									className="text-base text-white"

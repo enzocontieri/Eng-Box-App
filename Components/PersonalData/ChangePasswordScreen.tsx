@@ -1,13 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import {
-	SafeAreaView,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from 'react-native';
+import { SafeAreaView, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 import { getApiAxios } from '../../services/axios';
 import { userStore } from '../../utils/stores/user';
 import GoBackButton from '../GoBackButton';
@@ -54,18 +48,18 @@ const ChangePasswordScreen = () => {
 		<SafeAreaView className="flex-1 mt-4 justify-center">
 			<GoBackButton title="Alterar Senha" />
 
-			<Text className="text-sm text-[#1F2B4D] ml-9 mt-8 w-10/12">
+			<Text className="text-sm text-[#767676] ml-9 mt-8 w-10/12">
 				Para alterar sua senha, informe a nova senha desejada.
 			</Text>
 
 			<View className="flex items-center flex-1">
 				<Text
-					className="text-lg text-[#1F2B4D] self-start ml-9 mt-6"
+					className="text-lg text-[#767676] self-start ml-9 mt-6"
 					style={{ fontFamily: 'poppins-medium' }}
 				>
 					Nova senha
 				</Text>
-				<View className="flex-row w-10/12 h-14 items-center border-2 rounded-xl border-[#B0BEC5] pl-2 mt-2">
+				<View className="flex-row w-10/12 h-14 items-center border-2 rounded-xl border-[#767676] pl-2 mt-2">
 					<TouchableOpacity
 						onPress={() => setShowNewPassword(!showNewPassword)}
 						className="h-full items-center justify-center"
@@ -73,7 +67,7 @@ const ChangePasswordScreen = () => {
 						<Ionicons
 							name={showNewPassword ? 'eye-off' : 'eye'}
 							size={24}
-							color={'#B0BEC5'}
+							color={'#76767670'}
 						/>
 					</TouchableOpacity>
 					<Controller
@@ -106,7 +100,7 @@ const ChangePasswordScreen = () => {
 									setIsChanged(true);
 								}}
 								onBlur={onBlur}
-								className="w-full h-full pl-2 text-[#B0B3C5] text-base"
+								className="w-full h-full pl-2 text-[#767676] text-base"
 								style={{ fontFamily: 'poppins-medium' }}
 							/>
 						)}

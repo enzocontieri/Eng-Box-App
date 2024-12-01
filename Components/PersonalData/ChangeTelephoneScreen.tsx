@@ -58,14 +58,14 @@ const ChangeTelephoneScreen = () => {
 		<SafeAreaView className="flex-1 mt-4">
 			<GoBackButton title="Telefone" />
 			<Text
-				className="text-sm text-[#1F3B4D] ml-9 mt-8 mb-2"
+				className="text-sm text-[#767676] ml-9 mt-8 mb-2"
 				style={{ fontFamily: 'poppins-regular' }}
 			>
 				Para alterar o telefone, clique aqui
 			</Text>
 			<View className="flex items-center flex-1">
-				<View className="flex-row w-10/12 h-14 items-center border-2 rounded-xl border-[#B0BEC5] pl-2">
-					<Ionicons name="call" size={30} color={'#B0BEC5'} />
+				<View className="flex-row w-10/12 h-14 items-center border-2 rounded-xl border-[#767676] pl-2">
+					<Ionicons name="call" size={30} color={'#76767670'} />
 
 					<Controller
 						control={control}
@@ -95,7 +95,7 @@ const ChangeTelephoneScreen = () => {
 									setIsChanged(text !== user?.telefone);
 								}}
 								onBlur={onBlur}
-								className="w-11/12 h-full pl-2 text-[#B0B3C5] text-lg"
+								className="w-11/12 h-full pl-2 text-[#767676] text-lg"
 								style={{ fontFamily: 'poppins-medium' }}
 							/>
 						)}

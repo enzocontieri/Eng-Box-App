@@ -15,22 +15,22 @@ const ProfileInfo = ({ user }: ProfileInfoProps) => {
 	return (
 		<View className="ml-4 mt-4 self-start ">
 			<View className="flex-row items-center">
-				<Ionicons name="person-sharp" size={25} color="#303030" />
+				<Ionicons name="person-sharp" size={25} color="#767676" />
 				<Text
-					className="text-base text-[#4A4A4A] ml-2"
+					className="text-base text-[#767676] ml-2"
 					style={{ fontFamily: 'poppins-medium' }}
 				>
-					{user?.nome} | @{user?.nome}
+					{user?.nome}
 				</Text>
 			</View>
 
 			<View className="flex-row items-center mt-2">
 				<Image
-					source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}
+					source={require('../../assets/icons/user-pages-icons/user-info/level-icon-2.png')}
 					className="w-6 h-6 mr-2"
 				/>
 				<Text
-					className="text-base text-[#50B454]"
+					className="text-base text-[#7CC77F]"
 					style={{ fontFamily: 'poppins-medium' }}
 				>
 					{getConsumerLevel(user?.nivelConsciencia)}

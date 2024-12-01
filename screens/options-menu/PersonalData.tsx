@@ -26,8 +26,6 @@ const PersonalData: React.FC = () => {
 
             <PersonalDataButton onPress={() => navigation.navigate('ChangeName')} text='Nome' />
 
-            <PersonalDataButton onPress={() => navigation.navigate('ChangeUsername')} text='Nome de Usuário' />
-
             <PersonalDataButton onPress={() => navigation.navigate('ChangeEmail')} text='Email' />
 
             <PersonalDataButton onPress={() => navigation.navigate('ChangePassword')} text='Senha' />
