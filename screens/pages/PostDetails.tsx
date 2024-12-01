@@ -1,24 +1,84 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import * as React from 'react';
 import { Alert, Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Menu, PaperProvider } from 'react-native-paper';
-
+import { getApiAxios } from '../../services/axios';
+import { getToken } from '../../utils/session/manager';
+import { NavigationProp } from '../../utils/types/navigation';
+import { useState } from 'react';
 const PostDetails = () => {
-	const navigation = useNavigation();
+	const navigation = useNavigation<NavigationProp>();
 	const route = useRoute();
-	const { imageUrl, titulo, conteudo } = route.params; // Parâmetros passados pela navegação
+	const { id, imageUrl, titulo, conteudo } = route.params; // Parâmetros passados pela navegação
 	const [contextMenuVisible, setContextMenuVisible] = React.useState<boolean>(false);
 
+	const removePost = async (postId: number) => {
+		try {
+			const api = await getApiAxios();
+			const response = await api.delete(`/api/receitas/${postId}`);
+			console.log('Post removido com sucesso:', response.data);
+		} catch (error: any) {
+			if (error.response) {
+				
+				console.error('Erro ao remover o post:', error.response.data);
+			} else if (error.request) {
+				
+				console.error('Erro na requisição:', error.request);
+			} else {
+				
+				console.error('Erro desconhecido:', error.message);
+			}
+		}
+	};
+	
+	useFocusEffect(
+		React.useCallback(() => {
+			// Do something when the screen is focused
+			(async () => {
+				const token = await getToken();
+				if (!token) {
+					alert('Você precisa realizar o login para acessar!');
+					navigation.navigate('LogIn');
+					return;
+				}
+				
+
+			})();
+			return () => {
+				// Do something when the screen is unfocused
+				// Useful for cleanup functions
+			};
+		}, []),
+	);
 	// Acao de Teste
-	const handleRemovePost = () => {
+	const handleRemovePost = async () => {
+		if (!id) {
+			Alert.alert("Erro", "ID do post não encontrado.");
+			return;
+		}
+	
 		Alert.alert(
-			"Post removido",
-			"Voce removeu o post com sucesso!",
-			[{ text: "OK", onPress: () => navigation.goBack() }]
+			"Confirmar Exclusão",
+			"Tem certeza que deseja remover este post?",
+			[
+				{ text: "Cancelar", style: "cancel" },
+				{
+					text: "Excluir",
+					onPress: async () => {
+						try {
+							await removePost(id); 
+							Alert.alert("Sucesso", "Post removido com sucesso!");
+							navigation.goBack(); 
+						} catch (error) {
+							Alert.alert("Erro", "Não foi possível remover o post.");
+						}
+					},
+				},
+			]
 		);
-	}
+	};
 
 	return (
 		<PaperProvider>

@@ -23,9 +23,11 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
 			style={{ width: width / 3 - 1 }}
 			onPress={() =>
 				navigation.navigate('PostDetails', {
+					id: item.id,
 					imageUrl: item.fotos[0] || '', 
 					titulo: item.titulo,
 					conteudo: item.conteudo,
+					
 				})
 				
 			}
