@@ -1,377 +1,224 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GoBackButton from '../../Components/GoBackButton';
-const Help = () => {
-	const [isExpanded, setIsExpanded] = useState(false);
-	const [isExpandedQuest1, setIsExpandedQuest1] = useState(false);
-	const [isExpandedQuest2, setIsExpandedQuest2] = useState(false);
-	const [isExpandedQuest3, setIsExpandedQuest3] = useState(false);
-	const [isExpandedQuest4, setIsExpandedQuest4] = useState(false);
-	// Função para alternar entre expandido e recolhido
+
+interface Answer {
+	title?: string;
+	description: string;
+}
+
+interface FAQData {
+	question: string;
+	answer: Answer;
+}
+
+interface TreeLevel {
+	imageSource: any;
+	levelName: string;
+	description: string;
+}
+
+const TreeLevelItem = ({ imageSource, levelName, description }: TreeLevel) => {
+	return (
+		<View className="flex items-center justify-center ">
+			<View className="flex-row items-center relative w-11/12 h-36 my-2 rounded-lg shadow bg-white pr-4">
+				<Image
+					source={imageSource}
+					className="h-28 w-28 mx-1"
+				/>
+				<Text
+					className="absolute top-3 left-28 text-base text-[#7CC77F]"
+					style={{ fontFamily: 'poppins-medium' }}
+				>
+					{levelName}
+				</Text>
+
+				<View className="flex-1">
+					<Text
+						className="text-xs text-justify mt-3 text-[#767676] break-words "
+						style={{ fontFamily: 'poppins-medium' }}
+					>
+						{description}
+					</Text>
+				</View>
+			</View>
+		</View>
+	);
+};
+
+interface FAQItemProps {
+	question: string;
+	answer: Answer;
+	treeLevels: TreeLevel[];
+}
+
+type UsageTopicProps = {
+	title: string;
+	description: string;
+};
+
+const treeLevels: TreeLevel[] = [
+	{
+		imageSource: require('../../assets/icons/IconsLevel/arvore1.1.png'),
+		levelName: "Consumidor Imprudente",
+		description: "Seus hábitos de consumo acabam que por prejudicar a natureza em graus bem negativos."
+	},
+	{
+		imageSource: require('../../assets/icons/IconsLevel/arvore0.png'),
+		levelName: "Consumidor Iniciante",
+		description: "Você ainda não têm muita noção de gasto e consumo, ainda está desenvolvendo seus hábitos!"
+	},
+	{
+		imageSource: require('../../assets/icons/IconsLevel/arvore1.png'),
+		levelName: "Consumidor Verde",
+		description: "Você é alguém com noções de impacto ambiental, que toma decisões de consumo cautelosas"
+	},
+	{
+		imageSource: require('../../assets/icons/IconsLevel/arvore2.png'),
+		levelName: "Consumidor Responsável",
+		description: "Muitas de suas escolhas levam em consideração o reaproveitamento de materiais e descarte adequado!"
+	},
+	{
+		imageSource: require('../../assets/icons/IconsLevel/arvore3.png'),
+		levelName: "Consumidor Expert",
+		description: "Você é um exemplo de consciência ambiental, nunca falhando com a sustentabilidade ecológica em sua vida."
+	}
+];
+
+const UsageTopic = ({ title, description }: UsageTopicProps) => {
+	return (
+		<View className="my-2">
+			<Text className="text-sm text-justify" style={{ fontFamily: 'poppins-medium' }}>
+				{title}
+			</Text>
+			<Text className="text-sm text-[#767676] text-justify mt-1" style={{ fontFamily: 'poppins-regular' }}>
+				{description}
+			</Text>
+		</View>
+	);
+};
+
+const FAQItem = ({ question, answer, treeLevels }: FAQItemProps) => {
+	const [isExpanded, setIsExpanded] = React.useState(false);
+
 	const toggleExpansion = () => {
 		setIsExpanded(!isExpanded);
 	};
 
-	const toggleExpansionQuest1 = () => {
-		setIsExpandedQuest1(!isExpandedQuest1);
-	};
-	const toggleExpansionQuest2 = () => {
-		setIsExpandedQuest2(!isExpandedQuest2);
-	};
-	const toggleExpansionQuest3 = () => {
-		setIsExpandedQuest3(!isExpandedQuest3);
-	};
-	const toggleExpansionQuest4 = () => {
-		setIsExpandedQuest4(!isExpandedQuest4);
-	};
+	return (
+		<View className="items-center">
+			<TouchableOpacity
+				onPress={toggleExpansion}
+				className="flex-row justify-between items-center h-14 w-11/12 px-4 mt-4 rounded-md bg-[#D9D9D9]"
+			>
+				<Text className="text-base text-justify" style={{ fontFamily: 'poppins-medium' }}>
+					{question}
+				</Text>
+				<Ionicons
+					name={isExpanded ? 'chevron-up' : 'chevron-down'}
+					size={24}
+					color="#767676"
+				/>
+			</TouchableOpacity>
+
+			{isExpanded && (
+				<View className="w-11/12 mt-1 p-3 rounded-md bg-[#D9D9D9]">
+					{answer.title && (
+						<Text className="text-sm text-justify" style={{ fontFamily: 'poppins-medium' }}>
+							{answer.title}
+						</Text>
+					)}
+					<Text className="text-sm text-justify mx-1 my-1 text-[#767676]" style={{ fontFamily: 'poppins-medium' }}>
+						{answer.description}
+					</Text>
+
+					{question === "O que são essas árvores?" && (
+						<View className="mt-4">
+							{treeLevels.map((item, index) => (
+								<TreeLevelItem key={index} {...item} />
+							))}
+						</View>
+					)}
+					{question === "Como utilizo este aplicativo?" && (
+						<View className="mt-4">
+							<UsageTopic
+								title="Acesse conteúdos educacionais"
+								description="Explore artigos, vídeos e outros materiais informativos sobre sustentabilidade e boas práticas."
+							/>
+							<UsageTopic
+								title="Descubra iniciativas sustentáveis"
+								description="Utilize o mapa na aba “Especialistas” para visualizar dicas de engenharia sustentável e conectar-se com iniciativas próximas a você."
+							/>
+							<UsageTopic
+								title="Colabore com outros usuários"
+								description="Participe de fóruns e compartilhe suas próprias sugestões."
+							/>
+						</View>
+					)}
+				</View>
+			)}
+
+		</View>
+	);
+};
+
+const Help = () => {
+
+	const faqData: FAQData[] = [
+		{
+			question: "O que são essas árvores?",
+			answer: {
+				description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."
+			}
+		},
+		{
+			question: "Para quem é este aplicativo?",
+			answer: {
+				description: "Este aplicativo é direcionado a todas as pessoas que desejam adotar práticas mais sustentáveis. Ele é ideal para quem busca reduzir impactos ambientais, melhorar processos produtivos e alcançar metas de sustentabilidade através de métodos das diferentes áreas de engenharias."
+			}
+		},
+		{
+			question: "Como posso compartilhar dicas com outras pessoas?",
+			answer: {
+				description: 'Você pode compartilhar dicas diretamente na tela de "Upload" do aplicativo. É lá que você cria e publica seus posts para que outros usuários do app possam visualizar e interagir com suas ideias. A funcionalidade foi projetada para ser simples e eficiente, permitindo que você contribua com a comunidade com apenas alguns toques.'
+			}
+		},
+		{
+			question: "Como utilizo este aplicativo?",
+			answer: {
+				description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."
+			}
+		},
+		{
+			question: "Vocês têm outros aplicativos?",
+			answer: {
+				description: "Sim! Este aplicativo faz parte de uma família de apps voltados para práticas sustentáveis. Além do app para engenharia, temos apps específicos para as áreas de Gastronomia, Farmácia e Veterinária. Cada um deles traz dicas práticas e personalizadas para promover a sustentabilidade em suas respectivas áreas. Juntos, eles oferecem um ecossistema completo para quem deseja adotar hábitos mais conscientes."
+			}
+		}
+	];
 
 	return (
-		<ScrollView contentContainerStyle={{ paddingBottom: 800, paddingTop: 20 }}>
+		<ScrollView
+			showsVerticalScrollIndicator={false}
+			contentContainerStyle={{ paddingBottom: 800, paddingTop: 20 }}
+		>
+
 			<GoBackButton title="Ajuda" />
-			<View className="items-center justify-center mt-16 ">
-				<Text
-					className="text-[22px] font-semibold text-[#767676] rounded p-1"
-					style={{ fontFamily: 'poppins-medium' }}
-				>
-					Guia de Árvores
-				</Text>
 
-				<TouchableOpacity
-					onPress={toggleExpansion}
-					className="bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4"
-				>
-					<Text
-						className="text-[14px] font-semibold text-black"
-						style={{ fontFamily: 'poppins-medium' }}
-					>
-						Guia de Perfil Consumidor Verde
-					</Text>
-					<Ionicons
-						name={isExpanded ? 'chevron-up' : 'chevron-down'}
-						size={20}
-						color="black"
-					/>
-				</TouchableOpacity>
-
-				{isExpanded && (
-					<View className="bg-[#D9D9D9] w-[90%] mt-2 p-3 rounded-md">
-						<Text
-							className="text-[14px] text-black"
-							style={{ fontFamily: 'poppins-medium' }}
-						>
-							O que são essas árvores ?
-						</Text>
-						<Text
-							className="mx-1 my-1 text-[#767676] text-[11px] font-normal"
-							style={{ fontFamily: 'poppins-medium' }}
-						>
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. Lorem Ipsum has been the industry's
-						</Text>
-						<ScrollView>
-							<View className="flex items-center justify-center">
-								<View className="bg-white w-[97%] h-32 my-2 rounded-md shadow flex-row items-center relative">
-									<Image
-										source={require('../../assets/icons/IconsLevel/arvore1.1.png')}
-										className="h-[100px] w-[110px] mx-1 "
-									/>
-
-									<View className="absolute top-3 left-32 bg-black rounded-md px-2">
-										<Text
-											className="text-[#fcff31] text-[13px] font-semibold"
-											style={{ fontFamily: 'poppins-medium' }}
-										>
-											Consumidor Imprudente
-										</Text>
-									</View>
-
-									<View className="flex-1 ml-2">
-										<Text
-											className="text-[10px] mt-4 text-[#767676] break-words w-[160px]"
-											style={{ fontFamily: 'poppins-medium' }}
-										>
-											Seus hábitos de consumo acabam que por prejudicar a
-											natureza em graus bem negativos.
-										</Text>
-									</View>
-								</View>
-							</View>
-							<View className="flex items-center justify-center">
-								<View className="bg-white w-[97%] h-32 my-2 rounded-md shadow flex-row items-center relative">
-									<Image
-										source={require('../../assets/icons/IconsLevel/arvore0.png')}
-										className="h-[180px] w-[110px] mx-1 "
-									/>
-
-									<Text
-										className=" absolute top-3 left-32 text-[#50B454] text-[14px] font-semibold"
-										style={{ fontFamily: 'poppins-medium' }}
-									>
-										Consumidor Iniciante
-									</Text>
-
-									<View className="flex-1 ml-2">
-										<Text
-											className="text-[10px] mt-3 text-[#767676] break-words w-[160px]"
-											style={{ fontFamily: 'poppins-medium' }}
-										>
-											Você ainda não têm muita noção de gasto e consumo, ainda
-											está desenvolvendo seus hábitos!
-										</Text>
-									</View>
-
-									<TouchableOpacity className="absolute top-3 right-2">
-										<Image
-											source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}
-										/>
-									</TouchableOpacity>
-								</View>
-							</View>
-							<View className="flex items-center justify-center">
-								<View className="bg-white w-[97%] h-32 my-2 rounded-md shadow flex-row items-center relative">
-									<Image
-										source={require('../../assets/icons/IconsLevel/arvore1.png')}
-										className="h-[120px] w-[110px] mx-1 "
-									/>
-
-									<Text
-										className=" absolute top-3 left-32 text-[#50B454] text-[14px] font-semibold"
-										style={{ fontFamily: 'poppins-medium' }}
-									>
-										Consumidor Verde
-									</Text>
-
-									<View className="flex-1 ml-2">
-										<Text
-											className="text-[10px] mt-3 text-[#767676] break-words w-[160px]"
-											style={{ fontFamily: 'poppins-medium' }}
-										>
-											Você é alguém com noções de impacto ambiental, que toma
-											decisões de consumo cautelosas
-										</Text>
-									</View>
-
-									<TouchableOpacity className="absolute top-3 right-2">
-										<Image
-											source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}
-										/>
-									</TouchableOpacity>
-								</View>
-							</View>
-							<View className="flex items-center justify-center">
-								<View className="bg-white w-[97%] h-32 my-2 rounded-md shadow flex-row items-center relative">
-									<Image
-										source={require('../../assets/icons/IconsLevel/arvore2.png')}
-										className="h-[120px] w-[110px] mx-1 "
-									/>
-
-									<Text
-										className=" absolute top-3 left-24 text-[#50B454] text-[14px] font-semibold"
-										style={{ fontFamily: 'poppins-medium' }}
-									>
-										Consumidor Responsável
-									</Text>
-
-									<View className="flex-1 ml-2">
-										<Text
-											className="text-[10px] mt-3 text-[#767676] break-words w-[160px]"
-											style={{ fontFamily: 'poppins-medium' }}
-										>
-											Muitas de suas escolhas levam em consideração o
-											reaproveitamento de materiais e descarte adequado!
-										</Text>
-									</View>
-
-									<TouchableOpacity className="absolute top-3 right-2">
-										<Image
-											source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}
-										/>
-									</TouchableOpacity>
-								</View>
-							</View>
-							<View className="flex items-center justify-center">
-								<View className="bg-white w-[97%] h-32 my-2 rounded-md shadow flex-row items-center relative">
-									<Image
-										source={require('../../assets/icons/IconsLevel/arvore3.png')}
-										className="h-[120px] w-[120px] "
-									/>
-
-									<Text
-										className=" absolute top-3 left-32 text-[#50B454] text-[14px] font-semibold"
-										style={{ fontFamily: 'poppins-medium' }}
-									>
-										Consumidor Expert
-									</Text>
-
-									<View className="flex-1 ml-2">
-										<Text
-											className="text-[10px] mt-3 text-[#767676] break-words w-[160px]"
-											style={{ fontFamily: 'poppins-medium' }}
-										>
-											Você é um exemplo de consciência ambiental, nunca falhando
-											com a sustentabilidade ecológica em sua vida.
-										</Text>
-									</View>
-
-									<TouchableOpacity className="absolute top-3 right-2">
-										<Image
-											source={require('../../assets/icons/user-pages-icons/user-info/level-icon.png')}
-										/>
-									</TouchableOpacity>
-								</View>
-							</View>
-						</ScrollView>
-					</View>
-				)}
-
-				<Text
-					className="text-[18px] font-semibold text-[#767676] rounded p-1 mt-16"
-					style={{ fontFamily: 'poppins-medium' }}
-				>
+			<View className="items-center justify-center mt-8">
+				<Text className="text-xl text-[#767676] p-1 mb-4" style={{ fontFamily: 'poppins-semi-bold' }}>
 					Perguntas Frequentes
 				</Text>
-				<View className="items-center">
-					<TouchableOpacity
-						onPress={toggleExpansionQuest1}
-						className="bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4"
-					>
-						<Text
-							className="text-[14px] font-semibold text-black"
-							style={{ fontFamily: 'poppins-medium' }}
-						>
-							O que são essas árvores ?
-						</Text>
-						<Ionicons
-							name={isExpandedQuest1 ? 'chevron-up' : 'chevron-down'}
-							size={20}
-							color="black"
-						/>
-					</TouchableOpacity>
 
-					{isExpandedQuest1 && (
-						<View className="bg-[#D9D9D9] w-[90%] mt-2 p-3 rounded-md">
-							<Text
-								className="text-[14px] text-black"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum
-							</Text>
-							<Text
-								className="mx-1 my-1 text-[#767676] text-[11px] font-normal"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's
-							</Text>
-						</View>
-					)}
-				</View>
-				<View className="items-center">
-					<TouchableOpacity
-						onPress={toggleExpansionQuest2}
-						className="bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4"
-					>
-						<Text
-							className="text-[14px] font-semibold text-black"
-							style={{ fontFamily: 'poppins-medium' }}
-						>
-							O que são essas árvores ?
-						</Text>
-						<Ionicons
-							name={isExpandedQuest2 ? 'chevron-up' : 'chevron-down'}
-							size={20}
-							color="black"
-						/>
-					</TouchableOpacity>
-					{isExpandedQuest2 && (
-						<View className="bg-[#D9D9D9] w-[90%] mt-2 p-3 rounded-md">
-							<Text
-								className="text-[14px] text-black"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum
-							</Text>
-							<Text
-								className="mx-1 my-1 text-[#767676] text-[11px] font-normal"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's
-							</Text>
-						</View>
-					)}
-				</View>
-				<View className="items-center">
-					<TouchableOpacity
-						onPress={toggleExpansionQuest3}
-						className="bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4"
-					>
-						<Text
-							className="text-[14px] font-semibold text-black"
-							style={{ fontFamily: 'poppins-medium' }}
-						>
-							O que são essas árvores ?
-						</Text>
-						<Ionicons
-							name={isExpandedQuest3 ? 'chevron-up' : 'chevron-down'}
-							size={20}
-							color="black"
-						/>
-					</TouchableOpacity>
-					{isExpandedQuest3 && (
-						<View className="bg-[#D9D9D9] w-[90%] mt-2 p-3 rounded-md">
-							<Text
-								className="text-[14px] text-black"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum
-							</Text>
-							<Text
-								className="mx-1 my-1 text-[#767676] text-[11px] font-normal"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's
-							</Text>
-						</View>
-					)}
-				</View>
-				<View className="items-center">
-					<TouchableOpacity
-						onPress={toggleExpansionQuest4}
-						className="bg-[#D9D9D9] h-[50px] w-[90%] rounded-md justify-between items-center flex-row px-4 mt-4"
-					>
-						<Text
-							className="text-[14px] font-semibold text-black"
-							style={{ fontFamily: 'poppins-medium' }}
-						>
-							O que são essas árvores ?
-						</Text>
-						<Ionicons
-							name={isExpandedQuest4 ? 'chevron-up' : 'chevron-down'}
-							size={20}
-							color="black"
-						/>
-					</TouchableOpacity>
-					{isExpandedQuest4 && (
-						<View className="bg-[#D9D9D9] w-[90%] mt-2 p-3 rounded-md">
-							<Text
-								className="text-[14px] text-black"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum
-							</Text>
-							<Text
-								className="mx-1 my-1 text-[#767676] text-[11px] font-normal"
-								style={{ fontFamily: 'poppins-medium' }}
-							>
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industry's
-							</Text>
-						</View>
-					)}
-				</View>
+				{faqData.map((item, index) => (
+					<FAQItem
+						key={index}
+						question={item.question}
+						answer={item.answer}
+						treeLevels={treeLevels}
+					/>
+				))}
 			</View>
 		</ScrollView>
 	);
