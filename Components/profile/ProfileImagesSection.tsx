@@ -1,6 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, View } from 'react-native';
+import { ConsumerOptions } from '../../utils/enums/consumer';
+import { getConsumerLevel } from '../../utils/getConsumerLevel';
+import { getLevesTree } from '../../utils/getLevelsTree';
 import { UserResponse } from '../../utils/types/user-response';
 import { useUser } from './UserContext';
 
@@ -9,6 +12,9 @@ type ProfileImagesSectionProps = {
 };
 
 const ProfileImagesSection = ({ user }: ProfileImagesSectionProps) => {
+	const [consumerLevel, setConsumerLevel] = useState(
+		getConsumerLevel(user?.nivelConsciencia),
+	);
 	return (
 		<View className="items-center justify-center">
 			<View className="relative w-40 h-40 rounded-full items-center justify-center shadow-sm">
@@ -22,7 +28,10 @@ const ProfileImagesSection = ({ user }: ProfileImagesSectionProps) => {
 				)}
 				<View className="absolute bottom-0 right-[-2px] bg-white rounded-full">
 					<Image
-						source={require('../../assets/icons/user-pages-icons/account-level-icons/ex-level-icon.png')}
+						source={
+							getLevesTree(consumerLevel ?? ConsumerOptions.beginner)
+								?.imageSource
+						}
 						className="w-12 h-12"
 					/>
 				</View>

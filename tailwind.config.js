@@ -18,6 +18,7 @@ module.exports = {
 			},
 			colors: {
 				primaryGray: '#D9D9D9',
+				primaryGreen: '#50B454',
 			},
 		},
 	},

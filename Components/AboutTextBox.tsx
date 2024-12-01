@@ -32,20 +32,20 @@ const developers: Developer[] = [
 		linkedInUrl: 'https://www.linkedin.com/in/enzo-contieri-b1578326b/',
 	},
 	{
-		name: 'Edioelson Júnior A. B. Teixeira',
-		linkedInUrl: 'https://www.linkedin.com/in/developeredd/',
+		name: 'Arthur Victor Vitoriano',
+		linkedInUrl: 'https://www.linkedin.com/',
 	},
 	{
-		name: 'Edioelson Júnior A. B. Teixeira',
-		linkedInUrl: 'https://www.linkedin.com/in/developeredd/',
+		name: 'Lucas Costa',
+		linkedInUrl: 'https://www.linkedin.com/',
 	},
 	{
-		name: 'Edioelson Júnior A. B. Teixeira',
-		linkedInUrl: 'https://www.linkedin.com/in/developeredd/',
+		name: 'Vitor Vitoriano',
+		linkedInUrl: 'https://www.linkedin.com/',
 	},
 	{
-		name: 'Edioelson Júnior A. B. Teixeira',
-		linkedInUrl: 'https://www.linkedin.com/in/developeredd/',
+		name: 'Yago Mário',
+		linkedInUrl: 'https://www.linkedin.com/',
 	},
 ];
 
