@@ -27,15 +27,13 @@ import { UserResponse } from '../../utils/types/user-response';
 
 const Upload = () => {
 	const [media, setMedia] = React.useState<string | null>(null);
-	const [mediaType, setMediaType] = React.useState<'image' | 'video' | null>(
-		null,
-	);
+	const [mediaType, setMediaType] = React.useState<'image' | 'video' | null>(null);
 	const [titulo, setTitulo] = React.useState('');
 	const [conteudo, setConteudo] = React.useState('');
-	const [successfulUploadModalVisible, setSuccessfulUploadModalVisible] =
-		React.useState(false);
+	const [successfulUploadModalVisible, setSuccessfulUploadModalVisible] = React.useState(false);
 	const [loading, setLoading] = useState(true);
 	const [user, setUserProfile] = useState<UserResponse | undefined>(undefined);
+	const [imageErrorModalVisible, setImageErrorModalVisible] = React.useState<boolean>(false);
 
 	const navigation = useNavigation<NavigationProp>();
 
@@ -108,7 +106,15 @@ const Upload = () => {
 
 		if (!result.canceled) {
 			const selectedAsset = result.assets[0];
+			const fileSizeInMB = selectedAsset.fileSize / (1024 * 1024);
+
+			if (fileSizeInMB > 5) {
+				setImageErrorModalVisible(true);
+				return;
+			}
+
 			setMedia(selectedAsset.uri);
+			setMediaType('image');
 		}
 	};
 
@@ -136,8 +142,7 @@ const Upload = () => {
 		],
 	};
 
-	const isButtonDisabled =
-		!media || titulo.trim() === '' || conteudo.trim() === '';
+	const isButtonDisabled = !media || titulo.trim() === '' || conteudo.trim() === '';
 
 	if (loading) return <Spinner />;
 
@@ -216,6 +221,7 @@ const Upload = () => {
 						</View>
 					</View>
 
+					{/* Modal de "Envio bem Sucedido" */}
 					<Modal
 						transparent={true}
 						visible={successfulUploadModalVisible}
@@ -249,6 +255,29 @@ const Upload = () => {
 										style={{ fontFamily: 'poppins-medium' }}
 									>
 										Certo
+									</Text>
+								</TouchableOpacity>
+							</View>
+						</View>
+					</Modal>
+
+					{/* Modal de "Error na imagem" */}
+					<Modal transparent={true} visible={imageErrorModalVisible} animationType="fade" onRequestClose={() => setImageErrorModalVisible(false)}>
+						<View className="flex-1 justify-center items-center bg-[#00000050]">
+							<View className="bg-white w-4/5 px-6 py-4 rounded-xl items-center shadow-md">
+								<Ionicons name="alert-circle" size={60} color="#E53E3E" />
+								<Text className="text-lg text-[#767676] text-center mt-4" style={{ fontFamily: 'poppins-medium' }}>
+									Imagem muito grande!
+								</Text>
+								<Text className="text-base text-[#767676] text-center my-4" style={{ fontFamily: 'poppins-regular' }}>
+									Por favor, selecione uma imagem com menos de 5MB.
+								</Text>
+								<TouchableOpacity
+									onPress={() => setImageErrorModalVisible(false)}
+									className="bg-[#767676] w-full py-3 items-center justify-center rounded-md shadow-md"
+								>
+									<Text className="text-white text-base" style={{ fontFamily: 'poppins-medium' }}>
+										Entendi
 									</Text>
 								</TouchableOpacity>
 							</View>

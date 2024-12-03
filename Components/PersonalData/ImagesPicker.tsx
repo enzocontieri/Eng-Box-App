@@ -13,8 +13,8 @@ const ProfilePhotoPicker: React.FC = () => {
 	let user = userStore.getState().user;
 
 	const [modalVisible, setModalVisible] = React.useState<boolean>(false);
-	const [succesModalVisible, setSuccessModalVisible] =
-		React.useState<boolean>(false);
+	const [succesModalVisible, setSuccessModalVisible] = React.useState<boolean>(false);
+	const [imageErrorModalVisible, setImageErrorModalVisible] = React.useState<boolean>(false);
 
 	const pickImage = async (): Promise<void> => {
 		const permissionResult =
@@ -36,6 +36,19 @@ const ProfilePhotoPicker: React.FC = () => {
 		} else {
 			if (!result.canceled && result.assets?.[0]) {
 				const file = result.assets[0];
+
+				if (file.fileSize !== undefined) {
+					const fileSizeInMB = file.fileSize / (1024 * 1024);
+
+					if (fileSizeInMB > 5) {
+						setImageErrorModalVisible(true);
+						return;
+					}
+				} else {
+					setImageErrorModalVisible(true);
+					return;
+				}
+
 				const isUpadatedImage = await uploadImage(file);
 
 				if (isUpadatedImage) {
@@ -124,6 +137,7 @@ const ProfilePhotoPicker: React.FC = () => {
 
 			<ProfileInfo user={user} />
 
+			{/* Modal de Alteracao */}
 			<Modal
 				visible={modalVisible}
 				transparent={true}
@@ -187,6 +201,43 @@ const ProfilePhotoPicker: React.FC = () => {
 				visible={succesModalVisible}
 				onClose={() => setSuccessModalVisible(false)}
 			/>
+
+			{/* Modal de Error */}
+			<Modal
+				visible={imageErrorModalVisible}
+				transparent={true}
+				animationType="fade"
+				onRequestClose={() => setImageErrorModalVisible(false)}
+			>
+				<View className="w-full h-full flex-1 items-center justify-center bg-[#00000050]">
+					<View className="bg-white w-3/4 p-6 rounded-xl shadow-md items-center">
+						<Ionicons name="alert-circle" size={60} color="#E63946" />
+						<Text
+							className="text-center text-lg text-[#767676] mt-4"
+							style={{ fontFamily: 'poppins-semi-bold' }}
+						>
+							Erro ao selecionar imagem
+						</Text>
+						<Text
+							className="text-center text-base text-[#767676] mt-2 mb-4"
+							style={{ fontFamily: 'poppins-regular' }}
+						>
+							Por favor, escolha uma menor que 5MB.
+						</Text>
+						<TouchableOpacity
+							className="bg-[#767676] w-full py-3 items-center justify-center rounded-md shadow-md"
+							onPress={() => setImageErrorModalVisible(false)}
+						>
+							<Text
+								className="text-white text-base"
+								style={{ fontFamily: 'poppins-medium' }}
+							>
+								Entendido
+							</Text>
+						</TouchableOpacity>
+					</View>
+				</View>
+			</Modal>
 		</View>
 	);
 };
