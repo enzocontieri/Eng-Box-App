@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "Eng-Box3",
-    "slug": "Eng-Box3",
+    "name": "Eng Box",
+    "slug": "Eng Box",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#767676"
     },
     "ios": {
       "supportsTablet": true
@@ -17,7 +17,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#767676"
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
@@ -28,6 +28,18 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#76767600",
+          "image": "./assets/splash.png",
+          "dark": {
+            "image": "./assets/splash.png",
+            "backgroundColor": "#76767600"
+          },
+          "imageWidth": 200
+        }
+      ],
       "expo-font",
       [
         "expo-image-picker",
