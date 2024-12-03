@@ -55,13 +55,13 @@ export default function Wellcome() {
 			</TouchableOpacity>
 			<View className="justify-center items-center">
 				<TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
-					<Text className="font-semibold ml-1 mt-[150] text-[#09090b]">
+					<Text className="font-semibold ml-1 mt-36 text-[#09090b]">
 						Politica de privacidade | Termos e condições
 					</Text>
 				</TouchableOpacity>
 
-				<Text className="ml-1 mt-[0] text-[#09090b]">
-					2024 consumo inteligente
+				<Text className="ml-1 text-[#09090b]">
+					2024 Consumo Inteligente ©
 				</Text>
 			</View>
 		</View>

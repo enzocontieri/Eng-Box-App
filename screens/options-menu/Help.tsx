@@ -5,7 +5,7 @@ import GoBackButton from '../../Components/GoBackButton';
 
 interface Answer {
 	title?: string;
-	description: string;
+	description?: string;
 }
 
 interface FAQData {
@@ -129,9 +129,11 @@ const FAQItem = ({ question, answer, treeLevels }: FAQItemProps) => {
 							{answer.title}
 						</Text>
 					)}
-					<Text className="text-sm text-justify mx-1 my-1 text-[#767676]" style={{ fontFamily: 'poppins-medium' }}>
-						{answer.description}
-					</Text>
+					{answer.description && (
+						<Text className="text-sm text-justify mx-1 my-1 text-[#767676]" style={{ fontFamily: 'poppins-medium' }}>
+							{answer.description}
+						</Text>
+					)}
 
 					{question === "O que são essas árvores?" && (
 						<View className="mt-4">
@@ -169,7 +171,7 @@ const Help = () => {
 		{
 			question: "O que são essas árvores?",
 			answer: {
-				description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."
+				description: "As árvores representam os diferentes níveis de sustentabilidade que sua conta pode alcançar. Esses níveis são definidos com base nas suas respostas ao quiz inicial, realizado logo após a criação do perfil. Eles refletem o seu impacto ambiental e os seus hábitos de consumo, incentivando práticas mais responsáveis e conscientes."
 			}
 		},
 		{
@@ -186,9 +188,7 @@ const Help = () => {
 		},
 		{
 			question: "Como utilizo este aplicativo?",
-			answer: {
-				description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."
-			}
+			answer: {}
 		},
 		{
 			question: "Vocês têm outros aplicativos?",
