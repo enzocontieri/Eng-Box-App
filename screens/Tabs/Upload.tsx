@@ -123,9 +123,17 @@ const Upload = () => {
 		setMediaType(null);
 	};
 
-	const handlePost = () => {
-		setSuccessfulUploadModalVisible(true);
-		fetchUploadPost(uploadData);
+	const handlePost = async () => {
+		try {
+			await fetchUploadPost(uploadData);
+
+			setMedia(null);
+			setMediaType(null);
+			setTitulo('');
+			setConteudo('');
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const uploadData: UploadFormData = {
