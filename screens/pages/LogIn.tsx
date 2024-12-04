@@ -164,16 +164,12 @@ export default function LogIn() {
 								rules={{
 									required: 'A senha é obrigatória',
 									minLength: {
-										value: 3,
-										message: 'A senha deve ter pelo menos 3 caracteres',
+										value: 8,
+										message: 'A senha deve ter pelo menos 8 caracteres',
 									},
 									maxLength: {
 										value: 51,
 										message: 'Limite excedido de caracteres',
-									},
-									pattern: {
-										value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-										message: 'Senha inválida. Por favor, verifique e tente novamente.',
 									},
 								}}
 								render={({ field: { value, onChange }, fieldState: { error } }) => (

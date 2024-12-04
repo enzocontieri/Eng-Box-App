@@ -76,18 +76,12 @@ const ChangePasswordScreen = () => {
 						rules={{
 							required: 'Nova senha é obrigatória',
 							minLength: {
-								value: 3,
-								message: 'A nova senha deve ter pelo menos três caracteres',
+								value: 8,
+								message: 'A nova senha deve ter pelo menos 8 caracteres',
 							},
 							maxLength: {
 								value: 51,
 								message: 'A nova senha deve ter no máximo 51 caracteres',
-							},
-							pattern: {
-								value:
-									/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-								message:
-									'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
 							},
 						}}
 						render={({ field: { onChange, onBlur, value } }) => (

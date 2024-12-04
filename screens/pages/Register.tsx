@@ -129,8 +129,8 @@ export default function Register() {
 									rules={{
 										required: 'Email é obrigatorio',
 										minLength: {
-											value: 3,
-											message: 'Email deve ter no minimo 3 caracteres',
+											value: 8,
+											message: 'Email deve ter no minimo 8 caracteres',
 										},
 										maxLength: {
 											value: 51,
@@ -181,17 +181,14 @@ export default function Register() {
 									rules={{
 										required: 'A senha é obrigatória',
 										minLength: {
-											value: 3,
-											message: 'A senha deve ter pelo menos 3 caracteres',
+											value: 8,
+											message: 'A senha deve ter pelo menos 8 caracteres',
 										},
 										maxLength: {
 											value: 51,
 											message: 'Limite excedido de caracteres',
 										},
-										pattern: {
-											value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\S]{8,}$/,
-											message: 'A senha deve conter ao menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
-										},
+
 									}}
 									render={({ field: { value, onChange }, fieldState: { error } }) => (
 										<View className="w-full">
