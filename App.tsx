@@ -92,6 +92,7 @@ export default function App() {
 		'poppins-medium': require('./assets/fonts/Poppins-Medium.ttf'),
 		'poppins-regular': require('./assets/fonts/Poppins-Regular.ttf'),
 		'poppins-semi-bold': require('./assets/fonts/Poppins-SemiBold.ttf'),
+		'poppins-bold': require('./assets/fonts/Poppins-Bold.ttf'),
 	});
 
 	if (!fontsLoaded) {

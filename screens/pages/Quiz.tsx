@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
 	Modal,
+	ScrollView,
 	Text,
 	TouchableOpacity,
 	View,
@@ -187,75 +188,80 @@ const Quiz = ({ route }: QuizProps) => {
 	};
 
 	return (
-		<SafeAreaView className="items-center">
-			{/* Alerta de seleção de opção */}
-			<CustomAlert
-				visible={alertVisible}
-				title="Atenção"
-				message="Por favor, selecione uma opção antes de continuar."
-				onClose={() => setAlertVisible(false)}
-			/>
+		<SafeAreaView className="flex-1">
+			<ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 300 }} className="flex-1">
+				<View className='items-center'>
 
-			{/* Alerta de resultado */}
-			<CustomAlert
-				visible={resultAlertVisible}
-				title="Resultado"
-				message={`Você acertou ${score} de ${questions.length} perguntas.`}
-				onClose={async () => {
-					setResultAlertVisible(false);
-					try {
-						if (score === 0) score += 1;
+					{/* Alerta de seleção de opção */}
+					<CustomAlert
+						visible={alertVisible}
+						title="Atenção"
+						message="Por favor, selecione uma opção antes de continuar."
+						onClose={() => setAlertVisible(false)}
+					/>
 
-						const { data: message } = await axiosLogin.post('/api/usuario', {
-							email: user.email,
-							senha: user.password,
-							nome: user.username,
-							nivelConsciencia: score,
-							isMonitor: true,
-							tokens: `${Math.random()}`,
-							telefone: '123232323',
-						});
+					{/* Alerta de resultado */}
+					<CustomAlert
+						visible={resultAlertVisible}
+						title="Resultado"
+						message={`Você acertou ${score} de ${questions.length} perguntas.`}
+						onClose={async () => {
+							setResultAlertVisible(false);
+							try {
+								if (score === 0) score += 1;
 
-						if (message) navigation.navigate('QuizzResult', { score: score });
-					} catch (error) {
-						navigation.navigate('Register');
-						alert('Erro ao criar usuário!');
-						console.error(error);
-					}
-				}}
-			/>
+								const { data: message } = await axiosLogin.post('/api/usuario', {
+									email: user.email,
+									senha: user.password,
+									nome: user.username,
+									nivelConsciencia: score,
+									isMonitor: true,
+									tokens: `${Math.random()}`,
+									telefone: '123232323',
+								});
 
-			<View className="items-center w-10/12 mt-8">
-				<Text className="text-3xl text-[#767676]" style={{ fontFamily: 'poppins-semi-bold' }} >Eng Box Quiz</Text>
-				<Text className="text-lg text-justify text-[#767676] mt-8" style={{ fontFamily: 'poppins-medium' }} >
-					{questions[currentQuestion].question}
-				</Text>
+								if (message) navigation.navigate('QuizzResult', { score: score });
+							} catch (error) {
+								navigation.navigate('Register');
+								alert('Erro ao criar usuário!');
+								console.error(error);
+							}
+						}}
+					/>
 
-				{/* Renderiza opções */}
-				<View className="my-8">
-					{questions[currentQuestion].option.map((option, index) => (
-						<Option
-							key={index}
-							option={option}
-							index={index}
-							selectedOption={selectedOption}
-							setSelectedOption={setSelectedOption}
-						/>
-					))}
+					<View className="items-center w-10/12 mt-8">
+						<Text className="text-3xl text-[#767676]" style={{ fontFamily: 'poppins-semi-bold' }} >Eng Box Quiz</Text>
+						<Text className="text-lg text-justify text-[#767676] mt-8" style={{ fontFamily: 'poppins-medium' }} >
+							{questions[currentQuestion].question}
+						</Text>
+
+						{/* Renderiza opções */}
+						<View className="my-8">
+							{questions[currentQuestion].option.map((option, index) => (
+								<Option
+									key={index}
+									option={option}
+									index={index}
+									selectedOption={selectedOption}
+									setSelectedOption={setSelectedOption}
+								/>
+							))}
+						</View>
+
+						<TouchableOpacity
+							className={`bg-[#767676] rounded-lg w-full h-16 p-4 items-center justify-center border border-[#76767650] shadow-md`}
+							onPress={handleNextQuestion}
+						>
+							<Text
+								style={{ fontFamily: 'poppins-semi-bold' }}
+								className="text-white text-lg"
+							>
+								{currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Concluir'}
+							</Text>
+						</TouchableOpacity>
+					</View>
 				</View>
-
-				<TouchableOpacity
-					className={`bg-[#767676] rounded-lg w-full h-16 p-4 items-center justify-center border border-[#76767650] shadow-md`}
-					onPress={handleNextQuestion}
-				>
-					<Text
-						style={{ fontFamily: 'poppins-semi-bold' }}
-						className="text-white text-lg"
-					>
-						{currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Concluir'}
-					</Text>
-				</TouchableOpacity>
-			</View>
+			</ScrollView>
 		</SafeAreaView>
 	);
 };

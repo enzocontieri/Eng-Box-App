@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import 'tailwindcss/tailwind.css';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { checkIsRemember } from '../../utils/async-storage/user-data';
@@ -25,45 +25,47 @@ export default function Wellcome() {
 	);
 
 	return (
-		<View className="flex-1 bg-[#F9F9F9]  items-center">
-			<View className="justify-center items-center mt-[-30] w-full h-64 mb-10">
-				<Image
-					source={require('../../assets/images/login/ImagemDeWellcome.png')}
-					className="absolute shadown top-0 left-0 w-full h-100 object-cover "
-				/>
-				<View className="justify-center items-center mt-[200]">
-					<Image source={require('../../assets/images/login/LogoDoApp.png')} />
+		<ScrollView>
+			<View className="flex-1 bg-[#F9F9F9]  items-center">
+				<View className="justify-center items-center mt-[-30] w-full h-64 mb-10">
+					<Image
+						source={require('../../assets/images/login/ImagemDeWellcome.png')}
+						className="absolute shadown top-0 left-0 w-full h-100 object-cover "
+					/>
+					<View className="justify-center items-center mt-[200]">
+						<Image source={require('../../assets/images/login/LogoDoApp.png')} />
+					</View>
 				</View>
-			</View>
 
-			<TouchableOpacity
-				className="w-4/5 bg-[#767676] shadow-lg py-3.5 mb-4 mt-[230] rounded-2xl"
-				onPress={() => navigation.navigate('Register')}
-			>
-				<Text className="text-center text-[#FFFFFF] text-xl">
-					Crie seu Perfil
-				</Text>
-			</TouchableOpacity>
-
-			<TouchableOpacity
-				className="border border-[#5A5A5A] w-4/5 bg-[#FFFFFF] shadow-lg py-3.5 mb-4 rounded-2xl"
-				onPress={() => navigation.navigate('LogIn')}
-			>
-				<Text className=" text-center border-[#F9F9F9] text-[#5A5A5A] text-xl">
-					Entrar
-				</Text>
-			</TouchableOpacity>
-			<View className="justify-center items-center">
-				<TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
-					<Text className="font-semibold ml-1 mt-36 text-[#09090b]">
-						Politica de privacidade | Termos e condições
+				<TouchableOpacity
+					className="w-4/5 bg-[#767676] shadow-lg py-3.5 mb-4 mt-[230] rounded-2xl"
+					onPress={() => navigation.navigate('Register')}
+				>
+					<Text className="text-center text-[#FFFFFF] text-xl">
+						Crie seu Perfil
 					</Text>
 				</TouchableOpacity>
 
-				<Text className="ml-1 text-[#09090b]">
-					2024 Consumo Inteligente ©
-				</Text>
+				<TouchableOpacity
+					className="border border-[#5A5A5A] w-4/5 bg-[#FFFFFF] shadow-lg py-3.5 mb-4 rounded-2xl"
+					onPress={() => navigation.navigate('LogIn')}
+				>
+					<Text className=" text-center border-[#F9F9F9] text-[#5A5A5A] text-xl">
+						Entrar
+					</Text>
+				</TouchableOpacity>
+				<View className="justify-center items-center">
+					<TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
+						<Text className="font-semibold ml-1 mt-36 text-[#09090b]">
+							Politica de privacidade | Termos e condições
+						</Text>
+					</TouchableOpacity>
+
+					<Text className="ml-1 text-[#09090b]">
+						2024 Consumo Inteligente ©
+					</Text>
+				</View>
 			</View>
-		</View>
+		</ScrollView>
 	);
 }

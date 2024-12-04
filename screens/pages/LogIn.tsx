@@ -93,8 +93,8 @@ export default function LogIn() {
 					<View className="flex w-4/5 items-center">
 						{/*Wellcome*/}
 						<Text
-							style={{ fontFamily: 'poppins-semi-bold' }}
-							className="text-[#5A5A5A] mb-3 font-bold text-3xl ml-2"
+							style={{ fontFamily: 'poppins-bold' }}
+							className="text-[#5A5A5A] mb-3 text-2xl ml-2"
 						>
 							Bem-vindo de Volta!
 						</Text>
@@ -227,13 +227,6 @@ export default function LogIn() {
 								</TouchableOpacity>
 
 								<Text className="text-[#767676] ml-2" style={{ fontFamily: "poppins-regular" }} >Lembrar de Mim</Text>
-								<TouchableOpacity
-									onPress={() => navigation.navigate('ForgotPassword')}
-								>
-									<Text className="shadow text-sm text-[#5A5A5A] ml-6 " style={{ fontFamily: "poppins-regular" }} >
-										Esqueceu sua Senha?
-									</Text>
-								</TouchableOpacity>
 							</View>
 						</View>
 
