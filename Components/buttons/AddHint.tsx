@@ -14,7 +14,7 @@ const AddHint = () => {
 
     const textInputRef = useRef(null);
 
-    const fetchUploadPost = async (data: HintFormData) => {
+    const fetchHintPost = async (data: HintFormData) => {
 		try {
 			const formData = new FormData();
 			formData.append('tema', 'Enge');
@@ -24,6 +24,7 @@ const AddHint = () => {
 
 			const api = await getApiAxios();
 			await api.post('/api/dicas', formData);
+            alert('Dica enviada aguarde a aprovação de um Especialista')
 		} catch (error: any) {
 			if (error.response) {
 				console.error('Erro na resposta:', error.response.data);
@@ -42,7 +43,7 @@ const AddHint = () => {
 
     const handleHint = async () => {
 		try {
-			await fetchUploadPost(uploadData);
+			await fetchHintPost(uploadData);
 			setTitle('');
 			setDescription('');
 		} catch (error) {
@@ -67,7 +68,7 @@ const AddHint = () => {
 
   return (
     <View>
-       <TouchableOpacity onPress={() => setModalVisible(true)} className='items-center justify-center p-1'>
+       <TouchableOpacity onPress={() => setModalVisible(true)} className='items-center justify-center p-1 bg-white rounded-full'>
             <View className="border-2 border-[#4A4A4A] border-opacity-60 rounded-full w-6 h-6 items-center justify-center">
                 <Icon name="add-sharp" size={15} color="#4A4A4A" />
             </View>
@@ -98,7 +99,8 @@ const AddHint = () => {
                                 <TextInput 
                                 placeholder='digite aqui...' 
                                 className='p-4'
-                                onChangeText={setTitle}/>
+                                onChangeText={setTitle}
+                                value={title}/>
                             </View>
                             <View className='mt-[10%]'>
                                 <Text className="text-base text-[#4A4A4A]'" style={{ fontFamily: 'poppins-medium' }}>Descrição</Text>
@@ -114,6 +116,7 @@ const AddHint = () => {
                                         multiline={true}
                                         textAlignVertical="top"
                                         onChangeText={setDescription}
+                                        value={description}
                                         />
                                         </ScrollView>
                                     </View>
@@ -127,7 +130,7 @@ const AddHint = () => {
                                 {/* Submit Button */}
                                     <TouchableOpacity
                                         className="w-full h-16 items-center justify-center bg-[#767676] rounded-lg mt-8"
-                                        onPress={() => {setModalVisible(!modalVisible); handleHint() ;Alert.alert('Dica enviada aguarde a aprovação de um Especialista')}}
+                                        onPress={() => {setModalVisible(!modalVisible); handleHint() }}
                                     >
                                         <Text
                                             className="text-lg text-[#FFFFFF]"
