@@ -1,60 +1,90 @@
-import { Alert, View, Text, TouchableOpacity, Modal, Keyboard, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView, Platform  } from 'react-native'
+import { Alert, View, Text, TouchableOpacity, Modal, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView, Platform  } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import React, {useRef, useState} from 'react'
-import { Options } from './../../node_modules/@expo/fingerprint/build/Fingerprint.types.d';
 import { ScrollView } from 'react-native-gesture-handler';
 import { HintFormData } from './../../utils/types/form/formData';
 import { getApiAxios } from '../../services/axios';
+import { UserResponse } from '../../utils/types/user-response';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { getUserDetails } from '../../utils/session/user-data';
+import { getToken } from '../../utils/session/manager';
+import { NavigationProp } from '../../utils/types/navigation';
+import Spinner from '../spinner';
 
 
 const AddHint = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-
+    const [titulo, setTitulo] = useState('')
+    const [descricao, setDescricao] = useState('')
+    const [user, setUserProfile] = useState<UserResponse | undefined>(undefined);
     const textInputRef = useRef(null);
+    const navigation = useNavigation<NavigationProp>();
+    const [loading, setLoading] = useState(true);
 
     const fetchUploadPost = async (data: HintFormData) => {
 		try {
+            setLoading(true)
 			const formData = new FormData();
 			formData.append('tema', 'Enge');
-			formData.append('subtema', 'Enge');
+			formData.append('subtema', 'Civil');
 			formData.append('titulo', data.titulo);
 			formData.append('descricao', data.descricao);
+            formData.append('idUsuario', user?.email ?? '');
 
 			const api = await getApiAxios();
-			await api.post('/api/dicas', formData);
+			await api.postForm('/api/dicas', formData);
 		} catch (error: any) {
 			if (error.response) {
 				console.error('Erro na resposta:', error.response.data);
 				console.error('Status do erro:', error.response.status);
 				console.error('Cabeçalhos do erro:', error.response.headers);
 			} else if (error.request) {
-				// Erro na requisição, mas sem resposta (ex.: problema de rede)
-				console.error('Erro na requisição:', error.request);
+				console.error('Erro na requisição:', error.request);            
 			} else {
-				// Outro tipo de erro
+				
 				console.error('Erro geral:', error.message);
 			}
 			alert('Erro ao enviar Dica');
-		} 
+		}  finally{
+            setLoading(false)
+        }
 	};
+    useFocusEffect(
+		React.useCallback(() => {
+			(async () => {
+				const token = await getToken();
+				if (!token) {
+					alert('Você precisa realizar o login para acessar!');
+					navigation.navigate('LogIn');
+					return;
+				} else {
+					const user = await getUserDetails();
+					setUserProfile(user as UserResponse);
+				}
+				setLoading(false);
+			})();
+			return () => {
+				setLoading(true);
+			};
+		}, []),
+	);
 
     const handleHint = async () => {
 		try {
+           
 			await fetchUploadPost(uploadData);
-			setTitle('');
-			setDescription('');
+			setTitulo('');
+			setDescricao('');
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
     const uploadData: HintFormData = {
-		titulo: title,
-		descricao: description,
+		titulo: titulo,
+		descricao: descricao,
 		tema: 'Enge',
-		subtemas: 'Enge',
+		subtemas: 'Civil',
 	};
 
     
@@ -64,7 +94,7 @@ const AddHint = () => {
         textInputRef.current.focus(); // Foca no TextInput
         }
     };
-
+    if (loading) return <Spinner />;
   return (
     <View>
        <TouchableOpacity onPress={() => setModalVisible(true)} className='items-center justify-center p-1'>
@@ -98,7 +128,9 @@ const AddHint = () => {
                                 <TextInput 
                                 placeholder='digite aqui...' 
                                 className='p-4'
-                                onChangeText={setTitle}/>
+                                onChangeText={setTitulo}
+                                value={titulo}
+                                />
                             </View>
                             <View className='mt-[10%]'>
                                 <Text className="text-base text-[#4A4A4A]'" style={{ fontFamily: 'poppins-medium' }}>Descrição</Text>
@@ -113,7 +145,8 @@ const AddHint = () => {
                                         className="p-4"
                                         multiline={true}
                                         textAlignVertical="top"
-                                        onChangeText={setDescription}
+                                        onChangeText={setDescricao}
+                                        value={descricao}
                                         />
                                         </ScrollView>
                                     </View>
@@ -127,7 +160,9 @@ const AddHint = () => {
                                 {/* Submit Button */}
                                     <TouchableOpacity
                                         className="w-full h-16 items-center justify-center bg-[#767676] rounded-lg mt-8"
-                                        onPress={() => {setModalVisible(!modalVisible); handleHint() ;Alert.alert('Dica enviada aguarde a aprovação de um Especialista')}}
+                                        onPress={() => {
+                                            setModalVisible(!modalVisible); 
+                                            handleHint() ;Alert.alert('Dica enviada aguarde a aprovação de um Especialista')}}
                                     >
                                         <Text
                                             className="text-lg text-[#FFFFFF]"
@@ -146,3 +181,4 @@ const AddHint = () => {
 }
 
 export default AddHint
+

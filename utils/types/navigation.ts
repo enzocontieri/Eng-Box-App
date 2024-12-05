@@ -28,6 +28,7 @@ export type RootStackParamList = {
 	ChangePassword: undefined;
 	ChangeTelephone: undefined;
 	ResetPassword: undefined,
+	AddHint: undefined
 };
 
 export type NavigationProp = StackNavigationProp<RootStackParamList>;
