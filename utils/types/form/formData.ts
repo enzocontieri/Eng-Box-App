@@ -23,3 +23,10 @@ export interface UploadFormData {
 	conteudo: string;
 	fotos: Foto[];
 }
+
+export interface HintFormData {
+	titulo: string;
+	descricao: string;
+	subtemas: string,
+	tema: string;
+}
