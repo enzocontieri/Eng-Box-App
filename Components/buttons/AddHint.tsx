@@ -15,7 +15,7 @@ import Spinner from '../spinner';
 const AddHint = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [titulo, setTitulo] = useState('')
-    const [descricao, setDescricao] = useState('')
+    const [conteudo, setConteudo] = useState('')
     const [user, setUserProfile] = useState<UserResponse | undefined>(undefined);
     const textInputRef = useRef(null);
     const navigation = useNavigation<NavigationProp>();
@@ -28,8 +28,8 @@ const AddHint = () => {
 			formData.append('tema', 'Enge');
 			formData.append('subtema', 'Civil');
 			formData.append('titulo', data.titulo);
-			formData.append('descricao', data.descricao);
-            formData.append('idUsuario', user?.email ?? '');
+			formData.append('conteudo', data.conteudo);
+            formData.append('usuarioId', user?.email ?? '');
 
 			const api = await getApiAxios();
 			await api.postForm('/api/dicas', formData);
@@ -74,7 +74,7 @@ const AddHint = () => {
            
 			await fetchUploadPost(uploadData);
 			setTitulo('');
-			setDescricao('');
+			setConteudo('');
 		} catch (error) {
 			console.log(error);
 		}
@@ -82,7 +82,7 @@ const AddHint = () => {
 
     const uploadData: HintFormData = {
 		titulo: titulo,
-		descricao: descricao,
+		conteudo: conteudo,
 		tema: 'Enge',
 		subtemas: 'Civil',
 	};
@@ -145,8 +145,8 @@ const AddHint = () => {
                                         className="p-4"
                                         multiline={true}
                                         textAlignVertical="top"
-                                        onChangeText={setDescricao}
-                                        value={descricao}
+                                        onChangeText={setConteudo}
+                                        value={conteudo}
                                         />
                                         </ScrollView>
                                     </View>

@@ -1,6 +1,6 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Alert, Image, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PostComponent from '../../Components/posts/home';
@@ -9,6 +9,7 @@ import { getToken } from '../../utils/session/manager';
 import { NavigationProp } from '../../utils/types/navigation';
 import { Post } from '../../utils/types/post';
 import Spinner from '../../Components/spinner';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Home = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
@@ -20,7 +21,7 @@ const Home = () => {
 			const api = await getApiAxios();
 			const response = await api.get('/api/Enge/receitas');
 			const sortedPosts = response.data
-			.sort((a: Post, b: Post)=> new Date(b.dataCriacao).getTime()- new Date(a.dataCriacao).getTime())
+				.sort((a: Post, b: Post) => new Date(b.dataCriacao).getTime() - new Date(a.dataCriacao).getTime())
 			setPosts(sortedPosts);
 		} catch (error) {
 			console.error('Erro ao buscar posts:', error);
@@ -81,12 +82,20 @@ const HomeHeader = ({ username }: HomeHeaderProps) => {
 	return (
 		<SafeAreaView>
 			<View className="px-4 flex flex-row my-6 items-center gap-x-3 mb-5 ">
-				<View className=" h-full w-full">
-					<View>
+				<View className=" h-full w-full ">
+					<View className='flex-row items-center justify-between' >
 						<Image
 							source={require('../../assets/images/login/LogoAppHome.png')}
 						/>
+
+						<TouchableOpacity
+							className='mr-4'
+							onPress={() => navigation.navigate("Menu")}
+						>
+							<Ionicons name='menu' size={28} />
+						</TouchableOpacity>
 					</View>
+
 				</View>
 			</View>
 		</SafeAreaView>

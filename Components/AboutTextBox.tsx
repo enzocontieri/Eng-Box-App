@@ -4,8 +4,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface AboutTextBoxProps {
 	iconName?: string;
-	iconSize: number;
-	boxTitle: string;
+	iconSize?: number;
+	boxTitle?: string;
 	boxTextContent: string;
 }
 
