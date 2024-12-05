@@ -36,7 +36,7 @@ const QuizPresentation = () => {
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            className='mt-5'
+                            className='mt-5 mb-5'
                             onPress={() => navigation.navigate("Main")}>
                             <Text className='text-base text-[#767676]' style={{ fontFamily: "poppins-medium" }} >Deixar para depois</Text>
                         </TouchableOpacity>
