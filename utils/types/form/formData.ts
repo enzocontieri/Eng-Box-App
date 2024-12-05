@@ -30,7 +30,7 @@ export interface UploadFormData {
 
 export interface HintFormData {
 	titulo: string;
-	descricao: string;
+	conteudo: string;
 	subtemas: string,
 	tema: string;
 }
