@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Search from './searchBar';
 import { SearchBar } from '@rneui/themed';
 import axios from 'axios';
+import AddHint from '../buttons/AddHint';
 
 const categories = [
     { label: 'Civil', icon: require('../../assets/icons/iconsFilter/icone-eng.png') },
@@ -111,12 +112,15 @@ const CategoryComponent = () => {
         <View>
             <View className="mt-8 mb-2">
 					<View className="mx-7">
-						<Text
-							className="text-[25px] text-[#4A4A4A]"
-							style={{ fontFamily: 'poppins-medium', opacity: 0.6 }}
-						>
-							Pesquise
-						</Text>
+						<View className='flex-row justify-between'>
+                            <Text
+                                className="text-[25px] text-[#4A4A4A]"
+                                style={{ fontFamily: 'poppins-medium', opacity: 0.6 }}
+                            >
+                                Pesquise
+                            </Text>
+                            <AddHint />
+                        </View>
 					    <SearchBar 
                         platform='ios'
                         placeholder="Digite Aqui"
