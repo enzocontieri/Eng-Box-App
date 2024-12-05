@@ -53,7 +53,25 @@ export default function LogIn() {
 			alert('Login realizado com sucesso!');
 			navigation.navigate('Main');
 		} catch (error: any) {
-			console.error(error.response);
+			
+			if (error.response) {
+				const { status, data: errorData } = error.response;
+				if (status === 401) {
+					alert('Senha incorreta. Por favor, tente novamente.');
+				} else if (status === 404) {
+					alert('Usuário não encontrado. Verifique o e-mail informado.');
+				} else {
+					alert(
+						errorData?.message || 'Ocorreu um erro ao tentar realizar o login.'
+					);
+				}
+			} else if (error.request) {
+			
+				alert('Erro de conexão. Verifique sua internet.');
+			} else {
+				
+				alert('Ocorreu um erro inesperado. Tente novamente mais tarde.');
+			}	
 		}
 	};
 
