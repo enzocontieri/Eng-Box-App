@@ -16,6 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../utils/types/navigation";
 import { ForgotFormData } from "../../utils/types/form/formData";
+import { getApiAxios } from '../../services/axios';
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -25,7 +26,27 @@ export default function ForgotPassword() {
     /* Este código retorna exceção na pagina Esqueceu sua Senha */
     const { control, handleSubmit } = useForm<ForgotFormData>();
     const navigation = useNavigation<NavigationProp>();
-    
+
+
+    const fetchResetPassword = async (email: string) => {
+        try {
+            const api = await getApiAxios();
+            const response = await api.post('/api/usuario/reset', { email })
+            console.log('Resposta da Api:', response.data);
+            alert("Email Enviado")
+        } catch (error: any) {
+            if (error.response) {
+                console.error('Erro na Api:', error.response.data);
+                alert('Usuario não encontrado na Base de Dados')
+            } else if (error.request) {
+
+                console.error('Erro na requisição:', error.request);
+            } else {
+
+                console.error('Erro desconhecido:', error.message);
+            }
+        }
+    }
     return (
         <KeyboardAvoidingView
             className='flex-1 bg-[#F9F9F9]'
@@ -106,17 +127,19 @@ export default function ForgotPassword() {
                     <TouchableOpacity
                         className='w-4/5 bg-[#5A5A5A] shadow-lg py-4 mb-5 rounded-2xl'
                         onPress={handleSubmit((data) => {
-                           Alert.alert("Email enviado!")
+                            fetchResetPassword(data.email)
                             console.log(data);
+                            navigation.navigate('ResetPassword')
+
                         })}>
                         <Text className='text-center text-white text-lg'>Enviar</Text>
-                        
+
                     </TouchableOpacity>
-                    
+
                 </View>
                 <View className='flex-row justify-center items-center mb-4'>
 
-                        
+
                     <TouchableOpacity
                         className='shadow text-[#5A5A5A]'
                         onPress={() => navigation.navigate('LogIn')}>

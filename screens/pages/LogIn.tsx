@@ -226,7 +226,15 @@ export default function LogIn() {
 									)}
 								</TouchableOpacity>
 
-								<Text className="text-[#767676] ml-2" style={{ fontFamily: "poppins-regular" }} >Lembrar de Mim</Text>
+								<Text className="text-[#767676] ml-1" style={{ fontFamily: "poppins-regular" }} >Lembrar de Mim</Text>
+								<TouchableOpacity
+									className='ml-6'
+									onPress={() => navigation.navigate('ForgotPassword')}
+								>
+									<Text className="shadow text-sm text-[#5A5A5A] mr-2 underline" style={{ fontFamily: "poppins-regular" }} >
+										Esqueceu sua Senha?
+									</Text>
+								</TouchableOpacity>
 							</View>
 						</View>
 

@@ -24,6 +24,7 @@ import ChangeUsernameScreen from '../Components/PersonalData/ChangeUsernameScree
 import ChangeEmailScreen from '../Components/PersonalData/ChangeEmailScreen';
 import ChangePasswordScreen from '../Components/PersonalData/ChangePasswordScreen';
 import ChangeTelephoneScreen from '../Components/PersonalData/ChangeTelephoneScreen';
+import ResetPassword from './pages/ResetPassword';
 
 export {
     Home,
@@ -50,7 +51,8 @@ export {
     ChangeEmailScreen,
     ChangePasswordScreen,
     ChangeTelephoneScreen,
-    Sobre
+    Sobre,
+    ResetPassword
 }
 
 

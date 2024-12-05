@@ -213,6 +213,11 @@ export default function App() {
 						component={Screens.ChangeTelephoneScreen}
 						options={{ headerShown: false }}
 					/>
+					<Stack.Screen
+						name="ResetPassword"
+						component={Screens.ResetPassword}
+						options={{ headerShown: false }}
+					/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		</UserProvider>
