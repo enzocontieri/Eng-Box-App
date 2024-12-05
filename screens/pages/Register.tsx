@@ -242,8 +242,8 @@ export default function Register() {
 											value === getValues('password') ||
 											'As senhas não correspondem',
 										minLength: {
-											value: 3,
-											message: 'A senha deve ter pelo menos 3 caracteres',
+											value: 8,
+											message: 'A senha deve ter pelo menos 8 caracteres',
 										},
 										maxLength: {
 											value: 51,

@@ -15,6 +15,10 @@ export interface LoginFormData {
 export interface ForgotFormData {
 	email: string;
 }
+export interface newPasswordFormData{
+	password: string
+	confirmPassword: string,
+}
 
 export interface UploadFormData {
 	subtemas: string,
