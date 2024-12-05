@@ -3,7 +3,7 @@ import { Linking, Text, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface AboutTextBoxProps {
-	iconName: string;
+	iconName?: string;
 	iconSize: number;
 	boxTitle: string;
 	boxTextContent: string;
@@ -104,13 +104,19 @@ export const AboutTextBox = ({
 	return (
 		<View className="bg-white w-11/12 p-3 rounded-lg shadow-md mb-4">
 			<View className="flex-row items-center gap-2">
-				<Ionicons name={iconName} size={iconSize} color={'#767676'} />
-				<Text
-					className="text-xl text-[#767676] "
-					style={{ fontFamily: 'poppins-semi-bold' }}
-				>
-					{boxTitle}
-				</Text>
+				{iconName && (
+					<Ionicons name={iconName} size={iconSize} color={'#767676'} />
+				)}
+
+				{boxTitle && (
+					<Text
+						className="text-xl text-[#767676] "
+						style={{ fontFamily: 'poppins-semi-bold' }}
+					>
+						{boxTitle}
+					</Text>
+
+				)}
 			</View>
 			<Text
 				className="w-full text-justify self-start text-base px-2 my-2 text-[#767676] mt-2.5"

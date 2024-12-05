@@ -102,7 +102,7 @@ export default function App() {
 	return (
 		<UserProvider>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="Wellcome">
+				<Stack.Navigator initialRouteName="QuizPresentation">
 					<Stack.Screen
 						name="Quiz"
 						component={Screens.Quiz}
@@ -216,6 +216,16 @@ export default function App() {
 					<Stack.Screen
 						name="ResetPassword"
 						component={Screens.ResetPassword}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Menu"
+						component={Screens.Menu}
+						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="QuizPresentation"
+						component={Screens.QuizPresentation}
 						options={{ headerShown: false }}
 					/>
 				</Stack.Navigator>

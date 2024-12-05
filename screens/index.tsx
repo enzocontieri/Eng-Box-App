@@ -25,6 +25,8 @@ import ChangeEmailScreen from '../Components/PersonalData/ChangeEmailScreen';
 import ChangePasswordScreen from '../Components/PersonalData/ChangePasswordScreen';
 import ChangeTelephoneScreen from '../Components/PersonalData/ChangeTelephoneScreen';
 import ResetPassword from './pages/ResetPassword';
+import Menu from './pages/Menu';
+import QuizPresentation from './pages/QuizPresentation';
 
 export {
     Home,
@@ -52,7 +54,9 @@ export {
     ChangePasswordScreen,
     ChangeTelephoneScreen,
     Sobre,
-    ResetPassword
+    ResetPassword,
+    Menu,
+    QuizPresentation
 }
 
 
