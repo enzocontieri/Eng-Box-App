@@ -6,7 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Search from './searchBar';
 import { SearchBar } from '@rneui/themed';
 import axios from 'axios';
-import AddHint from '../buttons/AddHint';
+import AddHint from '../Hint/AddHint';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const categories = [
     { label: 'Civil', icon: require('../../assets/icons/iconsFilter/icone-eng.png') },
@@ -119,7 +120,7 @@ const CategoryComponent = () => {
                             >
                                 Pesquise
                             </Text>
-                            <AddHint />
+                            <Icon name="people-outline" size={24} color="#000" onPress={() => {navigation.navigate('HintComunity')}}/>
                         </View>
 					    <SearchBar 
                         platform='ios'
