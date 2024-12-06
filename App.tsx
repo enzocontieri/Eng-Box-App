@@ -228,6 +228,11 @@ export default function App() {
 						component={Screens.QuizPresentation}
 						options={{ headerShown: false }}
 					/>
+					<Stack.Screen
+						name="HintComunity"
+						component={Screens.HintComunity}
+						options={{ headerShown: false }}
+					/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		</UserProvider>

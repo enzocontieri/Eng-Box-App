@@ -27,6 +27,7 @@ import ChangeTelephoneScreen from '../Components/PersonalData/ChangeTelephoneScr
 import ResetPassword from './pages/ResetPassword';
 import Menu from './pages/Menu';
 import QuizPresentation from './pages/QuizPresentation';
+import HintComunity from './pages/HintComunity';
 
 export {
     Home,
@@ -56,7 +57,8 @@ export {
     Sobre,
     ResetPassword,
     Menu,
-    QuizPresentation
+    QuizPresentation,
+    HintComunity
 }
 
 
