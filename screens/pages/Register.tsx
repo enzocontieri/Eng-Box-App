@@ -14,27 +14,56 @@ import { Controller, useForm } from 'react-hook-form';
 import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { axiosLogin } from '../../services/axios';
+import { getUserDetailsByEmail } from '../../utils/session/user-data';
 import { RegisterFormData } from '../../utils/types/form/formData';
 import { NavigationProp } from '../../utils/types/navigation';
 
 export default function Register() {
 	/* Este código retorna exceção na pagina Register */
 	const navigation = useNavigation<NavigationProp>();
-	const { control, handleSubmit, getValues, formState } =
+	const { control, handleSubmit, getValues, formState, reset } =
 		useForm<RegisterFormData>();
 	const { isSubmitting } = formState;
 
 	const [showPassword, setShowPassword] = React.useState<boolean>(false);
-	const [showPasswordConfirmation, setShowPasswordConfirmation] = React.useState<boolean>(false);
-
+	const [showPasswordConfirmation, setShowPasswordConfirmation] =
+		React.useState<boolean>(false);
 
 	const handleRegisterFormSubmit = async (data: RegisterFormData) => {
-		navigation.navigate('Quiz', { user: data });
+		try {
+			const { data: message } = await axiosLogin.post('/api/usuario', {
+				email: data.email,
+				senha: data.password,
+				nome: data.username,
+				nivelConsciencia: 1,
+				isMonitor: true,
+				tokens: `${Math.random()}`,
+				telefone: '123232323',
+			});
+
+			alert('Conta criada com sucesso!');
+			reset();
+			navigation.navigate('LogIn');
+		} catch (error: any) {
+			if (error.response) {
+				const { status, data: errorData } = error.response;
+
+				if (
+					errorData.errors[0] &&
+					errorData.errors[0].trim() ===
+						'duplicate key value violates unique constraint "usuarios_pkey"'
+				) {
+					alert('Email já registrado!');
+				} else {
+					alert('Erro ao criar conta');
+				}
+			}
+		}
 	};
 
 	return (
 		<KeyboardAvoidingView
-			className='flex-1'
+			className="flex-1"
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 		>
 			<ScrollView className="">
@@ -64,11 +93,16 @@ export default function Register() {
 						</Text>
 
 						{/* Input de Usuário */}
-						<View className='w-4/5'>
+						<View className="w-4/5">
 							<View className="mb-4">
 								<View className="flex-row items-center mb-2">
-									<Ionicons name="person-sharp" size={20} color={"#5A5A5A"} />
-									<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }}>Usuário</Text>
+									<Ionicons name="person-sharp" size={20} color={'#5A5A5A'} />
+									<Text
+										className="ml-1 text-[#5A5A5A] text-base"
+										style={{ fontFamily: 'poppins-medium' }}
+									>
+										Usuário
+									</Text>
 								</View>
 
 								<Controller
@@ -78,7 +112,8 @@ export default function Register() {
 										required: 'Nome de Usuario é obrigatorio',
 										minLength: {
 											value: 3,
-											message: 'Nome de Usuario deve ter no minimo 3 caracteres',
+											message:
+												'Nome de Usuario deve ter no minimo 3 caracteres',
 										},
 										maxLength: {
 											value: 51,
@@ -119,8 +154,13 @@ export default function Register() {
 							{/* Input de email */}
 							<View className="mb-4">
 								<View className="flex-row items-center mb-2">
-									<Ionicons name="mail" size={20} color={"#5A5A5A"} />
-									<Text className=" ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }} >Email</Text>
+									<Ionicons name="mail" size={20} color={'#5A5A5A'} />
+									<Text
+										className=" ml-1 text-[#5A5A5A] text-base"
+										style={{ fontFamily: 'poppins-medium' }}
+									>
+										Email
+									</Text>
 								</View>
 
 								<Controller
@@ -171,8 +211,13 @@ export default function Register() {
 							{/* Input de senha */}
 							<View className="mb-4">
 								<View className="flex-row items-center mb-2">
-									<Ionicons name="lock-closed" size={20} color={"#5A5A5A"} />
-									<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }}>Senha</Text>
+									<Ionicons name="lock-closed" size={20} color={'#5A5A5A'} />
+									<Text
+										className="ml-1 text-[#5A5A5A] text-base"
+										style={{ fontFamily: 'poppins-medium' }}
+									>
+										Senha
+									</Text>
 								</View>
 
 								<Controller
@@ -188,9 +233,11 @@ export default function Register() {
 											value: 51,
 											message: 'Limite excedido de caracteres',
 										},
-
 									}}
-									render={({ field: { value, onChange }, fieldState: { error } }) => (
+									render={({
+										field: { value, onChange },
+										fieldState: { error },
+									}) => (
 										<View className="w-full">
 											<View className="flex-row items-center rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
 												<TextInput
@@ -228,8 +275,11 @@ export default function Register() {
 							{/* Input de confirmar senha */}
 							<View className="mb-4">
 								<View className="flex-row items-center mb-2">
-									<Ionicons name="lock-closed" size={20} color={"#5A5A5A"} />
-									<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }}>
+									<Ionicons name="lock-closed" size={20} color={'#5A5A5A'} />
+									<Text
+										className="ml-1 text-[#5A5A5A] text-base"
+										style={{ fontFamily: 'poppins-medium' }}
+									>
 										Confirmar senha
 									</Text>
 								</View>
@@ -265,7 +315,11 @@ export default function Register() {
 													autoCapitalize="none"
 												/>
 												<TouchableOpacity
-													onPress={() => setShowPasswordConfirmation(!showPasswordConfirmation)}
+													onPress={() =>
+														setShowPasswordConfirmation(
+															!showPasswordConfirmation,
+														)
+													}
 													className="items-center justify-center"
 												>
 													<Ionicons
@@ -292,7 +346,9 @@ export default function Register() {
 								onPress={handleSubmit(handleRegisterFormSubmit)}
 								disabled={isSubmitting}
 							>
-								<Text className="text-center text-white text-lg">Registrar</Text>
+								<Text className="text-center text-white text-lg">
+									Registrar
+								</Text>
 							</TouchableOpacity>
 						</View>
 					</View>

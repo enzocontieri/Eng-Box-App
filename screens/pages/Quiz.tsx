@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import {
-	Modal,
-	ScrollView,
-	Text,
-	TouchableOpacity,
-	View,
-} from 'react-native';
+import { Modal, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import 'tailwindcss/tailwind.css';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { axiosLogin } from '../../services/axios';
-import { RootStackParamList } from '../../utils/types/navigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { axiosLogin, getApiAxios } from '../../services/axios';
+import { getUserDetails } from '../../utils/session/user-data';
+import { userStore } from '../../utils/stores/user';
+import { RootStackParamList } from '../../utils/types/navigation';
 
 // Define o tipo de navegação para o componente
 type NavigationProp = StackNavigationProp<RootStackParamList>;
@@ -73,17 +69,19 @@ const CustomAlert = ({
 	message: string;
 	onClose: () => void;
 }) => (
-	<Modal
-		transparent={true}
-		animationType="fade"
-		visible={visible}
-	>
+	<Modal transparent={true} animationType="fade" visible={visible}>
 		<View className="flex-1 justify-center items-center bg-[#00000050]">
 			<View className="bg-white w-3/4 p-6 rounded-lg shadow-md">
-				<Text className="text-[#767676] text-lg mb-4 text-center" style={{ fontFamily: 'poppins-semi-bold' }} >
+				<Text
+					className="text-[#767676] text-lg mb-4 text-center"
+					style={{ fontFamily: 'poppins-semi-bold' }}
+				>
 					{title}
 				</Text>
-				<Text className="text-black text-base mb-6 text-center" style={{ fontFamily: 'poppins-regular' }} >
+				<Text
+					className="text-black text-base mb-6 text-center"
+					style={{ fontFamily: 'poppins-regular' }}
+				>
 					{message}
 				</Text>
 				<TouchableOpacity
@@ -102,16 +100,8 @@ const CustomAlert = ({
 	</Modal>
 );
 
-type QuizScreenRouteProp = RouteProp<RootStackParamList, 'Quiz'>;
-
-type QuizProps = {
-	route: QuizScreenRouteProp;
-};
-
 // Componente principal do Quiz
-const Quiz = ({ route }: QuizProps) => {
-	const { user } = route.params;
-
+const Quiz = () => {
 	const questions = [
 		{
 			id: '1',
@@ -168,6 +158,8 @@ const Quiz = ({ route }: QuizProps) => {
 
 	const navigation = useNavigation<NavigationProp>();
 
+	let user = userStore.getState().user;
+
 	const handleNextQuestion = () => {
 		if (selectedOption === null) {
 			setAlertVisible(true);
@@ -189,9 +181,11 @@ const Quiz = ({ route }: QuizProps) => {
 
 	return (
 		<SafeAreaView className="flex-1">
-			<ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 300 }} className="flex-1">
-				<View className='items-center'>
-
+			<ScrollView
+				contentContainerStyle={{ flexGrow: 1, paddingBottom: 300 }}
+				className="flex-1"
+			>
+				<View className="items-center">
 					{/* Alerta de seleção de opção */}
 					<CustomAlert
 						visible={alertVisible}
@@ -210,28 +204,43 @@ const Quiz = ({ route }: QuizProps) => {
 							try {
 								if (score === 0) score += 1;
 
-								const { data: message } = await axiosLogin.post('/api/usuario', {
-									email: user.email,
-									senha: user.password,
-									nome: user.username,
+								if (!user) {
+									user = await getUserDetails();
+								}
+
+								const api = await getApiAxios();
+								const response = await api.put(`/api/usuario/${user?.email}`, {
 									nivelConsciencia: score,
-									isMonitor: true,
-									tokens: `${Math.random()}`,
-									telefone: '123232323',
 								});
 
-								if (message) navigation.navigate('QuizzResult', { score: score });
+								userStore.getState().setUser({
+									...user,
+									nivelConsciencia: score,
+									nome: user?.nome ?? '',
+									email: user?.email ?? '',
+									fotoUsu: user?.fotoUsu ?? null,
+									isMonitor: user?.isMonitor ?? false,
+									telefone: user?.telefone ?? '',
+								});
+
+								navigation.navigate('QuizzResult', { score: score });
 							} catch (error) {
-								navigation.navigate('Register');
-								alert('Erro ao criar usuário!');
 								console.error(error);
 							}
 						}}
 					/>
 
 					<View className="items-center w-10/12 mt-8">
-						<Text className="text-3xl text-[#767676]" style={{ fontFamily: 'poppins-semi-bold' }} >Eng Box Quiz</Text>
-						<Text className="text-lg text-justify text-[#767676] mt-8" style={{ fontFamily: 'poppins-medium' }} >
+						<Text
+							className="text-3xl text-[#767676]"
+							style={{ fontFamily: 'poppins-semi-bold' }}
+						>
+							Eng Box Quiz
+						</Text>
+						<Text
+							className="text-lg text-justify text-[#767676] mt-8"
+							style={{ fontFamily: 'poppins-medium' }}
+						>
 							{questions[currentQuestion].question}
 						</Text>
 
@@ -249,14 +258,18 @@ const Quiz = ({ route }: QuizProps) => {
 						</View>
 
 						<TouchableOpacity
-							className={`bg-[#767676] rounded-lg w-full h-16 p-4 items-center justify-center border border-[#76767650] shadow-md`}
+							className={
+								'bg-[#767676] rounded-lg w-full h-16 p-4 items-center justify-center border border-[#76767650] shadow-md'
+							}
 							onPress={handleNextQuestion}
 						>
 							<Text
 								style={{ fontFamily: 'poppins-semi-bold' }}
 								className="text-white text-lg"
 							>
-								{currentQuestion < questions.length - 1 ? 'Próxima Pergunta' : 'Concluir'}
+								{currentQuestion < questions.length - 1
+									? 'Próxima Pergunta'
+									: 'Concluir'}
 							</Text>
 						</TouchableOpacity>
 					</View>

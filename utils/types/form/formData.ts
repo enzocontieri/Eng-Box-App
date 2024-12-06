@@ -15,13 +15,13 @@ export interface LoginFormData {
 export interface ForgotFormData {
 	email: string;
 }
-export interface newPasswordFormData{
-	password: string
-	confirmPassword: string,
+export interface newPasswordFormData {
+	password: string;
+	confirmPassword: string;
 }
 
 export interface UploadFormData {
-	subtemas: string,
+	subtemas: string;
 	tema: string;
 	titulo: string;
 	conteudo: string;
@@ -31,6 +31,6 @@ export interface UploadFormData {
 export interface HintFormData {
 	titulo: string;
 	conteudo: string;
-	subtemas: string,
+	subtemas: string;
 	tema: string;
 }

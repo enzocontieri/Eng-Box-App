@@ -26,15 +26,17 @@ export const getUserDetails = async () => {
 };
 
 export const getUserDetailsByEmail = async (email: string) => {
-	const token = await getToken();
-	if (token) {
+	try {
 		const axios = await getApiAxios();
 		const { data: user } = await axios.get<UserResponse>(
 			`/api/usuario/${email}`,
 		);
 
 		return user;
-	} else {
-		return null;
+	} catch (error: any) {
+		if (error.response) {
+			const { status, data: errorData } = error.response;
+			console.log(errorData);
+		}
 	}
 };

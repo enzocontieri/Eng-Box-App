@@ -27,7 +27,7 @@ import { TokenResponse } from '../../utils/types/token';
 export default function LogIn() {
 	const navigation = useNavigation<NavigationProp>();
 	const [rememberMe, setRememberMe] = useState(false);
-	const { control, handleSubmit, formState } = useForm<LoginFormData>();
+	const { control, handleSubmit, formState, reset } = useForm<LoginFormData>();
 	const { isSubmitting } = formState;
 
 	const [showPassword, setShowPassword] = React.useState<boolean>(false);
@@ -51,9 +51,9 @@ export default function LogIn() {
 			}
 
 			alert('Login realizado com sucesso!');
-			navigation.navigate('Main');
+			reset();
+			navigation.navigate('QuizPresentation');
 		} catch (error: any) {
-			
 			if (error.response) {
 				const { status, data: errorData } = error.response;
 				if (status === 401) {
@@ -62,16 +62,14 @@ export default function LogIn() {
 					alert('Usuário não encontrado. Verifique o e-mail informado.');
 				} else {
 					alert(
-						errorData?.message || 'Ocorreu um erro ao tentar realizar o login.'
+						errorData?.message || 'Ocorreu um erro ao tentar realizar o login.',
 					);
 				}
 			} else if (error.request) {
-			
 				alert('Erro de conexão. Verifique sua internet.');
 			} else {
-				
 				alert('Ocorreu um erro inesperado. Tente novamente mais tarde.');
-			}	
+			}
 		}
 	};
 
@@ -116,7 +114,10 @@ export default function LogIn() {
 						>
 							Bem-vindo de Volta!
 						</Text>
-						<Text className="text-base text-[#767676] mb-2" style={{ fontFamily: "poppins-medium" }}>
+						<Text
+							className="text-base text-[#767676] mb-2"
+							style={{ fontFamily: 'poppins-medium' }}
+						>
 							Faça login na sua conta
 						</Text>
 
@@ -124,9 +125,14 @@ export default function LogIn() {
 
 						<View className="w-full mb-4">
 							<View className="flex-row items-center mb-2 mr-5 ">
-								<Ionicons name="person-sharp" size={20} color={"#5A5A5A"} />
+								<Ionicons name="person-sharp" size={20} color={'#5A5A5A'} />
 
-								<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }} >Email</Text>
+								<Text
+									className="ml-1 text-[#5A5A5A] text-base"
+									style={{ fontFamily: 'poppins-medium' }}
+								>
+									Email
+								</Text>
 							</View>
 
 							<Controller
@@ -172,8 +178,13 @@ export default function LogIn() {
 						{/*Input Password*/}
 						<View className="w-full mb-4 ">
 							<View className="flex-row items-center mb-2 mr-5 ">
-								<Ionicons name="lock-closed" size={20} color={"#5A5A5A"} />
-								<Text className="ml-1 text-[#5A5A5A] text-base" style={{ fontFamily: "poppins-medium" }}>Senha</Text>
+								<Ionicons name="lock-closed" size={20} color={'#5A5A5A'} />
+								<Text
+									className="ml-1 text-[#5A5A5A] text-base"
+									style={{ fontFamily: 'poppins-medium' }}
+								>
+									Senha
+								</Text>
 							</View>
 
 							<Controller
@@ -190,7 +201,10 @@ export default function LogIn() {
 										message: 'Limite excedido de caracteres',
 									},
 								}}
-								render={({ field: { value, onChange }, fieldState: { error } }) => (
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
 									<View className="w-full">
 										<View className="flex-row items-center rounded-2xl pr-2 justify-between bg-[#EDEDED] border border-[#5B5B5B]">
 											<TextInput
@@ -223,7 +237,6 @@ export default function LogIn() {
 									</View>
 								)}
 							/>
-
 						</View>
 
 						{/*Remember me and ForgotPassword */}
@@ -244,12 +257,20 @@ export default function LogIn() {
 									)}
 								</TouchableOpacity>
 
-								<Text className="text-[#767676] ml-1" style={{ fontFamily: "poppins-regular" }} >Lembrar de Mim</Text>
+								<Text
+									className="text-[#767676] ml-1"
+									style={{ fontFamily: 'poppins-regular' }}
+								>
+									Lembrar de Mim
+								</Text>
 								<TouchableOpacity
-									className='ml-6'
+									className="ml-6"
 									onPress={() => navigation.navigate('ForgotPassword')}
 								>
-									<Text className="shadow text-sm text-[#5A5A5A] mr-2 underline" style={{ fontFamily: "poppins-regular" }} >
+									<Text
+										className="shadow text-sm text-[#5A5A5A] mr-2 underline"
+										style={{ fontFamily: 'poppins-regular' }}
+									>
 										Esqueceu sua Senha?
 									</Text>
 								</TouchableOpacity>
@@ -268,13 +289,21 @@ export default function LogIn() {
 						{/*Link of Register */}
 						<View className=" flex-row justify-center items-center mb-4">
 							<View className="flex-row items-center">
-								<Text className="text-[#767676]" style={{ fontFamily: "poppins-medium" }} >Não tem uma Conta?</Text>
+								<Text
+									className="text-[#767676]"
+									style={{ fontFamily: 'poppins-medium' }}
+								>
+									Não tem uma Conta?
+								</Text>
 							</View>
 							<TouchableOpacity
 								className="shadow text-[#767676]"
 								onPress={() => navigation.navigate('Register')}
 							>
-								<Text className="text-[#5A5A5A] ml-1 underline" style={{ fontFamily: "poppins-medium" }}>
+								<Text
+									className="text-[#5A5A5A] ml-1 underline"
+									style={{ fontFamily: 'poppins-medium' }}
+								>
 									Registre-se
 								</Text>
 							</TouchableOpacity>

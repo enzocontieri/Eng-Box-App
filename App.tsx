@@ -11,9 +11,9 @@ import * as Screens from './screens/index';
 
 import { useFonts } from 'expo-font';
 import { View } from 'react-native';
-import { TabRoutes } from './utils/enums/tab-routes';
 import { Platform } from 'react-native';
 import { UserProvider } from './Components/profile/UserContext';
+import { TabRoutes } from './utils/enums/tab-routes';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -102,7 +102,7 @@ export default function App() {
 	return (
 		<UserProvider>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="QuizPresentation">
+				<Stack.Navigator initialRouteName="Wellcome">
 					<Stack.Screen
 						name="Quiz"
 						component={Screens.Quiz}
@@ -114,7 +114,7 @@ export default function App() {
 						options={{ headerShown: false }}
 					/>
 					<Stack.Screen
-						name='QuizzResult'
+						name="QuizzResult"
 						component={Screens.QuizzResult}
 						options={{ headerShown: false }}
 					/>
