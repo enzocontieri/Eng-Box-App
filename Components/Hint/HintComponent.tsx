@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator, ScrollView, Alert, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { getApiAxios } from '../../services/axios';
 import { Especialist } from '../../utils/types/post';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const HintComponent = () => {
   const [hints, setHints] = useState([]);
@@ -22,6 +23,15 @@ const HintComponent = () => {
     }
   };
 
+  const deleteHint = async () => {
+    try {
+      const api = await getApiAxios();
+      const response = await api.delete('/api/Enge/dicas');
+    } catch (error) {
+    Alert.alert("erro ao deletar dica")
+  } 
+}
+
   useEffect(() => {
     fetchHints();
   }, []);
@@ -35,6 +45,11 @@ const HintComponent = () => {
         >
           {item.titulo}
         </Text>
+        <View className='position absolute top-3 right-3'>
+          <TouchableOpacity onPress={deleteHint}>
+            <Icon name='trash-outline' size={20} color="red" />
+          </TouchableOpacity>
+        </View>
         <Text className="text-[#4A4A4A] text-sm" style={{ fontFamily: 'poppins-medium', opacity: 0.7 }}>{item.conteudo}</Text>
         <Text className="text-[#4A4A4A] text-base" style={{ fontFamily: 'poppins-medium'}}></Text>
       </View>
