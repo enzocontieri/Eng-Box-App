@@ -5,6 +5,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { checkIsRemember } from '../../utils/async-storage/user-data';
 import { getToken } from '../../utils/session/manager';
 import { NavigationProp } from '../../utils/types/navigation';
+import { StatusBar } from 'expo-status-bar';
 
 export default function Wellcome() {
 	const navigation = useNavigation<NavigationProp>();
@@ -27,18 +28,12 @@ export default function Wellcome() {
 	return (
 		<ScrollView>
 			<View className="flex-1 bg-[#F9F9F9]  items-center">
-				<View className="justify-center items-center mt-[-30] w-full h-64 mb-10">
-					<Image
-						source={require('../../assets/images/login/ImagemDeWellcome.png')}
-						className="absolute shadown top-0 left-0 w-full h-100 object-cover "
-					/>
-					<View className="justify-center items-center mt-[200]">
-						<Image source={require('../../assets/images/login/LogoDoApp.png')} />
-					</View>
+				<View className="mb-8">
+					<Image source={require("../../assets/images/Eng-Box-Image.png")} />
 				</View>
 
 				<TouchableOpacity
-					className="w-4/5 bg-[#767676] shadow-lg py-3.5 mb-4 mt-[230] rounded-2xl"
+					className="w-4/5 bg-[#767676] shadow-lg py-3.5 mb-4 rounded-2xl"
 					onPress={() => navigation.navigate('Register')}
 				>
 					<Text className="text-center text-[#FFFFFF] text-xl">
@@ -54,9 +49,9 @@ export default function Wellcome() {
 						Entrar
 					</Text>
 				</TouchableOpacity>
-				<View className="justify-center items-center">
+				<View className="justify-center items-center my-4">
 					<TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')}>
-						<Text className="font-semibold ml-1 mt-36 text-[#09090b]">
+						<Text className="font-semibold ml-1  text-[#09090b]">
 							Politica de privacidade | Termos e condições
 						</Text>
 					</TouchableOpacity>
@@ -66,6 +61,7 @@ export default function Wellcome() {
 					</Text>
 				</View>
 			</View>
+			<StatusBar  />
 		</ScrollView>
 	);
 }
