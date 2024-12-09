@@ -55,6 +55,7 @@ const Upload = () => {
 			formData.append('idUsuario', user?.email ?? '');
 			formData.append('titulo', data.titulo);
 			formData.append('conteudo', data.conteudo);
+			formData.append('IsCreatedBySpecialist', String(user?.isMonitor ?? ''));
 
 			const api = await getApiAxios();
 			await api.postForm('/api/receitas', formData);

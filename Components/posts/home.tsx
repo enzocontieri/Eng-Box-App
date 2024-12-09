@@ -4,7 +4,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { getUserDetailsByEmail } from '../../utils/session/user-data';
 import { Post } from '../../utils/types/post';
 import { UserResponse } from '../../utils/types/user-response';
-
+import { Ionicons } from '@expo/vector-icons';
 type PostProps = {
 	post: Post;
 };
@@ -45,9 +45,33 @@ const PostComponent = ({ post }: PostProps) => {
 							resizeMode="cover"
 						/>
 					</View>
-					<Text className="text-sm" style={{ fontFamily: "poppins-semi-bold" }}>
-						{userPost?.nome || 'Autor desconhecido'}
-					</Text>
+
+					<View className="gap-x-1 flex-row justify-between items-center">
+						<Text
+							className="text-sm"
+							style={{ fontFamily: "poppins-semi-bold" }}>
+							{userPost?.nome || 'Autor desconhecido'}
+						</Text>
+
+						{userPost?.isMonitor && (
+							<View className="flex-row gap-x-1">
+								<Ionicons
+									name="diamond-outline"
+									size={14}
+									color="black"
+								/>
+								<Text
+									className="text-xs"
+									style={{
+										fontFamily: 'poppins-semi-bold',
+									}}
+								>
+									Especialista
+								</Text>
+							</View>
+						)}
+					</View>
+
 				</View>
 			</View>
 

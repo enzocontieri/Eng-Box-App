@@ -36,7 +36,7 @@ export default function Register() {
 				senha: data.password,
 				nome: data.username,
 				nivelConsciencia: 1,
-				isMonitor: true,
+				isMonitor: false,
 				tokens: `${Math.random()}`,
 				telefone: '123232323',
 			});
