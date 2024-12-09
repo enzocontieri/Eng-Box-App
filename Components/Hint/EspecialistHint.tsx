@@ -13,7 +13,7 @@ const EspecialistHint = () => {
     try {
       setLoading(true);
       const api = await getApiAxios();
-      const response = await api.get('/api/Enge/dicas');
+      const response = await api.get('/api/Enge/dicas/especialistas');
       setHints(response.data);
     } catch (error) {
       console.error('Erro ao buscar dicas:', error);
