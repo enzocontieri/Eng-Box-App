@@ -28,6 +28,7 @@ import ResetPassword from './pages/ResetPassword';
 import Menu from './pages/Menu';
 import QuizPresentation from './pages/QuizPresentation';
 import HintComunity from './pages/HintComunity';
+import UserHint from './pages/UserHint';
 
 export {
     Home,
@@ -58,7 +59,8 @@ export {
     ResetPassword,
     Menu,
     QuizPresentation,
-    HintComunity
+    HintComunity,
+    UserHint
 }
 
 

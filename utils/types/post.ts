@@ -15,12 +15,7 @@ export interface Post {
 }
 
 export interface Especialist {
-	id: number;
-	idUsuario: string;
-	dataCriacao: string,
 	titulo: string;
-	tema: string,
-	subtemas: string,
 	conteudo: string;
-	fotos: Foto[];
+	idUsuario: string;
 }

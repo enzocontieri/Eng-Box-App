@@ -8,6 +8,7 @@ import HintComponent from '../../Components/Hint/HintComponent';
 import EspecialistHint from '../../Components/Hint/EspecialistHint';
 import GoBackButton from '../../Components/GoBackButton';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { TouchableOpacity } from 'react-native';
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -40,8 +41,11 @@ const HintComunity = () => {
                             </Text>
                         </View>
                     </View>
-                    <View className="absolute right-8 top-4">
+                    <View className="absolute right-4 top-4 justify-between flex-row gap-1">
                         <AddHint />
+                        <TouchableOpacity onPress={() => navigation.navigate('UserHint')}>
+                            <Icon name='newspaper-outline' size={24} color='4A4A4A'/>
+                        </TouchableOpacity>
                     </View>
                     <View>
                         <HintComponent />

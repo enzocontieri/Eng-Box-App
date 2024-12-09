@@ -4,20 +4,21 @@ import axios from 'axios';
 import { getApiAxios } from '../../services/axios';
 import { Especialist } from '../../utils/types/post';
 import Icon from 'react-native-vector-icons/Ionicons';
+import GoBackButton from './../../Components/GoBackButton';
 
-const HintComponent = () => {
+const UserHint = () => {
   const [hints, setHints] = useState([]);
-  const [titulo, setTitulo] = useState('')
-  const [conteudo, setConteudo] = useState('')
   const [loading, setLoading] = useState(false);
 
   // Função para buscar dados da API
-  const fetchHints = async () => {
+  const fetchHints = async (userHint: string ) => {
     try {
       setLoading(true);
       const api = await getApiAxios();
       const response = await api.get('/api/Enge/dicas');
-      setHints(response.data);
+      const userHints = response.data
+      .filter((hint: Especialist) => hint.idUsuario === userHint);
+      setHints(userHints);
     } catch (error) {
       console.error('Erro ao buscar dicas:', error);
     } finally {
@@ -25,6 +26,15 @@ const HintComponent = () => {
     }
   };
 
+  const deleteHint = async (dicaId: string) => {
+    try {
+      const api = await getApiAxios();
+      const response = await api.delete(`/api/dicas/${dicaId}`);
+      setHints(response.data);
+    } catch (error) {
+    Alert.alert("erro ao deletar dica")
+  } 
+}
 
   useEffect(() => {
     fetchHints();
@@ -42,6 +52,11 @@ const HintComponent = () => {
         >
           {item.titulo}
         </Text>
+        <View className='position absolute top-3 right-3'>
+          <TouchableOpacity onPress={deleteHint}>
+            <Icon name='trash-outline' size={20} color="red" />
+          </TouchableOpacity>
+        </View>
         <Text className="text-[#4A4A4A] text-sm" style={{ fontFamily: 'poppins-medium', opacity: 0.7 }}>{item.conteudo}</Text>
         <Text className="text-[#4A4A4A] text-base" style={{ fontFamily: 'poppins-medium'}}></Text>
       </View>
@@ -50,7 +65,16 @@ const HintComponent = () => {
 
   return (
     
-    <View>
+    <View className='mt-16'>
+        <GoBackButton />
+      <View className='items-center mb-10'>
+      <Text
+          className="font-bold text-lg text-[#4A4A4A]"
+          style={{ fontFamily: 'poppins-medium' }}
+        >
+      Suas Dicas
+        </Text>
+      </View>
       {loading ? (
         <View className="flex-1 items-center justify-center mt-44">
           <ActivityIndicator size="large" color="#4A4A4A" />
@@ -74,4 +98,4 @@ const HintComponent = () => {
   );
 };
 
-export default HintComponent;
+export default UserHint;

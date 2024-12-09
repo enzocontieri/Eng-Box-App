@@ -233,6 +233,11 @@ export default function App() {
 						component={Screens.HintComunity}
 						options={{ headerShown: false }}
 					/>
+					<Stack.Screen
+						name="UserHint"
+						component={Screens.UserHint}
+						options={{ headerShown: false }}
+					/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		</UserProvider>
