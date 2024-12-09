@@ -11,13 +11,13 @@ const UserHint = () => {
   const [loading, setLoading] = useState(false);
 
   // Função para buscar dados da API
-  const fetchHints = async (userHint: string ) => {
+  const fetchHints = async (userEmail: string ) => {
     try {
       setLoading(true);
       const api = await getApiAxios();
       const response = await api.get('/api/Enge/dicas');
       const userHints = response.data
-      .filter((hint: Especialist) => hint.idUsuario === userHint);
+      .filter((hint: Especialist) => hint.idUsuario === userEmail);
       setHints(userHints);
     } catch (error) {
       console.error('Erro ao buscar dicas:', error);
