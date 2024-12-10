@@ -2,7 +2,6 @@ import { Alert, View, Text, TouchableOpacity, Modal, TouchableWithoutFeedback, T
 import Icon from 'react-native-vector-icons/Ionicons';
 import React, {useRef, useState} from 'react'
 import { ScrollView } from 'react-native-gesture-handler';
-import { HintFormData } from '../../utils/types/form/formData';
 import { getApiAxios } from '../../services/axios';
 import { UserResponse } from '../../utils/types/user-response';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -10,12 +9,13 @@ import { getUserDetails } from '../../utils/session/user-data';
 import { getToken } from '../../utils/session/manager';
 import { NavigationProp } from '../../utils/types/navigation';
 import Spinner from '../spinner';
+import { HintFormData } from '../../utils/types/form/formData';
 
 
 const AddHint = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [titulo, setTitulo] = useState('')
-    const [conteudo, setConteudo] = useState('')
+    const [titulo, setTitulo] = React.useState('');
+	const [conteudo, setConteudo] = React.useState('');
     const [user, setUserProfile] = useState<UserResponse | undefined>(undefined);
     const textInputRef = useRef(null);
     const navigation = useNavigation<NavigationProp>();
@@ -25,14 +25,14 @@ const AddHint = () => {
 		try {
             setLoading(true)
 			const formData = new FormData();
-			formData.append('tema', 'Enge');
-			formData.append('subtema', 'Civil');
 			formData.append('titulo', data.titulo);
 			formData.append('conteudo', data.conteudo);
+			formData.append('tema', data.tema);
+			formData.append('subtema', data.subtemas);
             formData.append('usuarioId', user?.email ?? '');
 
 			const api = await getApiAxios();
-			await api.postForm('/api/dicas', formData);
+			await api.postForm('/api/dicas',formData);
 		} catch (error: any) {
 			if (error.response) {
 				console.error('Erro na resposta:', error.response.data);
@@ -49,6 +49,7 @@ const AddHint = () => {
             setLoading(false)
         }
 	};
+    
     useFocusEffect(
 		React.useCallback(() => {
 			(async () => {
@@ -71,8 +72,7 @@ const AddHint = () => {
 
     const handleHint = async () => {
 		try {
-           
-			await fetchUploadPost(uploadData);
+			await fetchUploadPost(hintData);
 			setTitulo('');
 			setConteudo('');
 		} catch (error) {
@@ -80,13 +80,12 @@ const AddHint = () => {
 		}
 	};
 
-    const uploadData: HintFormData = {
+    const hintData: HintFormData = {
 		titulo: titulo,
 		conteudo: conteudo,
 		tema: 'Enge',
 		subtemas: 'Civil',
 	};
-
     
 
     const handleViewPress = () => {
@@ -129,7 +128,6 @@ const AddHint = () => {
                                 placeholder='digite aqui...' 
                                 className='p-4'
                                 onChangeText={setTitulo}
-                                value={titulo}
                                 />
                             </View>
                             <View className='mt-[10%]'>
@@ -146,7 +144,6 @@ const AddHint = () => {
                                         multiline={true}
                                         textAlignVertical="top"
                                         onChangeText={setConteudo}
-                                        value={conteudo}
                                         />
                                         </ScrollView>
                                     </View>

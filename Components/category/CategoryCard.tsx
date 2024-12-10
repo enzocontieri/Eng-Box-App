@@ -154,11 +154,11 @@ const CategoryComponent = () => {
             <View className='mx-7 mb-3'>
                 <Text className='text-base text-[#4A4A4A]' style={{ fontFamily: 'poppins-medium', opacity: 0.6 }}>Filtre Por Categoria</Text>
             </View>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} className='ml-2'>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} className='ml-2' contentContainerStyle={{ paddingBottom: 40 }}>
                 {categories.map((category, index) => (
                     <TouchableOpacity
                         key={index}
-                        className={`bg-white h-13 mb-2 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between ${selectedCategories.includes(category.label) ? 'bg-[#78CAD2]' : ''}`}
+                        className={`bg-white h-16 p-4 mx-3 rounded-xl shadow flex-row items-center justify-between ${selectedCategories.includes(category.label) ? 'bg-[#78CAD2]' : ''}`}
                         onPress={() => {toggleCategory(category.label); setLoading(true); setCards(true) }}
                     >
                         <Text className={`${selectedCategories.includes(category.label) ? 'text-white' : 'text-black'}`} style={{ fontFamily: 'poppins-medium' }}>{category.label}</Text>

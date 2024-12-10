@@ -17,5 +17,4 @@ export interface Post {
 export interface Especialist {
 	titulo: string;
 	conteudo: string;
-	idUsuario: string;
 }
