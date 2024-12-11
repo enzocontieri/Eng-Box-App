@@ -3,27 +3,18 @@ import { View, Text, FlatList, ActivityIndicator, Alert, TouchableOpacity } from
 import { getApiAxios } from '../../services/axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GoBackButton from './../../Components/GoBackButton';
-
-interface Hint {
-  id: string; // Ajuste conforme a chave primária do dado
-  usuarioid: string;
-  titulo: string;
-  conteudo: string;
-}
+import { Especialist } from '../../utils/types/post';
 
 const UserHint = () => {
-  const [hints, setHints] = useState<Hint[]>([]);
+  const [hints, setHints] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Substitua pelo método correto de obter o usuarioid, por exemplo:
-  const usuarioid = "usuario-logado-id"; // Obtenha o usuário logado via contexto ou AsyncStorage
-
-  const fetchHints = async () => {
+  const fetchHints = async (userEmail: string) => {
     try {
       setLoading(true);
       const api = await getApiAxios();
-      const response = await api.get<Hint[]>('/api/Enge/dicas'); // Tipagem da resposta
-      const userHints = response.data.filter((hint) => hint.usuarioid === usuarioid);
+      const response = await api.get('/api/Enge/dicas'); 
+      const userHints = response.data.filter((hint: Especialist) => hint.usuarioId === userEmail);
       setHints(userHints);
     } catch (error) {
       console.error('Erro ao buscar dicas:', error);
