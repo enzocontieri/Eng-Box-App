@@ -9,6 +9,7 @@ interface Hint {
   id: number; 
   titulo: string;
   conteudo: string;
+  dataCriacao: Date;
 }
 
 const HintComponent = () => {
@@ -21,7 +22,14 @@ const HintComponent = () => {
       setLoading(true);
       const api = await getApiAxios();
       const response = await api.get<Hint[]>('/api/Enge/dicas');
-      setHints(response.data);
+      
+      // Ordenar as dicas por data de criação (mais recentes primeiro)
+      const sortedHints = response.data.sort((a, b) => {
+        const dateA = new Date(a.dataCriacao).getTime();
+        const dateB = new Date(b.dataCriacao).getTime();
+        return dateB - dateA; // Ordem decrescente
+      });
+      setHints(sortedHints);
     } catch (error) {
       console.error('Erro ao buscar dicas:', error);
     } finally {
