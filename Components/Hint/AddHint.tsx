@@ -27,9 +27,9 @@ const AddHint = () => {
 			const formData = new FormData();
 			formData.append('titulo', data.titulo);
 			formData.append('conteudo', data.conteudo);
-			formData.append('tema', data.tema);
-			formData.append('subtema', data.subtemas);
-            formData.append('usuarioId', user?.email ?? '');
+			formData.append('tema', 'Enge');
+			formData.append('subtema', 'Enge');
+			formData.append('usuarioId', user?.email ?? '');
 
 			const api = await getApiAxios();
 			await api.postForm('/api/dicas',formData);
@@ -73,8 +73,6 @@ const AddHint = () => {
     const handleHint = async () => {
 		try {
 			await fetchUploadPost(hintData);
-			setTitulo('');
-			setConteudo('');
 		} catch (error) {
 			console.log(error);
 		}
@@ -84,9 +82,8 @@ const AddHint = () => {
 		titulo: titulo,
 		conteudo: conteudo,
 		tema: 'Enge',
-		subtemas: 'Civil',
+		subtemas: 'Enge',
 	};
-    
 
     const handleViewPress = () => {
         if (textInputRef.current) {
@@ -128,6 +125,7 @@ const AddHint = () => {
                                 placeholder='digite aqui...' 
                                 className='p-4'
                                 onChangeText={setTitulo}
+                                value={titulo}
                                 />
                             </View>
                             <View className='mt-[10%]'>
@@ -144,6 +142,7 @@ const AddHint = () => {
                                         multiline={true}
                                         textAlignVertical="top"
                                         onChangeText={setConteudo}
+                                        value={conteudo}
                                         />
                                         </ScrollView>
                                     </View>
