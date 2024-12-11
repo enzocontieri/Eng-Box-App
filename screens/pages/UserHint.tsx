@@ -29,6 +29,7 @@ const UserHint = () => {
       await api.delete(`/api/dicas/${dicaId}`);
       // Atualizar a lista de dicas após a exclusão
       setHints((prevHints) => prevHints.filter((hint) => hint.id !== dicaId));
+      Alert.alert('Dica deletada')
     } catch (error) {
       Alert.alert('Erro ao deletar dica');
     }

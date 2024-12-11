@@ -20,4 +20,5 @@ export interface Especialist {
 	tema: string,
 	subtemas: string,
 	usuarioId: string;
+	IsCreatedBySpecialist : boolean;
 }

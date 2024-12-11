@@ -5,22 +5,24 @@ import { getApiAxios } from '../../services/axios';
 import { Especialist }  from '../../utils/types/post';
 
 const EspecialistHint = () => {
-  const [hints, setHints] = useState([]);
+  const [hints, setHints] = useState<Especialist[]>([]);
   const [loading, setLoading] = useState(false);
 
   // Função para buscar dados da API
   const fetchHints = async () => {
     try {
-      setLoading(true);
-      const api = await getApiAxios();
-      const response = await api.get('/api/Enge/dicas/especialistas');
-      setHints(response.data);
+        setLoading(true);
+        const api = await getApiAxios();
+        const response = await api.get('/api/dicas');
+        // Filtrar as dicas pelo parâmetro IsCreatedBySpecialist
+        const filteredHints = response.data.filter((hint: Especialist) => hint.IsCreatedBySpecialist === true);
+        setHints(filteredHints); // Atualiza a lista de dicas
     } catch (error) {
-      console.error('Erro ao buscar dicas:', error);
+        console.error('Erro ao buscar dicas:', error);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
   useEffect(() => {
     fetchHints();
